@@ -4,13 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SceneChange : MonoBehaviour
 {
-    public string FinalGame; // The name of the scene you want to load
-
-    private void OnTriggerEnter(Collider other)
+    [SerializeField] private string sceneName;
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag("ChangeScene")) // Check if the player has touched the object
+        if (collision.gameObject.tag == "Spacecraft")
         {
-            SceneManager.LoadScene(FinalGame);
+            SceneManager.LoadScene(sceneName);
         }
     }
 }
