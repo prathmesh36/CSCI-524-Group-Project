@@ -13,8 +13,9 @@ public class PipePuzzleGameManager : MonoBehaviour
     [SerializeField]
     int totalPipes = 0;
 
-    [SerializeField]
-    int correctPipes = 0;
+    List<List<string>> totalPipesList = new List<List<string>>();
+
+    List<string> correctPipesList = new List<string>();
 
     // Start is called before the first frame update
     void Start()
@@ -28,32 +29,53 @@ public class PipePuzzleGameManager : MonoBehaviour
             Pipes[i] = PipesHolder.transform.GetChild(i).gameObject;
             WaterPipes[i] = WaterPipesHolder.transform.GetChild(i).gameObject;
         }
+
+        totalPipesList.Add(new List<string> { "00", "01", "11", "21", "22", "23", "33", "34", "35" });
+        totalPipesList.Add(new List<string> { "00", "01", "11", "12", "02", "03", "04", "05", "15", "25", "35" });
     }
 
     // Update is called once per frame
-    public void CorrectMove()
+    public void CorrectMove(string index)
     {
-        correctPipes += 1;
+        correctPipesList.Add(index);
         Debug.Log("Correct Move");
-        if (correctPipes == totalPipes) {
-            Debug.Log("You Won");
-            startWater();
-        }
-    }
-
-    public void startWater() {
-        for (int i = 0; i < Pipes.Length; i++)
+        foreach (List<string> element in totalPipesList)
         {
-            SpriteRenderer spriteRenderer = Pipes[i].GetComponent<SpriteRenderer>();
-            spriteRenderer.sortingOrder = -1;
-            SpriteRenderer waterSpriteRenderer = WaterPipes[i].GetComponent<SpriteRenderer>();
-            waterSpriteRenderer.sortingOrder = 1;
-            SceneManager.LoadScene("MyGame");
+            bool flag = true;
+            foreach (string item in element)
+            {
+                if (!correctPipesList.Contains(item))
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag == true) {
+                Debug.Log("You Won");
+                startWater(element);
+            }
+
         }
     }
 
-    public void WrongMove() {
-        correctPipes -= 1;
+    public void startWater(List<string> element) {
+        for (int i = 0; i < element.Count; i++)
+        {
+            for (int j = 0; j < Pipes.Length; j++) {
+                if (Pipes[j].name.Substring(gameObject.name.Length - 2) == element[i]) {
+                    SpriteRenderer spriteRenderer = Pipes[j].GetComponent<SpriteRenderer>();
+                    spriteRenderer.sortingOrder = -1;
+                    SpriteRenderer waterSpriteRenderer = WaterPipes[j].GetComponent<SpriteRenderer>();
+                    waterSpriteRenderer.sortingOrder = 1;
+                    SceneManager.LoadScene("MyGame");
+                }
+            }
+           
+        }
+    }
+
+    public void WrongMove(string index) {
+        correctPipesList.Remove(index);
         Debug.Log("Wrong Move");
     }
 }
