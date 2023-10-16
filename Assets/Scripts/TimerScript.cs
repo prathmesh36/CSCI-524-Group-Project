@@ -23,7 +23,7 @@ public class TimerScript : MonoBehaviour
     }
 
     public void AnimateBar() {
-        LeanTween.scaleX(bar, 1, time).setOnComplete(ChangeScene);
+        LeanTween.scaleY(bar, 1, time).setOnComplete(ChangeScene);
         
     }
     public void ChangeScene() {
