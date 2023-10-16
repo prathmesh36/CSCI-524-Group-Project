@@ -42,11 +42,11 @@ public class spacecraft : MonoBehaviour
             }
             if (AlienShip1 == null)
             {
-                Debug.Log("Alienship1");
+                //Debug.Log("Alienship1");
             }
             if (AlienShip2 == null)
             {
-                Debug.Log("Alienship2");
+                //Debug.Log("Alienship2");
             }
           
             if(AlienShip1 == null && AlienShip2 == null)
@@ -69,13 +69,13 @@ public class spacecraft : MonoBehaviour
             isLeft = true;
             isMovingStraight = !isMovingStraight;
             count++;
-            Debug.Log("Count is"+count);
+            //Debug.Log("Count is"+count);
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow)){
             isLeft = false;
             isMovingStraight = !isMovingStraight;
             count++;
-            Debug.Log("Count is" + count);
+            //Debug.Log("Count is" + count);
         }
 
 

@@ -220,6 +220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transition: {fileID: 260550997}
+  transitionTIme: 1
   sceneName: PipePuzzle
 --- !u!1 &138443069
 GameObject:
@@ -389,6 +391,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &260550997 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8139500945551816024, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+  m_PrefabInstance: {fileID: 7613693813005410961}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &387099719
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,6 +842,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transition: {fileID: 260550997}
+  transitionTIme: 1
   sceneName: PipePuzzle
 --- !u!1 &549781319
 GameObject:
@@ -935,6 +944,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transition: {fileID: 260550997}
+  transitionTIme: 1
   sceneName: PipePuzzle
 --- !u!58 &549781323
 CircleCollider2D:
@@ -983,6 +994,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transition: {fileID: 0}
+  transitionTIme: 1
   sceneName: 
 --- !u!1 &573890106
 GameObject:
@@ -1083,6 +1096,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transition: {fileID: 260550997}
+  transitionTIme: 1
   sceneName: PipePuzzle
 --- !u!58 &573890111
 CircleCollider2D:
@@ -1131,6 +1146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transition: {fileID: 0}
+  transitionTIme: 1
   sceneName: 
 --- !u!1 &766874376
 GameObject:
@@ -1217,6 +1234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transition: {fileID: 0}
+  transitionTIme: 1
   sceneName: 
 --- !u!1 &1101232852
 GameObject:
@@ -1569,6 +1588,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transition: {fileID: 260550997}
+  transitionTIme: 1
   sceneName: PipePuzzle
 --- !u!58 &1278943526
 CircleCollider2D:
@@ -1617,6 +1638,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transition: {fileID: 0}
+  transitionTIme: 1
   sceneName: 
 --- !u!1 &1331839475
 GameObject:
@@ -1903,7 +1926,7 @@ GameObject:
   - component: {fileID: 1380225879}
   - component: {fileID: 1380225880}
   m_Layer: 0
-  m_Name: Planet-2
+  m_Name: Planet 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1988,6 +2011,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transition: {fileID: 260550997}
+  transitionTIme: 1
   sceneName: PipePuzzle
 --- !u!58 &1380225879
 CircleCollider2D:
@@ -2036,6 +2061,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transition: {fileID: 0}
+  transitionTIme: 1
   sceneName: 
 --- !u!1 &1409403139
 GameObject:
@@ -2121,6 +2148,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1473907693 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1607856083209219468, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+  m_PrefabInstance: {fileID: 7613693813005410961}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1473907695
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473907693}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dc29309606bfa40c2b6eed30fda8208d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1495966330
 GameObject:
   m_ObjectHideFlags: 0
@@ -2220,6 +2273,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transition: {fileID: 260550997}
+  transitionTIme: 1
   sceneName: PipePuzzle
 --- !u!58 &1495966334
 CircleCollider2D:
@@ -2268,6 +2323,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transition: {fileID: 0}
+  transitionTIme: 1
   sceneName: 
 --- !u!1 &1608163720
 GameObject:
@@ -2281,7 +2338,7 @@ GameObject:
   - component: {fileID: 1608163722}
   - component: {fileID: 1608163724}
   m_Layer: 0
-  m_Name: Planet-1
+  m_Name: Planet 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2366,6 +2423,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transition: {fileID: 260550997}
+  transitionTIme: 1
   sceneName: PipePuzzle
 --- !u!1 &1623573149
 GameObject:
@@ -2535,6 +2594,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1871861899 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4836901902771081764, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+  m_PrefabInstance: {fileID: 7613693813005410961}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &1871861903
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871861899}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &2079037502
 GameObject:
   m_ObjectHideFlags: 0
@@ -2632,11 +2708,178 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transition: {fileID: 260550997}
+  transitionTIme: 1
   sceneName: PipePuzzle
+--- !u!1 &2135160161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2135160164}
+  - component: {fileID: 2135160163}
+  - component: {fileID: 2135160162}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2135160162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135160161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &2135160163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135160161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &2135160164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135160161}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &7613693813005410961
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1607856083209219468, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+      propertyPath: m_Name
+      value: LevelLoader
+      objectReference: {fileID: 0}
+    - target: {fileID: 1990442221667358509, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: acee076f57ee4402f9aab66700621def, type: 2}
+    - target: {fileID: 2761595600503807838, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761595600503807838, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761595600503807838, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761595600503807838, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761595600503807838, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4967983795399634013, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 71e7931952c24894d966e0eeb094d7d5, type: 2}
+    - target: {fileID: 5059688697124338785, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3238834902120763243, guid: 72e1e2584982ed047aea57c42a053ef8, type: 3}
+    - target: {fileID: 7104801873633011457, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104801873633011457, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104801873633011457, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104801873633011457, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104801873633011457, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104801873633011457, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104801873633011457, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104801873633011457, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104801873633011457, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104801873633011457, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 8777597700182358951, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1607856083209219468, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1473907695}
+    - targetCorrespondingSourceObject: {fileID: 4836901902771081764, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1871861903}
+  m_SourcePrefab: {fileID: 100100000, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 7613693813005410961}
   - {fileID: 479248675}
   - {fileID: 1608163723}
   - {fileID: 1380225877}
@@ -2659,3 +2902,4 @@ SceneRoots:
   - {fileID: 138443071}
   - {fileID: 1798455018}
   - {fileID: 1235538873}
+  - {fileID: 2135160164}
