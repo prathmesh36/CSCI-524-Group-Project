@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,75 +8,118 @@ public class spacecraft : MonoBehaviour
 {
     public Transform[] Targets; 
     private Transform currentTarget;
+    public CinemachineVirtualCamera virtualCamera;
     private bool isMovingStraight = false; 
-    private int count = 0;
-    private bool isLeft = true;
+    //private int count = 0;
+    private bool space = true;
     private float straightMoveTimer = 0f;
-    public GameObject AlienShip1;
-    public GameObject AlienShip2;
+    private Quaternion initialRotation= Quaternion.Euler(0, 0, 180);
+
+    //public GameObject AlienShip1;
+    //public GameObject AlienShip2;
+
+    public Transform destinationPlanet;
+
+    //private bool cameraMoved = false;
 
     void Start()
     {
-        currentTarget = Targets[0]; 
+        Debug.Log("Inside start method of spacecraft script ");
+        currentTarget = Targets[0];
+        //initialRotation = transform.rotation;
+
+        if (destinationPlanet != null && virtualCamera != null)
+        {
+            // Set the position of the camera to focus on the destination planet
+            virtualCamera.Follow = destinationPlanet;
+            virtualCamera.transform.position = destinationPlanet.position - new Vector3(0, 0, 0); // Adjust the offset if necessary
+            virtualCamera.m_Lens.OrthographicSize = 4;
+
+            // Invoke the method to transition to follow the spaceship after 5 seconds
+            Invoke("TransitionToFollowSpaceship", 5f);
+        }
+        else
+        {
+            Debug.LogError("Destination planet or camera not found.");
+        }
     }
+    void TransitionToFollowSpaceship()
+    {
+        // Smoothly transition to follow the spacecraft
+        CinemachineBrain cinemachineBrain = virtualCamera.GetComponent<CinemachineBrain>();
+        if (cinemachineBrain != null)
+        {
+            cinemachineBrain.m_DefaultBlend.m_Time = 50f; // Adjust the blend time as needed
+        }
+
+        // Set the camera to follow the spacecraft
+        // Replace this line with your actual logic for camera follow
+        Debug.Log("Camera transition to follow spacecraft");
+        virtualCamera.Follow = transform;
+        //cameraMoved = true;
+        virtualCamera.m_Lens.OrthographicSize = 5;
+    }
+
 
     void Update()
     {
+        Debug.Log("Inside update method of spacecraft script");
         
+
         CheckPlanetProximity();
 
         if (isMovingStraight)
         {
+            //To do check if the spaceship moves out of bounds then make it stick to a nearby planet
+            //float translationSpeed = 20f;
             straightMoveTimer += Time.deltaTime;
-            if (isLeft)
+            Vector3 objectPosition = transform.position;
+            Debug.Log("Object's coordinates: " + objectPosition);
+            if (space)
             {
-                transform.Translate(Vector3.left * Time.deltaTime * 40f);
+                float movementSpeed = 50f; // Adjust the movement speed as needed
+                Vector3 tipDirection = -transform.up;
+                transform.Translate(tipDirection * Time.deltaTime * movementSpeed, Space.World);
             }
-            else
-            {
-                transform.Translate(Vector3.right * Time.deltaTime * 40f);
-            }
+            
             if (straightMoveTimer >= 1f)
             {
                 // Implement your pause logic here (e.g., show a pause menu)
-                SceneManager.LoadScene("GameOver");
+                //SceneManager.LoadScene("GameOver");
+                Debug.Log("Game Over scene. I am here");
+
             }
-            if (AlienShip1 == null)
-            {
-                //Debug.Log("Alienship1");
-            }
-            if (AlienShip2 == null)
-            {
-                //Debug.Log("Alienship2");
-            }
-          
-            if(AlienShip1 == null && AlienShip2 == null)
-            {
-                //SceneManager.LoadScene("YouWon");
-            }
+            
 
         }
         else
         {
-          
-            transform.RotateAround(currentTarget.position, Vector3.forward, 100 * Time.deltaTime);
+            float rotationSpeed = 100f;
+
+            transform.RotateAround(currentTarget.position, Vector3.forward, -rotationSpeed * Time.deltaTime);
         }
 
-     
-        if (count>8){
-            SceneManager.LoadScene("GameOver");
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow)){
-            isLeft = true;
+
+        //if (Input.GetKeyDown(KeyCode.LeftArrow)){
+        //    isLeft = true;
+        //    isMovingStraight = !isMovingStraight;
+
+        //}
+        //else if (Input.GetKeyDown(KeyCode.RightArrow)){
+        //    isLeft = false;
+        //    isMovingStraight = !isMovingStraight;
+
+        //}
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+
+            Debug.Log("Space Key Pressed");
+            // Move the spaceship in the direction of its tip
+            space = true;
             isMovingStraight = !isMovingStraight;
-            count++;
-            //Debug.Log("Count is"+count);
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow)){
-            isLeft = false;
-            isMovingStraight = !isMovingStraight;
-            count++;
-            //Debug.Log("Count is" + count);
+            //float movementSpeed = 20f; // Adjust the movement speed as needed
+            //Vector3 tipDirection = -transform.up;
+            //transform.Translate(tipDirection * Time.deltaTime * movementSpeed, Space.World);
         }
 
 
@@ -97,6 +141,13 @@ public class spacecraft : MonoBehaviour
             {
                 currentTarget = planet;
                 isMovingStraight = false;
+                
+                // Calculate the direction from the spaceship to the planet
+                Vector3 newDirection = planet.position - transform.position;
+
+                // Set the rotation to point outwards from the planet
+                transform.rotation = Quaternion.LookRotation(Vector3.forward, newDirection);
+                Debug.Log("Rotation of the spaceship" + transform.rotation);
                 break;
             }
         }
