@@ -9,15 +9,21 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/PipePuzzle.unity
-    guid: b936056b60b06b24886102d2c31bec2f
-  - enabled: 0
-    path: Assets/Scenes/GameOver.unity
-    guid: 7412adbdaafa3164880face7ef968923
-  - enabled: 0
-    path: Assets/Scenes/YouWon.unity
-    guid: a34d70ab672cc2c478723f0003bd2150
+    path: Assets/Scenes/MainMenu.unity
+    guid: 72a3ee5d41f1542628b9a34eb3561b8d
+  - enabled: 1
+    path: Assets/Scenes/LevelMenu.unity
+    guid: ecbf8f0c0234a49d9b566cc69e4dcfd7
   - enabled: 1
     path: Assets/Scenes/MyGame.unity
     guid: 672548e892355a7419d263a959927435
+  - enabled: 1
+    path: Assets/Scenes/PipePuzzle.unity
+    guid: b936056b60b06b24886102d2c31bec2f
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 35cff3f14922b44ea994f7f0dee3544e
+  - enabled: 0
+    path: Assets/Scenes/YouWon.unity
+    guid: a34d70ab672cc2c478723f0003bd2150
   m_configObjects: {}
