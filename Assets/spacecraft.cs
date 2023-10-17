@@ -32,7 +32,7 @@ public class spacecraft : MonoBehaviour
         {
             // Set the position of the camera to focus on the destination planet
             virtualCamera.Follow = destinationPlanet;
-            virtualCamera.transform.position = destinationPlanet.position - new Vector3(0, 0, 2); // Adjust the offset if necessary
+            virtualCamera.transform.position = destinationPlanet.position - new Vector3(0, 0, 0); // Adjust the offset if necessary
             virtualCamera.m_Lens.OrthographicSize = 4;
 
             // Invoke the method to transition to follow the spaceship after 5 seconds
@@ -49,7 +49,7 @@ public class spacecraft : MonoBehaviour
         CinemachineBrain cinemachineBrain = virtualCamera.GetComponent<CinemachineBrain>();
         if (cinemachineBrain != null)
         {
-            cinemachineBrain.m_DefaultBlend.m_Time = 2f; // Adjust the blend time as needed
+            cinemachineBrain.m_DefaultBlend.m_Time = 50f; // Adjust the blend time as needed
         }
 
         // Set the camera to follow the spacecraft
@@ -77,7 +77,7 @@ public class spacecraft : MonoBehaviour
             Debug.Log("Object's coordinates: " + objectPosition);
             if (space)
             {
-                float movementSpeed = 20f; // Adjust the movement speed as needed
+                float movementSpeed = 50f; // Adjust the movement speed as needed
                 Vector3 tipDirection = -transform.up;
                 transform.Translate(tipDirection * Time.deltaTime * movementSpeed, Space.World);
             }
@@ -94,7 +94,7 @@ public class spacecraft : MonoBehaviour
         }
         else
         {
-            float rotationSpeed = 50f;
+            float rotationSpeed = 100f;
 
             transform.RotateAround(currentTarget.position, Vector3.forward, -rotationSpeed * Time.deltaTime);
         }
