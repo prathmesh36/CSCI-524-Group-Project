@@ -152,9 +152,4 @@ public class spacecraft : MonoBehaviour
             }
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("Collision Out");
-    }
 }
