@@ -15,7 +15,7 @@ public class SceneChange : MonoBehaviour
         if (collision.gameObject.tag == "Spacecraft")
         {
             Debug.Log("Collision In");
-            //StartCoroutine(LoadScene(sceneName));
+            StartCoroutine(LoadScene(sceneName));
         }
     }
 
