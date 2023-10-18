@@ -6,23 +6,25 @@ public class SceneChange : MonoBehaviour
     public Animator transition;
     public float transitionTime = 1f;
 
-    [SerializeField] public string sceneName;
+    public string sceneName;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Collision Out");
         if (collision.gameObject.tag == "Spacecraft")
         {
             Debug.Log("Collision In");
-            StartCoroutine(LoadScene(sceneName));
+            SceneManager.LoadScene(sceneName);
+            //StartCoroutine(LoadScene(sceneName));
         }
     }
 
-    IEnumerator LoadScene(string sceneName)
-    {
-        transition.SetTrigger("Start");
+    //IEnumerator LoadScene(string sceneName)
+    //{
+    //    transition.SetTrigger("Start");
 
-        yield return new WaitForSeconds(transitionTime);
+    //    yield return new WaitForSeconds(transitionTime);
 
-        SceneManager.LoadScene(sceneName);
-    }
+    //    SceneManager.LoadScene(sceneName);
+    //}
 }

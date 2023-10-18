@@ -74,7 +74,7 @@ public class spacecraft : MonoBehaviour
             //float translationSpeed = 20f;
             straightMoveTimer += Time.deltaTime;
             Vector3 objectPosition = transform.position;
-            Debug.Log("Object's coordinates: " + objectPosition);
+            //Debug.Log("Object's coordinates: " + objectPosition);
             if (space)
             {
                 float movementSpeed = 50f; // Adjust the movement speed as needed
@@ -86,7 +86,7 @@ public class spacecraft : MonoBehaviour
             {
                 // Implement your pause logic here (e.g., show a pause menu)
                 //SceneManager.LoadScene("GameOver");
-                Debug.Log("Game Over scene. I am here");
+                //Debug.Log("Game Over scene. I am here");
 
             }
             
@@ -151,5 +151,10 @@ public class spacecraft : MonoBehaviour
                 break;
             }
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Collision Out");
     }
 }

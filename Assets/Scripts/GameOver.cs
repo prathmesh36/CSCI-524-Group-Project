@@ -6,7 +6,8 @@ using System;
 
 public class GameOver : MonoBehaviour
 {
-    public void StartOver(){
+    public void Start()
+    {
         DateTime currentTime = DateTime.Now;
         long unixTimestamp = (long)(currentTime - new DateTime(1970, 1, 1)).TotalSeconds;
         GameManager.endTime = unixTimestamp;
@@ -16,6 +17,10 @@ public class GameOver : MonoBehaviour
         overallGameAnalytics.timeTakenToFinishGame = (int)(GameManager.endTime - GameManager.startTime);
         string jsonOverallGameAnalytics = JsonUtility.ToJson(overallGameAnalytics);
         analytics.SaveData("overall-game-data.json", jsonOverallGameAnalytics);
+    }
+
+    public void StartOver(){
+
         SceneManager.LoadScene("MainMenu");
     }
 }
