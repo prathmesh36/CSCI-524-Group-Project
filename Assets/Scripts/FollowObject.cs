@@ -1,7 +1,9 @@
+using System.Collections;
 using UnityEngine;
 
 public class FollowObject : MonoBehaviour
 {
+
     public Transform target; 
     public float smoothSpeed = 0.125f;
     public Vector3 offset;
@@ -12,14 +14,19 @@ public class FollowObject : MonoBehaviour
 
     void Start()
     {
+
         // Store the initial position of the camera
+        Debug.Log("Inside start method of follow object");
         initialPosition = transform.position;
+       
+
     }
 
     void LateUpdate()
     {
         if (target != null)
         {
+            //Debug.Log("Inside lateupdate method of follow object");
             // Calculate the desired position of the camera to center on the target
             Vector3 desiredPosition = target.position + offset;
 
@@ -39,4 +46,6 @@ public class FollowObject : MonoBehaviour
             }
         }
     }
+   
+
 }

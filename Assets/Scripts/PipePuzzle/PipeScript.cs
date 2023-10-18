@@ -27,7 +27,7 @@ public class PipeScript : MonoBehaviour
             if (transform.eulerAngles.z == correctRotation[i])
             {
                 isPlaced = true;
-                pipePuzzleGameManager.CorrectMove();
+                pipePuzzleGameManager.CorrectMove(gameObject.name.Substring(gameObject.name.Length - 2));
             }
         }
     }
@@ -43,7 +43,7 @@ public class PipeScript : MonoBehaviour
                 if (transform.eulerAngles.z == correctRotation[i])
                 {
                     isPlaced = true;
-                    pipePuzzleGameManager.CorrectMove();
+                    pipePuzzleGameManager.CorrectMove(gameObject.name.Substring(gameObject.name.Length - 2));
                 }
             }
         }
@@ -61,7 +61,7 @@ public class PipeScript : MonoBehaviour
             if (wrongFlag == false)
             {
                 isPlaced = false;
-                pipePuzzleGameManager.WrongMove();
+                pipePuzzleGameManager.WrongMove(gameObject.name.Substring(gameObject.name.Length - 2));
             }
             
         }
