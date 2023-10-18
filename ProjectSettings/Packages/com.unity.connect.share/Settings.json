@@ -19,7 +19,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"P:/WebGL/Gameception;C:/anaya/GameDev/Assignment_3;C:/anaya/GameDev/Assignment3;C:/anaya/GameDev;;;;;;\"}"
+                "value": "{\"m_Value\":\"/Users/prathameshmhapsekar/Unity/CSCI-524-Group-Project/Build;P:/WebGL/Gameception;C:/anaya/GameDev/Assignment_3;C:/anaya/GameDev/Assignment3;C:/anaya/GameDev;;;;;\"}"
             }
         ]
     }

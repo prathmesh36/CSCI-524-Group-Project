@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class spacecraft : MonoBehaviour
 {
@@ -21,6 +19,9 @@ public class spacecraft : MonoBehaviour
     public Transform destinationPlanet;
 
     //private bool cameraMoved = false;
+
+    public float moveDuration = 2.0f;
+
 
     void Start()
     {
@@ -43,21 +44,49 @@ public class spacecraft : MonoBehaviour
             Debug.LogError("Destination planet or camera not found.");
         }
     }
+
+
+    public void MoveCamera()
+    {
+        Debug.Log("Inside move camera");
+        StartCoroutine(MoveCameraCoroutine(transform.position, moveDuration));
+    }
+
+    private IEnumerator MoveCameraCoroutine(Vector3 targetPosition, float duration)
+    {
+        Vector3 startPosition = destinationPlanet.position;
+        float startTime = Time.time;
+
+        while (Time.time < startTime + duration)
+        {
+            Debug.Log("Inside MoveCameraCoroutine");
+            float t = (Time.time - startTime) / duration;
+            destinationPlanet.position = Vector3.Lerp(startPosition, targetPosition, t);
+            yield return null; // Wait for the next frame
+        }
+
+        // Ensure the camera reaches the exact target position at the end.
+        destinationPlanet.position = targetPosition;
+        virtualCamera.Follow = transform;
+    }
+
     void TransitionToFollowSpaceship()
     {
         // Smoothly transition to follow the spacecraft
-        CinemachineBrain cinemachineBrain = virtualCamera.GetComponent<CinemachineBrain>();
-        if (cinemachineBrain != null)
-        {
-            cinemachineBrain.m_DefaultBlend.m_Time = 50f; // Adjust the blend time as needed
-        }
+        //CinemachineBrain cinemachineBrain = virtualCamera.GetComponent<CinemachineBrain>();
+        //if (cinemachineBrain != null)
+        //{
+        //    cinemachineBrain.m_DefaultBlend.m_Time = 50f; // Adjust the blend time as needed
+        //}
+
+        MoveCamera();
 
         // Set the camera to follow the spacecraft
         // Replace this line with your actual logic for camera follow
-        Debug.Log("Camera transition to follow spacecraft");
-        virtualCamera.Follow = transform;
-        //cameraMoved = true;
-        virtualCamera.m_Lens.OrthographicSize = 10;
+        //Debug.Log("Camera transition to follow spacecraft");
+        //virtualCamera.Follow = transform;
+        ////cameraMoved = true;
+        //virtualCamera.m_Lens.OrthographicSize = 10;
     }
 
 
