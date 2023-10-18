@@ -33,7 +33,7 @@ public class spacecraft : MonoBehaviour
             // Set the position of the camera to focus on the destination planet
             virtualCamera.Follow = destinationPlanet;
             virtualCamera.transform.position = destinationPlanet.position - new Vector3(0, 0, 0); // Adjust the offset if necessary
-            virtualCamera.m_Lens.OrthographicSize = 4;
+            virtualCamera.m_Lens.OrthographicSize = 5;
 
             // Invoke the method to transition to follow the spaceship after 5 seconds
             Invoke("TransitionToFollowSpaceship", 5f);
@@ -57,7 +57,7 @@ public class spacecraft : MonoBehaviour
         Debug.Log("Camera transition to follow spacecraft");
         virtualCamera.Follow = transform;
         //cameraMoved = true;
-        virtualCamera.m_Lens.OrthographicSize = 5;
+        virtualCamera.m_Lens.OrthographicSize = 10;
     }
 
 
