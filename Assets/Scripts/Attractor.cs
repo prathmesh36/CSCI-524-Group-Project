@@ -53,7 +53,11 @@ public class Attractor : MonoBehaviour
     {
         for(int i=0;i<AttractedObjects.Count;i++)
         {
-            AttractedObjects[i].GetComponent<Attractable>().Attract(this);
+            Attractable attractable = AttractedObjects[i].GetComponent<Attractable>();
+            if (attractable != null)
+            {
+                attractable.Attract(this);
+            }
         }
     }
     void OnDrawGizmosSelected()
@@ -62,3 +66,4 @@ public class Attractor : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position,Radius);
     }
 }
+
