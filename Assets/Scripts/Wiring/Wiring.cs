@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Wiring : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -49,6 +49,7 @@ public class Wiring : MonoBehaviour
         lightOn.SetActive(true);
         //destroy the script
         Destroy(this);
+        SceneManager.LoadScene("MainMenu");
     }
     private void OnMouseUp()
     {

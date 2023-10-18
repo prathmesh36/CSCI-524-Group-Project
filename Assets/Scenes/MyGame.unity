@@ -835,7 +835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: PipePuzzle
+  sceneName: Wiring
 --- !u!1 &549781319
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,7 +935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: PipePuzzle
+  sceneName: Wiring
 --- !u!58 &549781323
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1569,7 +1569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: PipePuzzle
+  sceneName: Wiring
 --- !u!58 &1278943526
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1617,7 +1617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 
+  sceneName: Wiring
 --- !u!1 &1331839475
 GameObject:
   m_ObjectHideFlags: 3
@@ -2220,7 +2220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: PipePuzzle
+  sceneName: Wiring
 --- !u!58 &1495966334
 CircleCollider2D:
   m_ObjectHideFlags: 0
