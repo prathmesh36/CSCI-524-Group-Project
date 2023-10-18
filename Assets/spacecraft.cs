@@ -75,6 +75,7 @@ public class spacecraft : MonoBehaviour
         // Ensure the camera reaches the exact target position at the end.
         destinationPlanet.position = targetPosition;
         virtualCamera.Follow = transform;
+        virtualCamera.m_Lens.OrthographicSize = 7;
     }
 
     void TransitionToFollowSpaceship()

@@ -3099,7 +3099,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fuel: 40
   health: 100
-  Target: []
+  Target:
+  - {fileID: 1608163723}
+  - {fileID: 1380225877}
+  - {fileID: 573890109}
+  - {fileID: 1495966332}
+  - {fileID: 1278943524}
+  - {fileID: 109508881}
+  - {fileID: 528985543}
+  - {fileID: 2079037504}
+  - {fileID: 549781321}
+  - {fileID: 199102806}
   sceneName: GameOver
   transition: {fileID: 260550997}
   transitionTime: 1
