@@ -1678,7 +1678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
-  sceneName: PipePuzzle
+  sceneName: Wiring
 --- !u!1 &632906605
 GameObject:
   m_ObjectHideFlags: 3
@@ -3311,7 +3311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
-  sceneName: PipePuzzle
+  sceneName: Wiring
 --- !u!58 &1495966334
 CircleCollider2D:
   m_ObjectHideFlags: 0
