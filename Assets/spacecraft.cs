@@ -63,7 +63,7 @@ public class spacecraft : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Inside update method of spacecraft script");
+        //Debug.Log("Inside update method of spacecraft script");
         
 
         CheckPlanetProximity();
