@@ -26,7 +26,7 @@ public class FollowObject : MonoBehaviour
     {
         if (target != null)
         {
-            Debug.Log("Inside lateupdate method of follow object");
+            //Debug.Log("Inside lateupdate method of follow object");
             // Calculate the desired position of the camera to center on the target
             Vector3 desiredPosition = target.position + offset;
 

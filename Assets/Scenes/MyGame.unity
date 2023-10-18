@@ -199,7 +199,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 58, y: 1}
+  m_Size: {x: 68, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &65011996
 MonoBehaviour:
@@ -213,8 +213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: {fileID: 0}
-  transitionTIme: 1
+  transition: {fileID: 260550997}
+  transitionTime: 1
   sceneName: GameOver
 --- !u!1 &109508879
 GameObject:
@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 109508881}
   - component: {fileID: 109508880}
   - component: {fileID: 109508882}
+  - component: {fileID: 109508883}
   m_Layer: 0
   m_Name: Planet 6
   m_TagString: Untagged
@@ -295,8 +296,8 @@ Transform:
   m_GameObject: {fileID: 109508879}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.97, y: -1.23, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.5}
+  m_LocalPosition: {x: 17.4588, y: -0.7411, z: 0}
+  m_LocalScale: {x: 0.29547337, y: 0.2954871, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -314,8 +315,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
-  transitionTIme: 1
+  transitionTime: 1
   sceneName: PipePuzzle
+--- !u!58 &109508883
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109508879}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 10.12
 --- !u!1 &138443069
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,6 +446,8 @@ GameObject:
   m_Component:
   - component: {fileID: 183768273}
   - component: {fileID: 183768274}
+  - component: {fileID: 183768275}
+  - component: {fileID: 183768276}
   m_Layer: 0
   m_Name: ArrowHead
   m_TagString: Untagged
@@ -484,6 +522,78 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &183768275
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183768272}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
+--- !u!61 &183768276
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183768272}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.21133333}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.28866667}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &199102805
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,12 +708,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 5.1200004
+  m_Radius: 10.12
 --- !u!1 &236453083
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,7 +1059,7 @@ Transform:
   m_GameObject: {fileID: 479248672}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -37.65, y: -4.06, z: -10}
+  m_LocalPosition: {x: -41.05, y: -2.98, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1033,7 +1143,7 @@ Transform:
   m_GameObject: {fileID: 490471161}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -26.51, z: 0}
+  m_LocalPosition: {x: -5.4, y: -26.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1096,8 +1206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: {fileID: 0}
-  transitionTIme: 1
+  transition: {fileID: 260550997}
+  transitionTime: 1
   sceneName: GameOver
 --- !u!1 &528985541
 GameObject:
@@ -1179,8 +1289,8 @@ Transform:
   m_GameObject: {fileID: 528985541}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.82, y: -13.27, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.5}
+  m_LocalPosition: {x: 14.0538, y: -12.9512, z: 0}
+  m_LocalScale: {x: 0.34566, y: 0.36228, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1214,12 +1324,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0000007947286, y: 0}
   serializedVersion: 2
-  m_Radius: 6.118422
+  m_Radius: 10.11842
 --- !u!114 &528985545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1233,7 +1343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
-  transitionTIme: 1
+  transitionTime: 1
   sceneName: PipePuzzle
 --- !u!1 &549781319
 GameObject:
@@ -1247,7 +1357,6 @@ GameObject:
   - component: {fileID: 549781320}
   - component: {fileID: 549781323}
   - component: {fileID: 549781322}
-  - component: {fileID: 549781324}
   m_Layer: 0
   m_Name: Planet 9
   m_TagString: Untagged
@@ -1316,8 +1425,8 @@ Transform:
   m_GameObject: {fileID: 549781319}
   serializedVersion: 2
   m_LocalRotation: {x: 0.000033790307, y: -0.0032753537, z: -0.010315934, w: 0.99994147}
-  m_LocalPosition: {x: 0.22, y: -3.9, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.5}
+  m_LocalPosition: {x: 0.5176, y: -3.6237, z: 0.0019}
+  m_LocalScale: {x: 0.35700002, y: 0.35514, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1335,7 +1444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
-  transitionTIme: 1
+  transitionTime: 1
   sceneName: PipePuzzle
 --- !u!58 &549781323
 CircleCollider2D:
@@ -1371,22 +1480,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.117603935, y: 0}
   serializedVersion: 2
-  m_Radius: 6.648845
---- !u!114 &549781324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 549781319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transition: {fileID: 0}
-  transitionTIme: 1
-  sceneName: 
+  m_Radius: 10.64885
 --- !u!1 &573890106
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,7 +1492,7 @@ GameObject:
   - component: {fileID: 573890109}
   - component: {fileID: 573890108}
   - component: {fileID: 573890111}
-  - component: {fileID: 573890110}
+  - component: {fileID: 573890112}
   m_Layer: 0
   m_Name: Planet 3
   m_TagString: Untagged
@@ -1467,27 +1561,12 @@ Transform:
   m_GameObject: {fileID: 573890106}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.81, y: -0.03, z: 0}
-  m_LocalScale: {x: 0.1498125, y: 0.163875, z: 0.5}
+  m_LocalPosition: {x: -31.1863, y: 0.1311, z: 0}
+  m_LocalScale: {x: 0.27163193, y: 0.29015672, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &573890110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 573890106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transition: {fileID: 260550997}
-  transitionTIme: 1
-  sceneName: PipePuzzle
 --- !u!58 &573890111
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1522,7 +1601,22 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.0000031789143, y: 0.0000003973643}
   serializedVersion: 2
-  m_Radius: 6.0906787
+  m_Radius: 10.09068
+--- !u!114 &573890112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573890106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transition: {fileID: 260550997}
+  transitionTime: 1
+  sceneName: PipePuzzle
 --- !u!1 &632906605
 GameObject:
   m_ObjectHideFlags: 3
@@ -1711,7 +1805,7 @@ Transform:
   m_GameObject: {fileID: 862153956}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -37.65, y: -4.06, z: -10}
+  m_LocalPosition: {x: -41.05, y: -2.98, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1848,9 +1942,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: {fileID: 0}
-  transitionTIme: 1
-  sceneName: 
+  transition: {fileID: 260550997}
+  transitionTime: 1
+  sceneName: GameOver
 --- !u!1 &1101232852
 GameObject:
   m_ObjectHideFlags: 0
@@ -2115,7 +2209,6 @@ GameObject:
   - component: {fileID: 1278943523}
   - component: {fileID: 1278943526}
   - component: {fileID: 1278943525}
-  - component: {fileID: 1278943527}
   m_Layer: 0
   m_Name: Planet 5
   m_TagString: Untagged
@@ -2184,8 +2277,8 @@ Transform:
   m_GameObject: {fileID: 1278943522}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.89, y: -9.1, z: 0}
-  m_LocalScale: {x: 0.13125001, y: 0.1575, z: 0.5}
+  m_LocalPosition: {x: -14.3788, y: -8.7812, z: 0}
+  m_LocalScale: {x: 0.22673438, y: 0.21977551, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2203,7 +2296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
-  transitionTIme: 1
+  transitionTime: 1
   sceneName: PipePuzzle
 --- !u!58 &1278943526
 CircleCollider2D:
@@ -2239,22 +2332,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.0000015894572, y: 0}
   serializedVersion: 2
-  m_Radius: 6.6176333
---- !u!114 &1278943527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1278943522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transition: {fileID: 0}
-  transitionTIme: 1
-  sceneName: 
+  m_Radius: 10.61763
 --- !u!1 &1331839475
 GameObject:
   m_ObjectHideFlags: 3
@@ -2424,7 +2502,7 @@ Transform:
   m_GameObject: {fileID: 1376463077}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: -37.65, y: -4.06, z: 0}
+  m_LocalPosition: {x: -41.05, y: -2.98, z: 0}
   m_LocalScale: {x: 0.7125, y: 0.8, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2540,7 +2618,6 @@ GameObject:
   - component: {fileID: 1380225876}
   - component: {fileID: 1380225879}
   - component: {fileID: 1380225878}
-  - component: {fileID: 1380225880}
   m_Layer: 0
   m_Name: Planet 2
   m_TagString: Untagged
@@ -2609,8 +2686,8 @@ Transform:
   m_GameObject: {fileID: 1380225874}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.07, y: 0.48, z: 0}
-  m_LocalScale: {x: 0.24375, y: 0.22500001, z: 5}
+  m_LocalPosition: {x: -12.4738, y: 0.8413, z: 0}
+  m_LocalScale: {x: 0.3226275, y: 0.29556, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2628,7 +2705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
-  transitionTIme: 1
+  transitionTime: 1
   sceneName: PipePuzzle
 --- !u!58 &1380225879
 CircleCollider2D:
@@ -2664,22 +2741,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.39689103}
   serializedVersion: 2
-  m_Radius: 5.5168915
---- !u!114 &1380225880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1380225874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transition: {fileID: 0}
-  transitionTIme: 1
-  sceneName: 
+  m_Radius: 10.51689
 --- !u!1 &1473907693 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1607856083209219468, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
@@ -2775,8 +2837,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: {fileID: 0}
-  transitionTIme: 1
+  transition: {fileID: 260550997}
+  transitionTime: 1
   sceneName: GameOver
 --- !u!61 &1477885313
 BoxCollider2D:
@@ -2807,7 +2869,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -12, y: 10}
@@ -2821,7 +2883,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 58, y: 1}
+  m_Size: {x: 68, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &1495966330
 GameObject:
@@ -2835,7 +2897,6 @@ GameObject:
   - component: {fileID: 1495966331}
   - component: {fileID: 1495966334}
   - component: {fileID: 1495966333}
-  - component: {fileID: 1495966335}
   m_Layer: 0
   m_Name: Planet 4
   m_TagString: Untagged
@@ -2904,8 +2965,8 @@ Transform:
   m_GameObject: {fileID: 1495966330}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.54, y: -8.87, z: 0}
-  m_LocalScale: {x: 0.15377344, y: 0.16495313, z: 0.5}
+  m_LocalPosition: {x: -29.1149, y: -8.4662, z: 0}
+  m_LocalScale: {x: 0.23679571, y: 0.2438337, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2923,7 +2984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
-  transitionTIme: 1
+  transitionTime: 1
   sceneName: PipePuzzle
 --- !u!58 &1495966334
 CircleCollider2D:
@@ -2959,30 +3020,18 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.23520151, y: 0}
   serializedVersion: 2
-  m_Radius: 6.5312448
---- !u!114 &1495966335
-MonoBehaviour:
+  m_Radius: 10.53124
+--- !u!1 &1578786888
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
-  m_GameObject: {fileID: 1495966330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transition: {fileID: 0}
-  transitionTIme: 1
-  sceneName: 
-=======
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1578786889}
-  - component: {fileID: 1578786890}
   m_Layer: 0
-  m_Name: GameManagerMain
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3003,35 +3052,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1578786890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1578786888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b12080df63794619808427c74198e50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fuel: 50
-  health: 100
-  Target:
-  - {fileID: 1608163723}
-  - {fileID: 1380225877}
-  - {fileID: 573890109}
-  - {fileID: 1495966332}
-  - {fileID: 1278943524}
-  - {fileID: 109508881}
-  - {fileID: 528985543}
-  - {fileID: 2079037504}
-  - {fileID: 549781321}
-  - {fileID: 199102806}
-  sceneName: GameOver
-  transition: {fileID: 0}
-  transitionTime: 1
->>>>>>> Stashed changes
 --- !u!1 &1608163720
 GameObject:
   m_ObjectHideFlags: 0
@@ -3111,8 +3131,8 @@ Transform:
   m_GameObject: {fileID: 1608163720}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -37.44, y: -5.09, z: 0}
-  m_LocalScale: {x: 0.17722546, y: 0.15722752, z: 0.3}
+  m_LocalPosition: {x: -40.7603, y: -5.1937, z: 0}
+  m_LocalScale: {x: 0.36159286, y: 0.37848476, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3130,7 +3150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
-  transitionTIme: 1
+  transitionTime: 1
   sceneName: PipePuzzle
 --- !u!1 &1623573149
 GameObject:
@@ -3328,6 +3348,7 @@ GameObject:
   - component: {fileID: 2079037504}
   - component: {fileID: 2079037503}
   - component: {fileID: 2079037505}
+  - component: {fileID: 2079037506}
   m_Layer: 0
   m_Name: Planet 8
   m_TagString: Untagged
@@ -3396,8 +3417,8 @@ Transform:
   m_GameObject: {fileID: 2079037502}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.93, y: -3.35, z: 0}
-  m_LocalScale: {x: 0.196875, y: 0.19603124, z: 0.5}
+  m_LocalPosition: {x: -22.5049, y: -2.8186, z: 0}
+  m_LocalScale: {x: 0.27989718, y: 0.29981017, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3415,8 +3436,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
-  transitionTIme: 1
+  transitionTime: 1
   sceneName: PipePuzzle
+--- !u!58 &2079037506
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079037502}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 10.12
 --- !u!1 &2135160161
 GameObject:
   m_ObjectHideFlags: 0
@@ -3612,3 +3668,4 @@ SceneRoots:
   - {fileID: 981429736}
   - {fileID: 687762029}
   - {fileID: 1331839476}
+  - {fileID: 1578786889}
