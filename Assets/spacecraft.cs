@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Cinemachine;
 using UnityEngine;
@@ -21,6 +22,12 @@ public class spacecraft : MonoBehaviour
     //private bool cameraMoved = false;
 
     public float moveDuration = 2.0f;
+    GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = GameObject.Find("GameManagerMain").GetComponent<GameManager>();
+    }
 
 
     void Start()
@@ -68,6 +75,7 @@ public class spacecraft : MonoBehaviour
         // Ensure the camera reaches the exact target position at the end.
         destinationPlanet.position = targetPosition;
         virtualCamera.Follow = transform;
+        virtualCamera.m_Lens.OrthographicSize = 8;
     }
 
     void TransitionToFollowSpaceship()
@@ -109,6 +117,10 @@ public class spacecraft : MonoBehaviour
                 float movementSpeed = 50f; // Adjust the movement speed as needed
                 Vector3 tipDirection = -transform.up;
                 transform.Translate(tipDirection * Time.deltaTime * movementSpeed, Space.World);
+                float distanceThisFrame = Time.deltaTime * movementSpeed;
+                Debug.Log(distanceThisFrame);
+                gameManager.updateFuel(distanceThisFrame);
+
             }
             
             if (straightMoveTimer >= 1f)
@@ -150,10 +162,6 @@ public class spacecraft : MonoBehaviour
             //Vector3 tipDirection = -transform.up;
             //transform.Translate(tipDirection * Time.deltaTime * movementSpeed, Space.World);
         }
-
-
-
-
 
     }
 
