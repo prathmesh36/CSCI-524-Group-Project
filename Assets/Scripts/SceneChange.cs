@@ -14,32 +14,40 @@ public class SceneChange : MonoBehaviour
         Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag == "Spacecraft")
         {
-            Debug.Log("Collision In");
-            if (transform.name.StartsWith("Planet"))
+            if (GameManager.fuel > 0)
             {
-                string[] parts = transform.name.Split(' ');
-                Debug.Log(transform.name);
-                foreach (bool value in GameManager.boolArray)
+                Debug.Log("Collision In");
+                if (transform.name.StartsWith("Planet"))
                 {
-                    Debug.Log(value);
-                }
-                if (parts.Length == 2)
-                {
-                    // Attempt to parse the second part as an integer
-                    if (int.TryParse(parts[1], out int result))
+                    string[] parts = transform.name.Split(' ');
+                    Debug.Log(transform.name);
+                    foreach (bool value in GameManager.boolArray)
                     {
-                        GameManager.currentPlanet = result - 1;
-
-                        if (!GameManager.boolArray[result - 1])
+                        Debug.Log(value);
+                    }
+                    if (parts.Length == 2)
+                    {
+                        // Attempt to parse the second part as an integer
+                        if (int.TryParse(parts[1], out int result))
                         {
-                            StartCoroutine(LoadScene(sceneName));
-                            GameManager.boolArray[result - 1] = true;
+                            GameManager.currentPlanet = result - 1;
+
+                            if (!GameManager.boolArray[result - 1])
+                            {
+                                StartCoroutine(LoadScene(sceneName));
+                                GameManager.boolArray[result - 1] = true;
+                            }
                         }
                     }
                 }
+                else
+                {
+                    StartCoroutine(LoadScene(sceneName));
+                }
             }
-            else{
-                StartCoroutine(LoadScene(sceneName));
+            else {
+
+                Debug.Log("Fuel Over");
             }
             
         }
