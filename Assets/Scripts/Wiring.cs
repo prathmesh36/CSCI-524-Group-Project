@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class Wiring : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -9,10 +10,14 @@ public class Wiring : MonoBehaviour
     public GameObject lightOn;
     Vector3 startPoint;
     Vector3 startPosition;
+    public int totalWires=3;
+    private int connectedWires = 0;
+
     void Start()
     {
         startPoint = transform.parent.position;
         startPosition = transform.position;
+        
     }
 
     // Update is called once per frame
@@ -41,7 +46,6 @@ public class Wiring : MonoBehaviour
             }
         }
         UpdateWire(newPosition);
-
     }
     void Done()
     {
@@ -49,19 +53,22 @@ public class Wiring : MonoBehaviour
         lightOn.SetActive(true);
         //destroy the script
         Destroy(this);
-        SceneManager.LoadScene("MainMenu");
+        connectedWires++;
+        if (connectedWires == totalWires)
+        {
+            // Load the scene after all wires are connected
+            SceneManager.LoadScene("MyGame"); // Replace "YourSceneName" with the actual scene name you want to load.
+        }
     }
     private void OnMouseUp()
     {
         UpdateWire(startPosition);
-
     }
     void UpdateWire(Vector3 newPosition)
     {
         transform.position = newPosition;
         Vector3 direction = newPosition - startPoint;
         transform.right = direction * transform.lossyScale.x;
-
         float dist = Vector2.Distance(startPoint, newPosition);
         wireEnd.size = new Vector2(dist, wireEnd.size.y);
     }
