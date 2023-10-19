@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public Animator transition;
     public float transitionTime = 1f;
     public GameObject bar;
+    public GameObject hbar;
     public static int currentPlanet = 0;
     public static bool initialLoad = true;
     public static bool[] boolArray = new bool[10];
@@ -42,6 +43,22 @@ public class GameManager : MonoBehaviour
             StartCoroutine(LoadScene(sceneName));
         }
     }
+
+
+    public void updateHealth(float value)
+    {
+        health -= value;
+
+        LeanTween.scaleX(hbar, Math.Max(health / 100, 0), 1);
+
+
+        if (health <= 0)
+        {
+            StartCoroutine(LoadScene(sceneName));
+        }
+    }
+
+
 
 
     IEnumerator LoadScene(string sceneName)

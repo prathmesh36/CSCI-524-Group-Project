@@ -20,6 +20,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Wiring.unity
     guid: 004db4a4c916e81408178a728c806f68
+  - enabled: 0
+    path: Assets/Scenes/YouWon.unity
+    guid: a34d70ab672cc2c478723f0003bd2150
+  - enabled: 1
+    path: Assets/Scenes/HealthOver.unity
+    guid: 227b253734d154d75841ea86fbd22b7f
+  - enabled: 1
+    path: Assets/Scenes/FuelOver.unity
+    guid: 96ac49fc83a6942149041cef56567c3e
+  - enabled: 1
+    path: Assets/Scenes/YouWonMiniGame.unity
+    guid: 43aaea3df7adc475d9a0df9b1f2262eb
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 35cff3f14922b44ea994f7f0dee3544e
