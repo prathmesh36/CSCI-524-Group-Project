@@ -34,6 +34,32 @@ public class PipePuzzleGameManager : MonoBehaviour
         totalPipesList.Add(new List<string> { "00", "01", "11", "12", "02", "03", "04", "05", "15", "25", "35" });
     }
 
+    public void destroyPipes(string value) {
+        List<List<string>> tempList = new List<List<string>>(totalPipesList);
+        for (int i = 0; i < totalPipesList.Count; i++) {
+            if (totalPipesList[i].Contains(value)) {
+                Debug.Log("Destroying Pipes with Value");
+                Debug.Log(value);
+                tempList.RemoveAt(i);
+            }
+        }
+        totalPipesList = new List<List<string>>(tempList);
+        changeDestoryedPipes(value);
+    }
+
+    public void changeDestoryedPipes(string element)
+    {
+        for (int j = 0; j < Pipes.Length; j++)
+        {
+            if (Pipes[j].name.Substring(gameObject.name.Length - 2) == element)
+            {
+                SpriteRenderer spriteRenderer = Pipes[j].GetComponent<SpriteRenderer>();
+                spriteRenderer.sortingOrder = -1;
+
+            }
+        }
+    }
+
     // Update is called once per frame
     public void CorrectMove(string index)
     {
