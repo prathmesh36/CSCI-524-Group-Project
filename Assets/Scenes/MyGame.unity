@@ -3759,7 +3759,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -7.7984123, w: 0}
+  m_margin: {x: -6.639595, y: 0, z: -7.7984123, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3849,6 +3849,7 @@ MonoBehaviour:
   transition: {fileID: 260550997}
   transitionTime: 1
   bar: {fileID: 1590197390}
+  currentPlanet: Planet 1
 --- !u!1 &1585421992
 GameObject:
   m_ObjectHideFlags: 0
@@ -4406,7 +4407,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 231.3, y: 191.8}
+  m_AnchoredPosition: {x: 225.5, y: 191}
   m_SizeDelta: {x: 48.5307, y: 22.9654}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1798127350

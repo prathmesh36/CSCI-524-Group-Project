@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
@@ -17,6 +16,7 @@ public class GameManager : MonoBehaviour
     public Animator transition;
     public float transitionTime = 1f;
     public GameObject bar;
+    public string currentPlanet = "Planet 1";
 
     void Start()
     {
