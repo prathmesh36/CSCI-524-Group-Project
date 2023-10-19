@@ -3475,6 +3475,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7104801873633011457, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
   m_PrefabInstance: {fileID: 7613693813005410961}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1478065717
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+      propertyPath: m_Name
+      value: Explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+--- !u!1 &1478065718 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+  m_PrefabInstance: {fileID: 1478065717}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1495966330
 GameObject:
   m_ObjectHideFlags: 0
@@ -3835,6 +3897,7 @@ MonoBehaviour:
   transition: {fileID: 260550997}
   transitionTime: 1
   bar: {fileID: 1590197390}
+  hbar: {fileID: 1970073490}
 --- !u!1 &1585421992
 GameObject:
   m_ObjectHideFlags: 0
@@ -4793,7 +4856,7 @@ GameObject:
   - component: {fileID: 1970073493}
   - component: {fileID: 1970073492}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Hbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4815,9 +4878,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 50.5, y: -0.00000014156103}
+  m_AnchoredPosition: {x: 3.5, y: 0.000015258789}
   m_SizeDelta: {x: 94, y: 16}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1970073492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5349,7 +5412,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -5364,12 +5427,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2117742152}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
+  m_Script: {fileID: 11500000, guid: cc8aeb940c6224be797bfc6c08173e03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: {fileID: 260550997}
-  transitionTime: 1
-  sceneName: GameOver
+  explosion: {fileID: 1478065718}
+  obstacle: {fileID: 2117742152}
 --- !u!1 &2135160161
 GameObject:
   m_ObjectHideFlags: 0
@@ -5579,3 +5641,4 @@ SceneRoots:
   - {fileID: 1960125913}
   - {fileID: 2027046551}
   - {fileID: 2117742154}
+  - {fileID: 1478065717}
