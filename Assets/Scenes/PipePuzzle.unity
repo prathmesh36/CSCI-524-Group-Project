@@ -7261,15 +7261,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4145722720438072927, guid: 721556026109844ef8969a216b506f80, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 373
+      value: 381
       objectReference: {fileID: 0}
     - target: {fileID: 4145722720438072927, guid: 721556026109844ef8969a216b506f80, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 80
+      value: 67
       objectReference: {fileID: 0}
     - target: {fileID: 7393199192134384989, guid: 721556026109844ef8969a216b506f80, type: 3}
       propertyPath: m_Name
       value: Timer
+      objectReference: {fileID: 0}
+    - target: {fileID: 9036412247331768277, guid: 721556026109844ef8969a216b506f80, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9059704631009011410, guid: 721556026109844ef8969a216b506f80, type: 3}
       propertyPath: m_Pivot.x
