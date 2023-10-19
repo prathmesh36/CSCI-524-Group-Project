@@ -478,6 +478,7 @@ MonoBehaviour:
   - 180
   isPlaced: 0
   isMine: 0
+  explosion: {fileID: 654265169}
 --- !u!61 &197507095
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1003,6 +1004,7 @@ MonoBehaviour:
   - 0
   isPlaced: 0
   isMine: 0
+  explosion: {fileID: 654265169}
 --- !u!212 &384969734
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1235,6 +1237,7 @@ MonoBehaviour:
   - 180
   isPlaced: 0
   isMine: 0
+  explosion: {fileID: 654265169}
 --- !u!212 &449444264
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1605,6 +1608,7 @@ MonoBehaviour:
   - 0
   isPlaced: 0
   isMine: 0
+  explosion: {fileID: 654265169}
 --- !u!212 &621821085
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1758,7 +1762,8 @@ MonoBehaviour:
   correctRotation:
   - 0
   isPlaced: 0
-  isMine: 0
+  isMine: 1
+  explosion: {fileID: 654265169}
 --- !u!61 &645933929
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1804,6 +1809,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.76, y: 1.77}
   m_EdgeRadius: 0
+--- !u!1 &654265169 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+  m_PrefabInstance: {fileID: 1392860236}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &693670335
 GameObject:
   m_ObjectHideFlags: 0
@@ -1990,6 +2000,7 @@ MonoBehaviour:
   - 0
   isPlaced: 0
   isMine: 0
+  explosion: {fileID: 654265169}
 --- !u!61 &750346513
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2222,6 +2233,7 @@ MonoBehaviour:
   - 180
   isPlaced: 0
   isMine: 0
+  explosion: {fileID: 654265169}
 --- !u!61 &809501195
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2362,6 +2374,7 @@ MonoBehaviour:
   - 0
   isPlaced: 0
   isMine: 0
+  explosion: {fileID: 654265169}
 --- !u!212 &812610600
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2994,6 +3007,7 @@ MonoBehaviour:
   - 0
   isPlaced: 0
   isMine: 0
+  explosion: {fileID: 654265169}
 --- !u!61 &925058759
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3087,7 +3101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctRotation: []
   isPlaced: 0
-  isMine: 0
+  isMine: 1
+  explosion: {fileID: 654265169}
 --- !u!61 &1005284329
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3907,6 +3922,7 @@ MonoBehaviour:
   - 0
   isPlaced: 0
   isMine: 0
+  explosion: {fileID: 654265169}
 --- !u!61 &1095406599
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4363,6 +4379,7 @@ MonoBehaviour:
   - 0
   isPlaced: 0
   isMine: 1
+  explosion: {fileID: 654265169}
 --- !u!61 &1213104778
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4598,6 +4615,7 @@ MonoBehaviour:
   - 180
   isPlaced: 0
   isMine: 0
+  explosion: {fileID: 654265169}
 --- !u!61 &1313066467
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4738,6 +4756,7 @@ MonoBehaviour:
   - 0
   isPlaced: 0
   isMine: 0
+  explosion: {fileID: 654265169}
 --- !u!212 &1346081186
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5008,6 +5027,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1392860236
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+      propertyPath: m_Name
+      value: Explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
 --- !u!1 &1417501369
 GameObject:
   m_ObjectHideFlags: 0
@@ -5240,7 +5316,8 @@ MonoBehaviour:
   - 270
   - 180
   isPlaced: 0
-  isMine: 0
+  isMine: 1
+  explosion: {fileID: 654265169}
 --- !u!212 &1576510640
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5396,6 +5473,7 @@ MonoBehaviour:
   - 180
   isPlaced: 0
   isMine: 0
+  explosion: {fileID: 654265169}
 --- !u!61 &1578598888
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5536,6 +5614,7 @@ MonoBehaviour:
   - 0
   isPlaced: 0
   isMine: 0
+  explosion: {fileID: 654265169}
 --- !u!212 &1625024444
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6497,6 +6576,7 @@ MonoBehaviour:
   - 180
   isPlaced: 0
   isMine: 0
+  explosion: {fileID: 654265169}
 --- !u!1 &1968808470
 GameObject:
   m_ObjectHideFlags: 0
@@ -6852,6 +6932,7 @@ MonoBehaviour:
   - 180
   isPlaced: 0
   isMine: 0
+  explosion: {fileID: 654265169}
 --- !u!61 &2085794296
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7358,3 +7439,4 @@ SceneRoots:
   - {fileID: 1417501370}
   - {fileID: 2138368868}
   - {fileID: 353945878}
+  - {fileID: 1392860236}
