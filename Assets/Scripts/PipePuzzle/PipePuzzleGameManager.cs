@@ -55,7 +55,6 @@ public class PipePuzzleGameManager : MonoBehaviour
             {
                 SpriteRenderer spriteRenderer = Pipes[j].GetComponent<SpriteRenderer>();
                 spriteRenderer.sortingOrder = -1;
-
             }
         }
     }
