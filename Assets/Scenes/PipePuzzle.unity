@@ -477,6 +477,7 @@ MonoBehaviour:
   - 0
   - 180
   isPlaced: 0
+  isMine: 0
 --- !u!61 &197507095
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1001,6 +1002,7 @@ MonoBehaviour:
   correctRotation:
   - 0
   isPlaced: 0
+  isMine: 0
 --- !u!212 &384969734
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1232,6 +1234,7 @@ MonoBehaviour:
   - 0
   - 180
   isPlaced: 0
+  isMine: 0
 --- !u!212 &449444264
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1601,6 +1604,7 @@ MonoBehaviour:
   correctRotation:
   - 0
   isPlaced: 0
+  isMine: 0
 --- !u!212 &621821085
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1754,6 +1758,7 @@ MonoBehaviour:
   correctRotation:
   - 0
   isPlaced: 0
+  isMine: 0
 --- !u!61 &645933929
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1984,6 +1989,7 @@ MonoBehaviour:
   correctRotation:
   - 0
   isPlaced: 0
+  isMine: 0
 --- !u!61 &750346513
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2215,6 +2221,7 @@ MonoBehaviour:
   - 0
   - 180
   isPlaced: 0
+  isMine: 0
 --- !u!61 &809501195
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2354,6 +2361,7 @@ MonoBehaviour:
   correctRotation:
   - 0
   isPlaced: 0
+  isMine: 0
 --- !u!212 &812610600
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2985,6 +2993,7 @@ MonoBehaviour:
   correctRotation:
   - 0
   isPlaced: 0
+  isMine: 0
 --- !u!61 &925058759
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3078,6 +3087,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctRotation: []
   isPlaced: 0
+  isMine: 0
 --- !u!61 &1005284329
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3896,6 +3906,7 @@ MonoBehaviour:
   correctRotation:
   - 0
   isPlaced: 0
+  isMine: 0
 --- !u!61 &1095406599
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4351,6 +4362,7 @@ MonoBehaviour:
   correctRotation:
   - 0
   isPlaced: 0
+  isMine: 1
 --- !u!61 &1213104778
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4585,6 +4597,7 @@ MonoBehaviour:
   - 270
   - 180
   isPlaced: 0
+  isMine: 0
 --- !u!61 &1313066467
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4724,6 +4737,7 @@ MonoBehaviour:
   correctRotation:
   - 0
   isPlaced: 0
+  isMine: 0
 --- !u!212 &1346081186
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5226,6 +5240,7 @@ MonoBehaviour:
   - 270
   - 180
   isPlaced: 0
+  isMine: 0
 --- !u!212 &1576510640
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5380,6 +5395,7 @@ MonoBehaviour:
   - 0
   - 180
   isPlaced: 0
+  isMine: 0
 --- !u!61 &1578598888
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5519,6 +5535,7 @@ MonoBehaviour:
   correctRotation:
   - 0
   isPlaced: 0
+  isMine: 0
 --- !u!212 &1625024444
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6479,6 +6496,7 @@ MonoBehaviour:
   - 0
   - 180
   isPlaced: 0
+  isMine: 0
 --- !u!1 &1968808470
 GameObject:
   m_ObjectHideFlags: 0
@@ -6833,6 +6851,7 @@ MonoBehaviour:
   - 0
   - 180
   isPlaced: 0
+  isMine: 0
 --- !u!61 &2085794296
 BoxCollider2D:
   m_ObjectHideFlags: 0
