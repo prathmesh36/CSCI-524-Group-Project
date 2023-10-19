@@ -34,7 +34,7 @@ public class SceneChange : MonoBehaviour
 
                             if (!GameManager.boolArray[result - 1])
                             {
-                                //StartCoroutine(LoadScene(sceneName));
+                                StartCoroutine(LoadScene(sceneName));
                                 GameManager.boolArray[result - 1] = true;
                             }
                         }
@@ -42,7 +42,7 @@ public class SceneChange : MonoBehaviour
                 }
                 else
                 {
-                    //StartCoroutine(LoadScene(sceneName));
+                    StartCoroutine(LoadScene(sceneName));
                 }
             }
             else {
