@@ -153,7 +153,7 @@ public class spacecraft : MonoBehaviour
         //    isMovingStraight = !isMovingStraight;
 
         //}
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
 
             Debug.Log("Space Key Pressed");
