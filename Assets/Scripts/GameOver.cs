@@ -9,6 +9,11 @@ public class GameOver : MonoBehaviour
         DateTime currentTime = DateTime.Now;
         long unixTimestamp = (long)(currentTime - new DateTime(1970, 1, 1)).TotalSeconds;
         GameManager.endTime = unixTimestamp;
+        GameManager.fuel = 40;
+        GameManager.health = 100;
+        GameManager.boolArray = new bool[10];
+        GameManager.currentPlanet = 0;
+        GameManager.initialLoad = true;
 
         if (GameManager.endTime != 0 && GameManager.startTime != 0)
         {
