@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
     public static long startTime = 0;
     public static long endTime = 0;
 
-    public float fuel = 40;
-    public float health = 100;
+    public static float fuel = 40;
+    public static float health = 100;
 
     public Transform[] Target;
     public string sceneName;

@@ -29,6 +29,7 @@ public class SceneChange : MonoBehaviour
                     if (int.TryParse(parts[1], out int result))
                     {
                         GameManager.currentPlanet = result - 1;
+
                         if (!GameManager.boolArray[result - 1])
                         {
                             StartCoroutine(LoadScene(sceneName));

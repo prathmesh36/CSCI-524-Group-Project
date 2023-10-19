@@ -50,6 +50,7 @@ public class spacecraft : MonoBehaviour
         else {
             Debug.Log("Non-Initial Load");
             transform.position = Targets[GameManager.currentPlanet].position + new Vector3(1.0f, 1.0f, 0);
+            gameManager.updateFuel(0);
         }
     }
 
