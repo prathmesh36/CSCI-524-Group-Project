@@ -16,7 +16,9 @@ public class GameManager : MonoBehaviour
     public Animator transition;
     public float transitionTime = 1f;
     public GameObject bar;
-    public string currentPlanet = "Planet 1";
+    public static int currentPlanet = 0;
+    public static bool initialLoad = true;
+    public static bool[] boolArray = new bool[10];
 
     void Start()
     {

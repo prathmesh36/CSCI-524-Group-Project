@@ -15,7 +15,32 @@ public class SceneChange : MonoBehaviour
         if (collision.gameObject.tag == "Spacecraft")
         {
             Debug.Log("Collision In");
-            StartCoroutine(LoadScene(sceneName));
+            if (transform.name.StartsWith("Planet"))
+            {
+                string[] parts = transform.name.Split(' ');
+                Debug.Log(transform.name);
+                foreach (bool value in GameManager.boolArray)
+                {
+                    Debug.Log(value);
+                }
+                if (parts.Length == 2)
+                {
+                    // Attempt to parse the second part as an integer
+                    if (int.TryParse(parts[1], out int result))
+                    {
+                        GameManager.currentPlanet = result - 1;
+                        if (!GameManager.boolArray[result - 1])
+                        {
+                            StartCoroutine(LoadScene(sceneName));
+                            GameManager.boolArray[result - 1] = true;
+                        }
+                    }
+                }
+            }
+            else{
+                StartCoroutine(LoadScene(sceneName));
+            }
+            
         }
     }
 

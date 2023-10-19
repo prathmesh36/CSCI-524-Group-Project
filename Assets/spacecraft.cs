@@ -9,17 +9,9 @@ public class spacecraft : MonoBehaviour
     private Transform currentTarget;
     public CinemachineVirtualCamera virtualCamera;
     private bool isMovingStraight = false; 
-    //private int count = 0;
     private bool space = true;
     private float straightMoveTimer = 0f;
-    private Quaternion initialRotation= Quaternion.Euler(0, 0, 180);
-
-    //public GameObject AlienShip1;
-    //public GameObject AlienShip2;
-
     public Transform destinationPlanet;
-
-    //private bool cameraMoved = false;
 
     public float moveDuration = 2.0f;
     GameManager gameManager;
@@ -35,20 +27,29 @@ public class spacecraft : MonoBehaviour
         Debug.Log("Inside start method of spacecraft script ");
         currentTarget = Targets[0];
         //initialRotation = transform.rotation;
-
-        if (destinationPlanet != null && virtualCamera != null)
+        if (GameManager.initialLoad)
         {
-            // Set the position of the camera to focus on the destination planet
-            virtualCamera.Follow = destinationPlanet;
-            virtualCamera.transform.position = destinationPlanet.position - new Vector3(0, 0, 0); // Adjust the offset if necessary
-            virtualCamera.m_Lens.OrthographicSize = 5;
+            Debug.Log("Initial Load");
+            if (destinationPlanet != null && virtualCamera != null)
+            {
+                // Set the position of the camera to focus on the destination planet
+                virtualCamera.Follow = destinationPlanet;
+                virtualCamera.transform.position = destinationPlanet.position - new Vector3(0, 0, 0); // Adjust the offset if necessary
+                virtualCamera.m_Lens.OrthographicSize = 5;
 
-            // Invoke the method to transition to follow the spaceship after 5 seconds
-            Invoke("TransitionToFollowSpaceship", 5f);
+                // Invoke the method to transition to follow the spaceship after 5 seconds
+                Invoke("TransitionToFollowSpaceship", 5f);
+            }
+            else
+            {
+                Debug.LogError("Destination planet or camera not found.");
+            }
+            GameManager.initialLoad = false;
+            Update();
         }
-        else
-        {
-            Debug.LogError("Destination planet or camera not found.");
+        else {
+            Debug.Log("Non-Initial Load");
+            transform.position = Targets[GameManager.currentPlanet].position + new Vector3(1.0f, 1.0f, 0);
         }
     }
 
@@ -110,7 +111,7 @@ public class spacecraft : MonoBehaviour
             //To do check if the spaceship moves out of bounds then make it stick to a nearby planet
             //float translationSpeed = 20f;
             straightMoveTimer += Time.deltaTime;
-            Vector3 objectPosition = transform.position;
+            //Vector3 objectPosition = transform.position;
             //Debug.Log("Object's coordinates: " + objectPosition);
             if (space)
             {
@@ -194,6 +195,20 @@ public class spacecraft : MonoBehaviour
     {
         Debug.Log("Spaceship Collision Detected");
         Debug.Log(collision.gameObject.name);
+        //if (collision.gameObject.name.StartsWith("Planet"))
+        //{
+        //    string[] parts = collision.gameObject.name.Split(' ');
+        //    if (parts.Length == 2)
+        //    {
+        //        // Attempt to parse the second part as an integer
+        //        if (int.TryParse(parts[1], out int result))
+        //        {
+        //            GameManager.currentPlanet = result - 1;
+        //            GameManager.boolArray[result - 1] = true;
+        //        }
+        //    }
+
+        //}
     }
 
 }
