@@ -10,7 +10,7 @@ public class Wiring : MonoBehaviour
     public GameObject lightOn;
     Vector3 startPoint;
     Vector3 startPosition;
-    public int totalWires=5;
+    public int totalWires=3;
     private int connectedWires = 0;
 
     void Start()
