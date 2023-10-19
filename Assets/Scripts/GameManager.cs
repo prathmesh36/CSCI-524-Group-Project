@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
     public string sceneName;
     public Animator transition;
     public float transitionTime = 1f;
+    public GameObject bar;
 
     void Start()
     {
@@ -30,10 +32,15 @@ public class GameManager : MonoBehaviour
 
     public void updateFuel(float value) {
         fuel -= value;
+
+        LeanTween.scaleX(bar, Math.Max(fuel/100, 0), 1);
+
+
         if (fuel <= 0) {
             StartCoroutine(LoadScene(sceneName));
         }
     }
+
 
     IEnumerator LoadScene(string sceneName)
     {
