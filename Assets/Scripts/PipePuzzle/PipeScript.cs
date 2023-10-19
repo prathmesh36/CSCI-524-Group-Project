@@ -11,7 +11,11 @@ public class PipeScript : MonoBehaviour
     [SerializeField]
     bool isPlaced = false;
 
+    [SerializeField]
+    bool isMine = false;
+
     PipePuzzleGameManager pipePuzzleGameManager;
+    public GameObject explosion;
 
     private void Awake()
     {
@@ -34,6 +38,13 @@ public class PipeScript : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (isMine == true) {
+            Debug.Log("This is Mine");
+            pipePuzzleGameManager.destroyPipes(gameObject.name.Substring(gameObject.name.Length - 2));
+            GameObject expl = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
+            Destroy(expl, 3);
+        }
+
         transform.Rotate(new Vector3(0, 0, 90));
         transform.rotation = Quaternion.Euler(0, 0, Mathf.Round(transform.eulerAngles.z));
         Debug.Log(transform.eulerAngles.z);
