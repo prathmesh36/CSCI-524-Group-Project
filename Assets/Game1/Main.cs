@@ -19,7 +19,9 @@ public class Main : MonoBehaviour
         onCount = onCount + points;
         if (onCount == switchCount)
         {
+            Debug.Log("Main.cs");
             winText.SetActive(true);
+            SceneManager.LoadScene("MyGame");
         }
     }
     private void Update()

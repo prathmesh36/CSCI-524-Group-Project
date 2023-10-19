@@ -17,10 +17,7 @@ public class Wiring : MonoBehaviour
     {
         startPoint = transform.parent.position;
         startPosition = transform.position;
-        for (int i = 0; i < totalWires; i++)
-        {
-            OnMouseDrag();  
-        }
+        
     }
 
     // Update is called once per frame

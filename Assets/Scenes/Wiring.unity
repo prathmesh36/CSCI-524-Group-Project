@@ -123,16 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &8403801 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1364161719806763587, guid: 26379c3e95c8caa40850565c9cb73544, type: 3}
-  m_PrefabInstance: {fileID: 5679063450453831119}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &478477832 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 3591178536274352317, guid: 26379c3e95c8caa40850565c9cb73544, type: 3}
-  m_PrefabInstance: {fileID: 5679063450453831119}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &671810079
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,7 +517,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 877010885}
-  - component: {fileID: 877010886}
   m_Layer: 0
   m_Name: Left
   m_TagString: Untagged
@@ -553,26 +542,6 @@ Transform:
   - {fileID: 1717879762}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &877010886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 877010884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4efd3034c25306349a1706bf3f873864, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wireEnd: {fileID: 478477832}
-  lightOn: {fileID: 8403801}
-  totalWires: 5
---- !u!212 &942733937 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 3591178536274352317, guid: 26379c3e95c8caa40850565c9cb73544, type: 3}
-  m_PrefabInstance: {fileID: 975153422}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &975153422
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -843,7 +812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeCounter: 0
-  countdownTimer: 5
+  countdownTimer: 10
   isCountdown: 1
   timerText: {fileID: 1366944572}
   looseText: {fileID: 1547779975}
@@ -997,11 +966,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1547779975}
   m_CullTransparentMesh: 1
---- !u!1 &1650826241 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1364161719806763587, guid: 26379c3e95c8caa40850565c9cb73544, type: 3}
-  m_PrefabInstance: {fileID: 975153422}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1717879761
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1441,7 +1405,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1954296018}
-  - component: {fileID: 1954296019}
   m_Layer: 0
   m_Name: Right
   m_TagString: Untagged
@@ -1467,21 +1430,6 @@ Transform:
   - {fileID: 1945496135}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1954296019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1954296017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4efd3034c25306349a1706bf3f873864, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wireEnd: {fileID: 942733937}
-  lightOn: {fileID: 1650826241}
-  totalWires: 5
 --- !u!1001 &2010656120
 PrefabInstance:
   m_ObjectHideFlags: 0
