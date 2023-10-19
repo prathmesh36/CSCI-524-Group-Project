@@ -61,6 +61,7 @@ public class spacecraft : MonoBehaviour
 
     private IEnumerator MoveCameraCoroutine(Vector3 targetPosition, float duration)
     {
+        virtualCamera.m_Lens.OrthographicSize = 8;
         Vector3 startPosition = destinationPlanet.position;
         float startTime = Time.time;
 
@@ -75,7 +76,6 @@ public class spacecraft : MonoBehaviour
         // Ensure the camera reaches the exact target position at the end.
         destinationPlanet.position = targetPosition;
         virtualCamera.Follow = transform;
-        virtualCamera.m_Lens.OrthographicSize = 8;
     }
 
     void TransitionToFollowSpaceship()
