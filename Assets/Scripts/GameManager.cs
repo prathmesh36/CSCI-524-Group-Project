@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public static long endTime = 0;
 
     public static float fuel = 40;
-    public static float health = 100;
+    public static float health = 40;
 
     public Transform[] Target;
     public string sceneName;
@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public static int currentPlanet = 0;
     public static bool initialLoad = true;
     public static bool[] boolArray = new bool[10];
+    public static string lostCause = "N/A";
 
     void Start()
     {
@@ -35,12 +36,10 @@ public class GameManager : MonoBehaviour
 
     public void updateFuel(float value) {
         fuel -= value;
-
-        LeanTween.scaleX(bar, Math.Max(fuel/100, 0), 1);
-
-
+        LeanTween.scaleX(bar, Math.Max(Math.Min(fuel/100,1), 0), 1);
         if (fuel <= 0) {
-            StartCoroutine(LoadScene(sceneName));
+            GameManager.lostCause = "Fuel Over";
+            StartCoroutine(LoadScene("FuelOver"));
         }
     }
 
@@ -49,12 +48,13 @@ public class GameManager : MonoBehaviour
     {
         health -= value;
 
-        LeanTween.scaleX(hbar, Math.Max(health / 100, 0), 1);
+        LeanTween.scaleX(hbar, Math.Max(Math.Min(health / 100, 1), 0), 1);
 
 
         if (health <= 0)
         {
-            StartCoroutine(LoadScene(sceneName));
+            GameManager.lostCause = "Health Over";
+            StartCoroutine(LoadScene("HealthOver"));
         }
     }
 

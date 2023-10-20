@@ -19,6 +19,7 @@ public class GameControls : MonoBehaviour
 
     public void QuitGame()
     {
+        GameManager.lostCause = "Quit";
         SceneManager.LoadScene("GameOver");
     }
     
