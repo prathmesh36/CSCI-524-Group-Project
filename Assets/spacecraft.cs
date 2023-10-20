@@ -62,6 +62,14 @@ public class spacecraft : MonoBehaviour
                 gameManager.updateHealth(-20);
             }
             PlayerPrefs.SetInt("WirePuzzle", 0);
+
+            if (PlayerPrefs.GetInt("MagnetPuzzle") == 1)
+            {
+                Debug.Log("Magnet Puzzle Won data recieved in Main Game");
+                gameManager.updateFuel(-40);
+            }
+            PlayerPrefs.SetInt("MagnetPuzzle", 0);
+
             if (PlayerPrefs.GetInt("SpaceGerms") == 1)
             {
                 Debug.Log("The Space Germs Won data recieved in Main Game");

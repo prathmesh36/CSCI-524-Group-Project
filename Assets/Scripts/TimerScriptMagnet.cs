@@ -24,6 +24,7 @@ public class TimerScriptMagnet : MonoBehaviour
         
     }
     public void ChangeSceneMagnet() {
+        PlayerPrefs.SetInt("MagnetPuzzle", 1);
         SceneManager.LoadScene("YouWonMiniGame");
     }
 
