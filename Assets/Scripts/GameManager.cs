@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static long startTime = 0;
     public static long endTime = 0;
 
-    public static float fuel = 60;
+    public static float fuel = 45;
     public static float health = 40;
 
     public Transform[] Target;
