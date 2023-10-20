@@ -49,6 +49,11 @@ public class spacecraft : MonoBehaviour
         }
         else {
             Debug.Log("Non-Initial Load");
+            if (PlayerPrefs.GetInt("PipePuzzle")==1) {
+                Debug.Log("Puzzle Won data recieved in Main Game");
+                gameManager.updateFuel(-40);
+            }
+            PlayerPrefs.SetInt("PipePuzzle", 0);
             transform.position = Targets[GameManager.currentPlanet].position + new Vector3(1.0f, 1.0f, 0);
             gameManager.updateFuel(0);
             gameManager.updateHealth(0);
@@ -138,7 +143,7 @@ public class spacecraft : MonoBehaviour
         }
         else
         {
-            float rotationSpeed = 100f;
+            float rotationSpeed = 60f;
 
             transform.RotateAround(currentTarget.position, Vector3.forward, -rotationSpeed * Time.deltaTime);
         }
