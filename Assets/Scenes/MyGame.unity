@@ -623,7 +623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
-  sceneName: PipePuzzle
+  sceneName: Wiring
 --- !u!1 &138443069
 GameObject:
   m_ObjectHideFlags: 0
@@ -2292,7 +2292,6 @@ GameObject:
   - component: {fileID: 528985543}
   - component: {fileID: 528985542}
   - component: {fileID: 528985544}
-  - component: {fileID: 528985545}
   m_Layer: 0
   m_Name: Planet 7
   m_TagString: Untagged
@@ -2402,21 +2401,6 @@ CircleCollider2D:
   m_Offset: {x: -0.0000013794977, y: 0}
   serializedVersion: 2
   m_Radius: 6.388953
---- !u!114 &528985545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 528985541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transition: {fileID: 260550997}
-  transitionTime: 1
-  sceneName: Wiring
 --- !u!1 &549781319
 GameObject:
   m_ObjectHideFlags: 0
@@ -4715,7 +4699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
-  sceneName: Wiring
+  sceneName: EndlessControls
 --- !u!58 &1278943526
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5083,7 +5067,6 @@ GameObject:
   - component: {fileID: 1380225877}
   - component: {fileID: 1380225876}
   - component: {fileID: 1380225879}
-  - component: {fileID: 1380225878}
   m_Layer: 0
   m_Name: Planet 2
   m_TagString: Untagged
@@ -5158,21 +5141,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1380225878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1380225874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transition: {fileID: 260550997}
-  transitionTime: 1
-  sceneName: EndlessControls
 --- !u!58 &1380225879
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5429,7 +5397,6 @@ GameObject:
   - component: {fileID: 1495966332}
   - component: {fileID: 1495966331}
   - component: {fileID: 1495966334}
-  - component: {fileID: 1495966333}
   m_Layer: 0
   m_Name: Planet 4
   m_TagString: Untagged
@@ -5504,21 +5471,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1495966333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1495966330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transition: {fileID: 260550997}
-  transitionTime: 1
-  sceneName: Wiring
 --- !u!58 &1495966334
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7390,7 +7342,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2079037504}
   - component: {fileID: 2079037503}
-  - component: {fileID: 2079037505}
   - component: {fileID: 2079037506}
   m_Layer: 0
   m_Name: Planet 8
@@ -7466,21 +7417,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2079037505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2079037502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transition: {fileID: 260550997}
-  transitionTime: 1
-  sceneName: PipePuzzle
 --- !u!58 &2079037506
 CircleCollider2D:
   m_ObjectHideFlags: 0
