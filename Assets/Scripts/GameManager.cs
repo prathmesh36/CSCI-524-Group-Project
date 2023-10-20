@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 
 
         if (fuel <= 0) {
-            StartCoroutine(LoadScene(sceneName));
+            StartCoroutine(LoadScene("FuelOver"));
         }
     }
 
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
 
         if (health <= 0)
         {
-            StartCoroutine(LoadScene(sceneName));
+            StartCoroutine(LoadScene("HealthOver"));
         }
     }
 

@@ -48,6 +48,7 @@ public class SceneChange : MonoBehaviour
             else {
 
                 Debug.Log("Fuel Over");
+                StartCoroutine(LoadScene("FuelOver"));
             }
             
         }

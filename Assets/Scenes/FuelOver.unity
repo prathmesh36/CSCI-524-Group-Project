@@ -244,7 +244,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 115835211}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 239206d75be1f4ebc8385120385acc44, type: 3}
+  m_Script: {fileID: 11500000, guid: b7d993e6a243d46819ecf33425be66a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &315294730
@@ -882,8 +882,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 115835213}
-        m_TargetAssemblyTypeName: YouWonMiniGame, Assembly-CSharp
-        m_MethodName: ContinueGame
+        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
+        m_MethodName: StartOver
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
