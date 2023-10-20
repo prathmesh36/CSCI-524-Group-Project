@@ -10,7 +10,6 @@ public class Germs : MonoBehaviour
     void Start()
     {
         spaceship = FindObjectOfType<Spaceship>();
-
     }
 
     // Update is called once per frame
@@ -22,7 +21,7 @@ public class Germs : MonoBehaviour
     {
         if (other.tag == "Hole")
         {
-            spaceship.AddScore();
+            spaceship.AddHealth();
             Destroy(gameObject);
         }
         if (other.tag == "Player" || other.tag=="Ketanu")

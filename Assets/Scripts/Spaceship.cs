@@ -8,9 +8,7 @@ public class Spaceship : MonoBehaviour
     public float turnSpeed;
     // Start is called before the first frame update
     public int health=100;
-    public int score=0;
     public TMP_Text healthDisplay;
-    public TMP_Text scoreDisplay;
     void Start()
     {
         
@@ -28,16 +26,17 @@ public class Spaceship : MonoBehaviour
         healthDisplay.text = "Health: " + health;
         if (health <= 0)
         {
-            SceneManager.LoadScene("MyGame");
+            SceneManager.LoadScene("GameOver");
         }
     }
-    public void AddScore()
+    public void AddHealth()
     {
-        score = score+10;
-        scoreDisplay.text = "Fuel: " + score;
-        if (score >= 100)
+        health = health + 10;
+        healthDisplay.text = "Health: " + health;
+        if (health >= 100)
         {
             SceneManager.LoadScene("MyGame");
         }
     }
+ 
 }
