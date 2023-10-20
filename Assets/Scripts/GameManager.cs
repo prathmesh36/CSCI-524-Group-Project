@@ -35,10 +35,7 @@ public class GameManager : MonoBehaviour
 
     public void updateFuel(float value) {
         fuel -= value;
-
-        LeanTween.scaleX(bar, Math.Max(fuel/100, 0), 1);
-
-
+        LeanTween.scaleX(bar, Math.Max(Math.Min(fuel/100,1), 0), 1);
         if (fuel <= 0) {
             StartCoroutine(LoadScene("FuelOver"));
         }
