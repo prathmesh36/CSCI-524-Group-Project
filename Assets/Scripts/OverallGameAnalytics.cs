@@ -4,5 +4,6 @@ using System;
 public class OverallGameAnalytics
 {
     public int timeTakenToFinishGame;
+    public string winLossStatus;
 
 }
