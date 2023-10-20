@@ -7,6 +7,9 @@ TagManager:
   - Meteor
   - Spacecraft
   - ChangeScene
+  - Destroy
+  - Ketanu
+  - Hole
   layers:
   - Default
   - TransparentFX
@@ -16,7 +19,7 @@ TagManager:
   - UI
   - Background
   - Attractable
-  - 
+  - Key
   - 
   - 
   - 
@@ -52,4 +55,7 @@ TagManager:
     locked: 0
   - name: Attractable
     uniqueID: 3212803801
+    locked: 0
+  - name: Key
+    uniqueID: 944080163
     locked: 0
