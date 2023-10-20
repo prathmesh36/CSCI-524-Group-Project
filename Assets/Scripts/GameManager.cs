@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public static long endTime = 0;
 
     public static float fuel = 40;
-    public static float health = 100;
+    public static float health = 40;
 
     public Transform[] Target;
     public string sceneName;
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     {
         health -= value;
 
-        LeanTween.scaleX(hbar, Math.Max(health / 100, 0), 1);
+        LeanTween.scaleX(hbar, Math.Max(Math.Min(health / 100, 1), 0), 1);
 
 
         if (health <= 0)
