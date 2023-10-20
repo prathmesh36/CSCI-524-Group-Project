@@ -23,20 +23,22 @@ public class Spaceship : MonoBehaviour
     public void TakeDamage()
     {
         health = health - 10;
-        healthDisplay.text = "Health: " + health;
         if (health <= 0)
         {
             SceneManager.LoadScene("GameOver");
         }
+        healthDisplay.text = "Health: " + health;
+       
     }
     public void AddHealth()
     {
         health = health + 10;
-        healthDisplay.text = "Health: " + health;
         if (health >= 100)
         {
             SceneManager.LoadScene("MyGame");
         }
+        healthDisplay.text = "Health: " + health;
+       
     }
  
 }
