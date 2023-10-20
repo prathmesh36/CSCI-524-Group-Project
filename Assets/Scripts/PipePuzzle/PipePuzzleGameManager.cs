@@ -78,6 +78,8 @@ public class PipePuzzleGameManager : MonoBehaviour
             if (flag == true) {
                 Debug.Log("You Won");
                 startWater(element);
+                PlayerPrefs.SetInt("PipePuzzle", 1);
+                SceneManager.LoadScene("YouWonMiniGame");
             }
 
         }
@@ -92,7 +94,7 @@ public class PipePuzzleGameManager : MonoBehaviour
                     spriteRenderer.sortingOrder = -1;
                     SpriteRenderer waterSpriteRenderer = WaterPipes[j].GetComponent<SpriteRenderer>();
                     waterSpriteRenderer.sortingOrder = 1;
-                    SceneManager.LoadScene("MyGame");
+                    //SceneManager.LoadScene("MyGame");
                 }
             }
            

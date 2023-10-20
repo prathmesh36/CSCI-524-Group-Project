@@ -21,7 +21,8 @@ public class Main : MonoBehaviour
         {
             Debug.Log("Main.cs");
             winText.SetActive(true);
-            SceneManager.LoadScene("MyGame");
+            PlayerPrefs.SetInt("WirePuzzle", 1);
+            SceneManager.LoadScene("YouWonMiniGame");
         }
     }
     private void Update()
