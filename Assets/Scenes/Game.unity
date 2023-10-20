@@ -1237,7 +1237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnSpeed: -160
-  health: 100
+  health: 50
   healthDisplay: {fileID: 398932232}
 --- !u!58 &754547182
 CircleCollider2D:
