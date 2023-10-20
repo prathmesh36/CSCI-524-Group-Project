@@ -143,7 +143,7 @@ public class spacecraft : MonoBehaviour
         }
         else
         {
-            float rotationSpeed = 100f;
+            float rotationSpeed = 60f;
 
             transform.RotateAround(currentTarget.position, Vector3.forward, -rotationSpeed * Time.deltaTime);
         }
