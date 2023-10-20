@@ -974,6 +974,7 @@ GameObject:
   - component: {fileID: 199102806}
   - component: {fileID: 199102807}
   - component: {fileID: 199102808}
+  - component: {fileID: 199102809}
   m_Layer: 0
   m_Name: Planet 10
   m_TagString: Untagged
@@ -1083,6 +1084,21 @@ CircleCollider2D:
   m_Offset: {x: 0.19656235, y: 0}
   serializedVersion: 2
   m_Radius: 7.564684
+--- !u!114 &199102809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199102805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transition: {fileID: 260550997}
+  transitionTime: 1
+  sceneName: YouWonFinalGame
 --- !u!1 &201575617
 GameObject:
   m_ObjectHideFlags: 0
@@ -2452,7 +2468,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 01e466e2fb6eea34ea00e20acc789c01, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.909804, g: 0.909804, b: 0.909804, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4943,11 +4959,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -72.4
       objectReference: {fileID: 0}
     - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.2
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
       propertyPath: m_LocalPosition.z
