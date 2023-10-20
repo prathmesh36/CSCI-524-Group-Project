@@ -62,7 +62,12 @@ public class spacecraft : MonoBehaviour
                 gameManager.updateHealth(-20);
             }
             PlayerPrefs.SetInt("WirePuzzle", 0);
-
+            if (PlayerPrefs.GetInt("SpaceGerms") == 1)
+            {
+                Debug.Log("The Space Germs Won data recieved in Main Game");
+                gameManager.updateHealth(-20);
+            }
+            PlayerPrefs.GetInt("SpaceGerms", 0);
             transform.position = Targets[GameManager.currentPlanet].position + new Vector3(1.0f, 1.0f, 0);
             gameManager.updateFuel(0);
             gameManager.updateHealth(0);
