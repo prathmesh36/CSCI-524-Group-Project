@@ -78,6 +78,7 @@ public class PipePuzzleGameManager : MonoBehaviour
             if (flag == true) {
                 Debug.Log("You Won");
                 startWater(element);
+                PlayerPrefs.SetInt("PipePuzzle", 1);
                 SceneManager.LoadScene("YouWonMiniGame");
             }
 

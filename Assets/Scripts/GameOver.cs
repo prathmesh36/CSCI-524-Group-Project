@@ -17,12 +17,14 @@ public class GameOver : MonoBehaviour
 
         if (GameManager.endTime != 0 && GameManager.startTime != 0)
         {
-            Analytics analytics = new Analytics();
             OverallGameAnalytics overallGameAnalytics = new OverallGameAnalytics();
             overallGameAnalytics.timeTakenToFinishGame = (int)(GameManager.endTime - GameManager.startTime);
+            overallGameAnalytics.winLossStatus = "Lost-" + GameManager.lostCause;
             string jsonOverallGameAnalytics = JsonUtility.ToJson(overallGameAnalytics);
-            analytics.SaveData("overall-game-data.json", jsonOverallGameAnalytics);
+            Analytics.Instance.SaveData("overall-game-data.json", jsonOverallGameAnalytics);
         }
+        GameManager.lostCause = "N/A";
+
     }
 
     public void StartOver(){
