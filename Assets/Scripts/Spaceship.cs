@@ -7,7 +7,7 @@ public class Spaceship : MonoBehaviour
 {
     public float turnSpeed;
     // Start is called before the first frame update
-    public int health=100;
+    public int health=50;
     public TMP_Text healthDisplay;
     void Start()
     {
@@ -22,7 +22,7 @@ public class Spaceship : MonoBehaviour
     }
     public void TakeDamage()
     {
-        health = health - 10;
+        health = health - 5;
         if (health <= 0)
         {
             SceneManager.LoadScene("MyGame");
@@ -32,7 +32,7 @@ public class Spaceship : MonoBehaviour
     }
     public void AddHealth()
     {
-        health = health + 10;
+        health = health + 5;
         if (health >= 100)
         {
             SceneManager.LoadScene("YouWonMiniGame");
