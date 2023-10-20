@@ -2526,7 +2526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
-  sceneName: Wiring
+  sceneName: Game
 --- !u!1 &632906605
 GameObject:
   m_ObjectHideFlags: 3
