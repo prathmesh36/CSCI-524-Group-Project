@@ -131,7 +131,7 @@ public class spacecraft : MonoBehaviour
             //Debug.Log("Object's coordinates: " + objectPosition);
             if (space)
             {
-                float movementSpeed = 50f; // Adjust the movement speed as needed
+                float movementSpeed = 30f; // Adjust the movement speed as needed
                 Vector3 tipDirection = -transform.up;
                 transform.Translate(tipDirection * Time.deltaTime * movementSpeed, Space.World);
                 float distanceThisFrame = Time.deltaTime * movementSpeed;
