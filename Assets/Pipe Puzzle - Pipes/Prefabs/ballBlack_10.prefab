@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5794688407858838091}
   - component: {fileID: 3175891694357823246}
   - component: {fileID: 6471896305093627829}
+  - component: {fileID: 4183522342106880926}
   m_Layer: 7
   m_Name: ballBlack_10
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6097502931945223731}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.3683977, y: -1.3393544, z: -0.038949605}
+  m_LocalPosition: {x: 8.85, y: 0.74, z: -0.038949605}
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -164,3 +165,15 @@ MonoBehaviour:
   rotateToCenter: 1
   currentAttractor: {fileID: 0}
   gravityStrength: 100
+--- !u!114 &4183522342106880926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6097502931945223731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7ebab89b9cd4164c88d2ec4aa588b07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

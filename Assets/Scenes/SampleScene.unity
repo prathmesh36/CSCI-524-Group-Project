@@ -486,7 +486,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8f57eeb5d647451d8f599468d284566, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d1353b8dcfbe4122808b583489d2cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bar: {fileID: 1708346070}
@@ -599,6 +599,7 @@ GameObject:
   m_Component:
   - component: {fileID: 659839392}
   - component: {fileID: 659839393}
+  - component: {fileID: 659839394}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -639,6 +640,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSpeed: 10
+--- !u!114 &659839394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659839391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a20f2fbb9e2c394c8708c28cdffa58d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameoverPanel: {fileID: 1098945187}
 --- !u!1 &661467064
 GameObject:
   m_ObjectHideFlags: 0
