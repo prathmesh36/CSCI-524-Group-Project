@@ -18,11 +18,17 @@ EditorBuildSettings:
     path: Assets/Scenes/PipePuzzle.unity
     guid: b936056b60b06b24886102d2c31bec2f
   - enabled: 1
+    path: Assets/Scenes/YouWonWireMiniGame.unity
+    guid: 43aaea3df7adc475d9a0df9b1f2262eb
+  - enabled: 1
     path: Assets/Scenes/Wiring.unity
     guid: 004db4a4c916e81408178a728c806f68
   - enabled: 1
     path: Assets/Scenes/HealthOver.unity
     guid: 227b253734d154d75841ea86fbd22b7f
+  - enabled: 1
+    path: Assets/Scenes/YouWonMiniPipeGame.unity
+    guid: 70f925de1aa969d4ea2210e3beaabff0
   - enabled: 1
     path: Assets/Scenes/FuelOver.unity
     guid: 96ac49fc83a6942149041cef56567c3e
@@ -38,6 +44,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/YouWonMiniGame.unity
+    guid: cf54f914f14f94e4b88687c52eb22246
   - enabled: 1
     path: Assets/Scenes/EndlessControls.unity
     guid: 6d36f5dcc5cc3a946947ef31cb2174fa
