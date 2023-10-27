@@ -3195,7 +3195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
-  sceneName: Game
+  sceneName: YouWonMiniGameTutorial
 --- !u!1 &609469125
 GameObject:
   m_ObjectHideFlags: 0

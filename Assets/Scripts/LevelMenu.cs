@@ -13,4 +13,8 @@ public class LevelMenu : MonoBehaviour
         GameManager.startTime = unixTimestamp;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+     public void LoadTutorial(){
+        SceneManager.LoadScene("MyGameTutorial");
+    }
 }
