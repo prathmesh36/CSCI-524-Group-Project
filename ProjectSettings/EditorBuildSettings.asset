@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MyGameTutorial.unity
     guid: 6b73544178f1f458ab0fea7129520476
   - enabled: 1
+    path: Assets/Scenes/YouWonMiniGameTutorial.unity
+    guid: 6e6a1a74c086f4edc87bcd118aa540ef
+  - enabled: 1
     path: Assets/Scenes/MyGame.unity
     guid: 672548e892355a7419d263a959927435
   - enabled: 1
