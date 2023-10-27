@@ -79,7 +79,7 @@ public class PipePuzzleGameManager : MonoBehaviour
                 Debug.Log("You Won");
                 startWater(element);
                 PlayerPrefs.SetInt("PipePuzzle", 1);
-                SceneManager.LoadScene("YouWonMiniGame");
+                SceneManager.LoadScene("YouWonMiniPipeGame");
             }
 
         }

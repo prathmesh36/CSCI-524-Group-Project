@@ -22,7 +22,7 @@ public class Main : MonoBehaviour
             Debug.Log("Main.cs");
             winText.SetActive(true);
             PlayerPrefs.SetInt("WirePuzzle", 1);
-            SceneManager.LoadScene("YouWonMiniGame");
+            SceneManager.LoadScene("YouWonWireMiniGame");
         }
     }
     private void Update()

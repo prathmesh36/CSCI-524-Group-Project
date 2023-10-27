@@ -73,7 +73,7 @@ public class spacecraft : MonoBehaviour
             if (PlayerPrefs.GetInt("SpaceGerms") == 1)
             {
                 Debug.Log("The Space Germs Won data recieved in Main Game");
-                gameManager.updateHealth(-20);
+                gameManager.updateHealth(-25);
             }
             PlayerPrefs.GetInt("SpaceGerms", 0);
             transform.position = Targets[GameManager.currentPlanet].position + new Vector3(1.0f, 1.0f, 0);
