@@ -2,12 +2,15 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using TMPro;
+using UnityEngine.UI;
+
 
 public class GameManager : MonoBehaviour
 {
     public static long startTime = 0;
     public static long endTime = 0;
-
+    public TMP_Text fuelPercentageText;
     public static float fuel = 45;
     public static float health = 40;
 
@@ -25,6 +28,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         float minDistance = CalculateMinimumDistance(Target);
+        fuelPercentageText.text = string.Format("{0}%", fuel);
         Debug.Log("Minimum distance to cover all targets: " + minDistance);
     }
 
@@ -41,6 +45,7 @@ public class GameManager : MonoBehaviour
             GameManager.lostCause = "Fuel Over";
             StartCoroutine(LoadScene("FuelOver"));
         }
+        fuelPercentageText.text = string.Format("{0}%", Mathf.RoundToInt(fuel));
     }
 
 
