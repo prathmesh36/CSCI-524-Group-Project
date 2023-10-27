@@ -1,6 +1,9 @@
 import matplotlib.pyplot as plt
 import json
 
+
+plt.rcParams['toolbar'] = 'None' 
+
 # Specify the path to your JSON file
 file_path = "Overall-Game-Data.json"
 
@@ -32,6 +35,7 @@ plt.xlabel("Game Outcome")
 plt.ylabel("Number of Games")
 plt.title("Number of Different Game Outcomes")
 plt.xticks(rotation=45)  # Rotate x-axis labels for better visibility
+plt.tight_layout()
 plt.show()
 
 # Extract timeTakenToFinishGame values
@@ -42,4 +46,5 @@ plt.hist(time_values, bins=10, edgecolor='k')
 plt.xlabel('Time Taken to Finish Game')
 plt.ylabel('Frequency')
 plt.title('Histogram Distribution of Time Taken to Finish Game')
+plt.tight_layout()
 plt.show()
