@@ -1,74 +1,102 @@
 {
     "-Nh-jZ_Bcdq7xTzBc6dF": {
-        "timeTakenToFinishGame": 25,
-        "winLossStatus": "Won"
+        "timeTakenToFinishGame": 155,
+        "category": "Category 3"
     },
     "-Nh-jZ_Bcdq7xUvBc6dF": {
         "timeTakenToFinishGame": 30,
-        "winLossStatus": "Lost"
+        "category": "Category 1"
     },
     "-Nh-jZ_Bcdq7xWwBc6dF": {
-        "timeTakenToFinishGame": 29,
-        "winLossStatus": "Won"
+        "timeTakenToFinishGame": 130,
+        "category": "Category 3"
     },
     "-Nh-jZ_Bcdq7xYxBc6dF": {
-        "timeTakenToFinishGame": 30,
-        "winLossStatus": "Lost"
+        "timeTakenToFinishGame": 60,
+        "category": "Category 1"
     },
     "-Nh-jZ_Bcdq7xZyBc6dF": {
-        "timeTakenToFinishGame": 19,
-        "winLossStatus": "Won"
+        "timeTakenToFinishGame": 140,
+        "category": "Category 3"
     },
     "-Nh-jZ_Bcdq7xZzBc6dF": {
-        "timeTakenToFinishGame": 30,
-        "winLossStatus": "Lost"
+        "timeTakenToFinishGame": 20,
+        "category": "Category 2"
     },
     "-Nh-jZ_Bcdq7xTzsc6dF": {
-        "timeTakenToFinishGame": 20,
-        "winLossStatus": "Won"
+        "timeTakenToFinishGame": 150,
+        "category": "Category 3"
     },
     "-Nh-jZ_Bcdq7xavBc6dF": {
         "timeTakenToFinishGame": 30,
-        "winLossStatus": "Lost"
+        "category": "Category 1"
     },
     "-Nh-jZ_Bsdq7xWwBc6dF": {
         "timeTakenToFinishGame": 10,
-        "winLossStatus": "Won"
+        "category": "Category 3"
     },
     "-Nh-jZ_Bcdq7xYxBd6dF": {
-        "timeTakenToFinishGame": 30,
-        "winLossStatus": "Lost"
+        "timeTakenToFinishGame": 45,
+        "category": "Category 1"
     },
     "-Nh-js_Bcdq7xZyBc6dF": {
-        "timeTakenToFinishGame": 29,
-        "winLossStatus": "Won"
+        "timeTakenToFinishGame": 160,
+        "category": "Category 3"
     },
     "-Nh-jZ_Bcdq7sZzBc6dF": {
-        "timeTakenToFinishGame": 30,
-        "winLossStatus": "Lost"
+        "timeTakenToFinishGame": 60,
+        "category": "Category 1"
     },
     "-NhsjZ_Bcdq7xTzBc6dF": {
-        "timeTakenToFinishGame": 15,
-        "winLossStatus": "Won"
+        "timeTakenToFinishGame": 115,
+        "category": "Category 3"
     },
     "-Nh-jZ_Bcdq7xUvBcddF": {
-        "timeTakenToFinishGame": 30,
-        "winLossStatus": "Lost"
+        "timeTakenToFinishGame": 82,
+        "category": "Category 1"
     },
     "-Nh-sZ_Bcdq7xWwBc6dF": {
-        "timeTakenToFinishGame": 9,
-        "winLossStatus": "Won"
+        "timeTakenToFinishGame": 167,
+        "category": "Category 3"
     },
     "-Nh-jZ_Bcdq7xdxBc6dF": {
-        "timeTakenToFinishGame": 30,
-        "winLossStatus": "Lost"
+        "timeTakenToFinishGame": 10,
+        "category": "Category 2"
     },
     "-Nh-js_Bcdq7xZydc6dF": {
-        "timeTakenToFinishGame": 24,
-        "winLossStatus": "Won"
+        "timeTakenToFinishGame": 124,
+        "category": "Category 3"
     },
     "-Nh-jZ_Bcdq7xZzBcddF": {
-        "timeTakenToFinishGame": 30,
-        "winLossStatus": "Lost"
+        "timeTakenToFinishGame": 5,
+        "category": "Category 2"
+    },
+    "L5hYjZ_Bcdq7sZzBc6dF": {
+        "timeTakenToFinishGame": 25,
+        "category": "Category 4"
+    },
+    "W2sTjZ_Bcdq7xTzBc6dF": {
+        "timeTakenToFinishGame": 130,
+        "category": "Category 3"
+    },
+    "R8kUjZ_Bcdq7xUvBcddF": {
+        "timeTakenToFinishGame": 28,
+        "category": "Category 1"
+    },
+    "P4gHjZ_Bcdq7xWwBc6dF": {
+        "timeTakenToFinishGame": 145,
+        "category": "Category 3"
+    },
+    "K1pFjZ_Bcdq7xdxBc6dF": {
+        "timeTakenToFinishGame": 12,
+        "category": "Category 2"
+    },
+    "Z9mOjZ_Bcdq7xZydc6dF": {
+        "timeTakenToFinishGame": 150,
+        "category": "Category 3"
+    },
+    "M7nQjZ_Bcdq7xZzBcddF": {
+        "timeTakenToFinishGame": 95,
+        "category": "Category 2"
     }
 }
