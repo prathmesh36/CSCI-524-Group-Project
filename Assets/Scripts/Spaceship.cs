@@ -35,7 +35,7 @@ public class Spaceship : MonoBehaviour
         health = health + 5;
         if (health >= 100)
         {
-            SceneManager.LoadScene("YouWonMiniGame");
+            SceneManager.LoadScene("YouWonMiniSpaceGermsGame");
             PlayerPrefs.SetInt("SpaceGermsPuzzle", 1);
         }
         healthDisplay.text = "Health: " + health;
