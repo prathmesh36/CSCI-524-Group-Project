@@ -15,6 +15,13 @@ public class TutorialManager : MonoBehaviour
             popUp.SetActive(false);
         }
 
+        // Delay the activation of the first pop-up by 10 seconds
+        Invoke("ActivateFirstPopUp", 7f);
+    }
+
+    // This method is called after the delay
+    void ActivateFirstPopUp()
+    {
         // Enable the first pop-up
         popUps[popUpIndex].SetActive(true);
     }
