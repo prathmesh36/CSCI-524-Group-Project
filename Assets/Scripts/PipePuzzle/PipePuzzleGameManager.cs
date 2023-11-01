@@ -78,8 +78,15 @@ public class PipePuzzleGameManager : MonoBehaviour
             if (flag == true) {
                 Debug.Log("You Won");
                 startWater(element);
+                int mouseClicks = PlayerPrefs.GetInt(Constants.TOTAL_MOUSE_CLICKS);
+                Debug.Log(string.Format("Mouse Clicks so far: {0}", mouseClicks));
+
+
                 PlayerPrefs.SetInt("PipePuzzle", 1);
                 SceneManager.LoadScene("YouWonMiniPipeGame");
+
+                // Reset the value for space monsters
+                PlayerPrefs.SetInt(Constants.TOTAL_MOUSE_CLICKS, 0);
             }
 
         }

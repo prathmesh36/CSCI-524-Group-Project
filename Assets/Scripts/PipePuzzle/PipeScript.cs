@@ -45,9 +45,17 @@ public class PipeScript : MonoBehaviour
             Destroy(expl, 3);
         }
 
+
         transform.Rotate(new Vector3(0, 0, 90));
         transform.rotation = Quaternion.Euler(0, 0, Mathf.Round(transform.eulerAngles.z));
         Debug.Log(transform.eulerAngles.z);
+        
+        // Increment mouse clicks on every angle rotation
+        int mouseClicks = PlayerPrefs.GetInt(Constants.TOTAL_MOUSE_CLICKS);
+        ++mouseClicks;
+        PlayerPrefs.SetInt(Constants.TOTAL_MOUSE_CLICKS, mouseClicks);
+        //Debug.Log(string.Format("Total Mouse Clicks so far: {0}", mouseClicks));    
+
         if (isPlaced == false){
             for (int i = 0; i < correctRotation.Length; i++)
             {
