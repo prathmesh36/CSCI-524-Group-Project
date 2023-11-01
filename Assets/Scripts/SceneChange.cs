@@ -32,13 +32,18 @@ public class SceneChange : MonoBehaviour
                     if (transform.name.StartsWith("Planet"))
                     {
                         string[] parts = transform.name.Split(' ');
+                  
                         Debug.Log(transform.name);
                         foreach (bool value in GameManager.boolArray)
                         {
                             Debug.Log(value);
+                            
                         }
+                        
                         if (parts.Length == 2)
                         {
+                          
+
                             // Attempt to parse the second part as an integer
                             if (int.TryParse(parts[1], out int result))
                             {
