@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System;
 
 public class PipePuzzleGameManager : MonoBehaviour
 {
@@ -10,7 +9,6 @@ public class PipePuzzleGameManager : MonoBehaviour
     public GameObject WaterPipesHolder;
     public GameObject[] Pipes;
     public GameObject[] WaterPipes;
-    public GameObject mines;
 
     [SerializeField]
     int totalPipes = 0;
@@ -18,8 +16,6 @@ public class PipePuzzleGameManager : MonoBehaviour
     List<List<string>> totalPipesList = new List<List<string>>();
 
     List<string> correctPipesList = new List<string>();
-
-    List<string> minesPipes = new List<string> {"13", "14", "23", "33"};
 
     // Start is called before the first frame update
     void Start()
@@ -49,11 +45,6 @@ public class PipePuzzleGameManager : MonoBehaviour
         }
         totalPipesList = new List<List<string>>(tempList);
         changeDestoryedPipes(value);
-    }
-
-    public void destroyMines(string value)
-    {
-        minesPipes.Remove(value);
     }
 
     public void changeDestoryedPipes(string element)
@@ -87,25 +78,15 @@ public class PipePuzzleGameManager : MonoBehaviour
             if (flag == true) {
                 Debug.Log("You Won");
                 startWater(element);
-
                 int mouseClicks = PlayerPrefs.GetInt(Constants.TOTAL_MOUSE_CLICKS);
                 Debug.Log(string.Format("Mouse Clicks so far: {0}", mouseClicks));
 
-                int mineClicks = PlayerPrefs.GetInt(Constants.TOTAL_MINES_CLICKS);
-                Debug.Log(string.Format("Mine Clicks so far: {0}", mineClicks));    
-
-                recordAnalyticsForPipePuzzle(mouseClicks,mineClicks);
 
                 PlayerPrefs.SetInt("PipePuzzle", 1);
                 SceneManager.LoadScene("YouWonMiniPipeGame");
 
-                // Reset the value for Mouse clicks
+                // Reset the value for space monsters
                 PlayerPrefs.SetInt(Constants.TOTAL_MOUSE_CLICKS, 0);
-                PlayerPrefs.SetInt(Constants.TOTAL_MINES_CLICKS, 0);
-                int count = showMines();
-                PlayerPrefs.SetInt("PipePuzzle", 1);
-                PlayerPrefs.SetInt("MinesCollected", count);
-                SceneManager.LoadScene("MyGame");
             }
 
         }
@@ -127,42 +108,8 @@ public class PipePuzzleGameManager : MonoBehaviour
         }
     }
 
-    public int showMines()
-    {
-        int count = 0;
-        for (int j = 0; j < Pipes.Length; j++)
-        {
-            for (int i = 0; i < minesPipes.Count; i++)
-            {
-                if (Pipes[j].name.Substring(gameObject.name.Length - 2) == minesPipes[i])
-                {
-                    GameObject expl = Instantiate(mines, Pipes[j].transform.position, Quaternion.identity) as GameObject;
-                    SpriteRenderer spriteRenderer = expl.GetComponent<SpriteRenderer>();
-                    spriteRenderer.sortingOrder = 2;
-                    count++;
-                }
-            }
-        }
-        return count;
-    }
-
     public void WrongMove(string index) {
         correctPipesList.Remove(index);
         Debug.Log("Wrong Move");
-    }
-
-    public void recordAnalyticsForPipePuzzle(int mouseClicks, int mineClicks){
-            try{
-            PipePuzzleAnalytics pipePuzzleAnalytics = new PipePuzzleAnalytics();
-            pipePuzzleAnalytics.mouseClicks = mouseClicks;
-            pipePuzzleAnalytics.mineClicks = mineClicks;
-            string json = JsonUtility.ToJson(pipePuzzleAnalytics);
-            Analytics.Instance.SaveData("pipe-puzzle-game-data.json", json);
-            Debug.Log("Analytics for Pipe Puzzle recorded!");
-            }
-            catch(Exception ex){
-                Debug.Log("Pipe game Analytics catch block!");
-            }
-            
     }
 }
