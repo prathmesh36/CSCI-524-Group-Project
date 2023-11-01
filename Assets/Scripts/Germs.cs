@@ -36,5 +36,7 @@ public class Germs : MonoBehaviour
             transform.parent = spaceship.transform;
 
         }
+        
     }
+
 }
