@@ -12,7 +12,7 @@ public class spacecraft : MonoBehaviour
     private bool space = true;
     private float straightMoveTimer = 0f;
     public Transform destinationPlanet;
-
+    public GameObject shield;
     public float moveDuration = 2.0f;
     GameManager gameManager;
 
@@ -58,8 +58,11 @@ public class spacecraft : MonoBehaviour
 
             if (PlayerPrefs.GetInt("WirePuzzle") == 1)
             {
+
                 Debug.Log("Wire Puzzle Won data recieved in Main Game");
                 gameManager.updateHealth(-20);
+                shield.SetActive(true);
+
             }
             PlayerPrefs.SetInt("WirePuzzle", 0);
 
@@ -74,6 +77,7 @@ public class spacecraft : MonoBehaviour
             {
                 Debug.Log("The Space Germs Won data recieved in Main Game");
                 gameManager.updateHealth(-25);
+    
             }
             PlayerPrefs.GetInt("SpaceGerms", 0);
             transform.position = Targets[GameManager.currentPlanet].position + new Vector3(1.0f, 1.0f, 0);
