@@ -5,5 +5,5 @@ public class Constants
     public const string TOTAL_MONSTERS = "TotalMonsters";
     
     // Second Mini Game - Pipe Puzzle
-    public const String TOTAL_MOUSE_CLICKS = "TotalMouseClicks";
+    public const string TOTAL_MOUSE_CLICKS = "TotalMouseClicks";
 }
