@@ -874,7 +874,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &185708539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2778,6 +2778,7 @@ GameObject:
   - component: {fileID: 573890109}
   - component: {fileID: 573890108}
   - component: {fileID: 573890111}
+  - component: {fileID: 573890112}
   m_Layer: 0
   m_Name: Planet 3
   m_TagString: Untagged
@@ -2884,9 +2885,30 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0000017554532, y: -0.059709672}
+  m_Offset: {x: 0.006532669, y: -0.05970955}
   serializedVersion: 2
-  m_Radius: 6.2095995
+  m_Radius: 5.1050186
+--- !u!114 &573890112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573890106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4617994db142c4a9e233fc3011fcdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GuiOn: 0
+  Text: AVOID OBSTACLES
+  BoxSize:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 200
+    height: 50
+  customSkin: {fileID: 11400000, guid: acc859c0fe88af14291110e83a4547f7, type: 2}
 --- !u!1 &632906605
 GameObject:
   m_ObjectHideFlags: 3
