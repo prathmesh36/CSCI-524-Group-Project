@@ -35,8 +35,16 @@ public class Spaceship : MonoBehaviour
         health = health + 5;
         if (health >= 100)
         {
+            int monstersKilled = PlayerPrefs.GetInt(Constants.MONSTERS_KILLED);
+            int monstersCount = PlayerPrefs.GetInt(Constants.TOTAL_MONSTERS);
+            Debug.Log(string.Format("Adding health Monsters Consumed so far: {0}", monstersKilled));
+            Debug.Log(string.Format("Monsters Encountered so far: {0}", monstersCount));    
+
             SceneManager.LoadScene("YouWonMiniSpaceGermsGame");
             PlayerPrefs.SetInt("SpaceGermsPuzzle", 1);
+
+            // Reset the value for space monsters
+            PlayerPrefs.SetInt(Constants.MONSTERS_KILLED, 0);
         }
         healthDisplay.text = "Health: " + health;
        
