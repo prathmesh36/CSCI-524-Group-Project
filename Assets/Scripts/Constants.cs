@@ -15,6 +15,11 @@ public class Constants
     public const string TOTAL_MOUSE_CLICKS = "TotalMouseClicks";
     public const string TOTAL_MINES_CLICKS = "TotalMineClicks";
 
-
+    // Trend for Fuel over time - Analysing user behaviour
+    public const string TOTAL_FUEL = "TotalFuel";
+    public const string BLACKHOLE_IMPACT = "BlackholeImpact";
+    public const string ASTEROID_IMPACT = "AsteroidImpact";
+    public const string PLANET_IMPACT = "PlanetImpact";
+    public const string INFINITE_SPACE_IMPACT = "InfSpaceImpact";
 
 }
