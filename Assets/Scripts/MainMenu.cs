@@ -29,6 +29,7 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetInt(Constants.PLANET_IMPACT , 0); 
         PlayerPrefs.SetInt(Constants.INFINITE_SPACE_IMPACT , 0); 
         
+        //Debug.Log("Inside PlayButton!");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

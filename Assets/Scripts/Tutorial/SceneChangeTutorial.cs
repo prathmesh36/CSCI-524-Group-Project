@@ -1,47 +1,28 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class SceneChange : MonoBehaviour
+using TMPro;
+
+
+public class SceneChangeTuturial : MonoBehaviour
 {
     public Animator transition;
     public float transitionTime = 1f;
-    public int blackholePenalty = -40;
-    public int asteroidPenalty = -20;
-    public int planetPenalty = 50;
-    public int infiniteSpacePenalty = -80;
 
     public string sceneName;
+    public GameObject instruction1;
+    public TMP_Text instruction1Text;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Collision Out");
         Debug.Log(collision.gameObject.tag);
-        
-
         if (transform.name.Contains("border")) {
-            int countInfinity = PlayerPrefs.GetInt(Constants.COUNT_INFINITY);
-            ++countInfinity;
-            PlayerPrefs.SetInt(Constants.COUNT_INFINITY, countInfinity);
-
-            // Analytics - Update Fuel level since spaceship reached infinity
-            int currentFuel = PlayerPrefs.GetInt(Constants.TOTAL_FUEL);
-            currentFuel = currentFuel + infiniteSpacePenalty;
-            PlayerPrefs.SetInt(Constants.INFINITE_SPACE_IMPACT, currentFuel < 0 ? 0 : currentFuel);
-
             GameManager.lostCause = "Reached Infinity";
         }
 
         if (transform.name.Contains("Galaxy"))
         {
-            int countBlackhole = PlayerPrefs.GetInt(Constants.COUNT_BLACKHOLE);
-            ++countBlackhole;
-            PlayerPrefs.SetInt(Constants.COUNT_BLACKHOLE, countBlackhole);
-
-            // Analytics - Update Fuel level since spaceship hit blackhole
-            int currentFuel = PlayerPrefs.GetInt(Constants.TOTAL_FUEL);
-            currentFuel = currentFuel + blackholePenalty;
-            PlayerPrefs.SetInt(Constants.BLACKHOLE_IMPACT, currentFuel < 0 ? 0 : currentFuel );
-
             GameManager.lostCause = "Block Hole Collision";
         }
 
@@ -55,15 +36,6 @@ public class SceneChange : MonoBehaviour
                     Debug.Log("Collision In");
                     if (transform.name.StartsWith("Planet"))
                     {
-                        
-                        int countPlanets = PlayerPrefs.GetInt(Constants.COUNT_PLANETS);
-                        ++countPlanets;
-                        PlayerPrefs.SetInt(Constants.COUNT_PLANETS, countPlanets);
-
-                        // Analytics - Update Fuel level since spaceship hit blackhole
-                        int currentFuel = PlayerPrefs.GetInt(Constants.TOTAL_FUEL);
-                        currentFuel = currentFuel + planetPenalty;
-                        PlayerPrefs.SetInt(Constants.PLANET_IMPACT, currentFuel < 0 ? 0 : currentFuel );
 
                         string[] parts = transform.name.Split(' ');
                   
@@ -85,9 +57,18 @@ public class SceneChange : MonoBehaviour
 
                                 if (!GameManager.boolArray[result - 1])
                                 {
-                                    StartCoroutine(LoadScene(sceneName));
                                     GameManager.boolArray[result - 1] = true;
+                                    if (transform.name.StartsWith("Planet 3"))
+                                    {
+                                        instruction1.SetActive(true);
+                                        instruction1Text.text = "Play the mini game to get fuel/health";
+                                        Time.timeScale = 0f;
+                                        return;
+                                    }
+                                    StartCoroutine(LoadScene(sceneName));
+
                                 }
+
                             }
                         }
                     }
@@ -114,6 +95,11 @@ public class SceneChange : MonoBehaviour
         }
     }
 
+    public void CallLoadScene() {
+        Debug.Log("Loading " + sceneName);
+        StartCoroutine(LoadScene(sceneName));
+    }
+
     IEnumerator LoadScene(string sceneName)
     {
         transition.SetTrigger("Start");
@@ -122,4 +108,6 @@ public class SceneChange : MonoBehaviour
 
         SceneManager.LoadScene(sceneName);
     }
+
+
 }
