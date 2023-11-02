@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Main : MonoBehaviour
+public class MainTutorial : MonoBehaviour
 {
-    static public Main Instance;
+    static public MainTutorial Instance;
 
     public int switchCount;
     public GameObject winText;
@@ -17,10 +17,10 @@ public class Main : MonoBehaviour
         onCount = onCount + points;
         if (onCount == switchCount)
         {
-            Debug.Log("Main.cs");
+            Debug.Log("MainTutorial.cs");
             winText.SetActive(true);
             PlayerPrefs.SetInt("WirePuzzle", 1);
-            SceneManager.LoadScene("YouWonWireMiniGame");
+            SceneManager.LoadScene("YouWonWireMiniGameTutorial");
         }
     }
     private void Update()

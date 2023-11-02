@@ -16,6 +16,6 @@ public class LevelMenu : MonoBehaviour
     }
 
      public void LoadTutorial(){
-        SceneManager.LoadScene("MyGameTutorial");
+        SceneManager.LoadScene("MainTutorial");
     }
 }

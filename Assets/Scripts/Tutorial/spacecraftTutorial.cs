@@ -3,13 +3,14 @@ using System.Collections;
 using Cinemachine;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class spacecraftTutorial : MonoBehaviour
 {
-    public Transform[] Targets; 
+    public Transform[] Targets;
     private Transform currentTarget;
     public CinemachineVirtualCamera virtualCamera;
-    private bool isMovingStraight = false; 
+    private bool isMovingStraight = false;
     private bool space = true;
     private float straightMoveTimer = 0f;
     public Transform destinationPlanet;
@@ -18,10 +19,13 @@ public class spacecraftTutorial : MonoBehaviour
     GameManager gameManager;
     public GameObject instruction1;
     public TMP_Text instruction1Text;
+    public Button instruction1Button;
+    public bool[] instructionByPlanet = new bool[10];
 
     private void Awake()
     {
         gameManager = GameObject.Find("GameManagerMain").GetComponent<GameManager>();
+        LeanTween.init(1000);
     }
 
 
@@ -32,6 +36,7 @@ public class spacecraftTutorial : MonoBehaviour
         //initialRotation = transform.rotation;
         if (GameManager.initialLoad)
         {
+            gameManager.updateFuel(-55);
             Debug.Log("Initial Load");
             if (destinationPlanet != null && virtualCamera != null)
             {
@@ -49,12 +54,12 @@ public class spacecraftTutorial : MonoBehaviour
             }
             GameManager.initialLoad = false;
             Update();
-            
+
         }
         else {
             Debug.Log("Non-Initial Load");
 
-            if (PlayerPrefs.GetInt("PipePuzzle")==1) {
+            if (PlayerPrefs.GetInt("PipePuzzle") == 1) {
                 Debug.Log("Pipe Puzzle Won data recieved in Main Game");
                 gameManager.updateFuel(-40);
             }
@@ -66,6 +71,8 @@ public class spacecraftTutorial : MonoBehaviour
                 Debug.Log("Wire Puzzle Won data recieved in Main Game");
                 gameManager.updateHealth(-20);
                 shield.SetActive(true);
+                PlayerPrefs.SetInt("Shield", 1);
+                PlayerPrefs.SetInt("HealthInc", 1);
 
             }
             PlayerPrefs.SetInt("WirePuzzle", 0);
@@ -81,7 +88,7 @@ public class spacecraftTutorial : MonoBehaviour
             {
                 Debug.Log("The Space Germs Won data recieved in Main Game");
                 gameManager.updateHealth(-25);
-    
+
             }
             PlayerPrefs.GetInt("SpaceGerms", 0);
             transform.position = Targets[GameManager.currentPlanet].position + new Vector3(1.0f, 1.0f, 0);
@@ -114,9 +121,8 @@ public class spacecraftTutorial : MonoBehaviour
         // Ensure the camera reaches the exact target position at the end.
         destinationPlanet.position = targetPosition;
         virtualCamera.Follow = transform;
-        Debug.Log("Instruction1 Activated");
-        instruction1.SetActive(true);
-        Time.timeScale = 0f;
+        Invoke("Instruction1Caller", 1f);
+        instructionByPlanet[0] = true;
     }
 
     void TransitionToFollowSpaceship()
@@ -142,7 +148,7 @@ public class spacecraftTutorial : MonoBehaviour
     void Update()
     {
         //Debug.Log("Inside update method of spacecraft script");
-        
+
 
         CheckPlanetProximity();
 
@@ -163,7 +169,7 @@ public class spacecraftTutorial : MonoBehaviour
                 gameManager.updateFuel(distanceThisFrame);
 
             }
-            
+
             if (straightMoveTimer >= 1f)
             {
                 // Implement your pause logic here (e.g., show a pause menu)
@@ -171,7 +177,7 @@ public class spacecraftTutorial : MonoBehaviour
                 //Debug.Log("Game Over scene. I am here");
 
             }
-            
+
 
         }
         else
@@ -208,18 +214,18 @@ public class spacecraftTutorial : MonoBehaviour
 
     void CheckPlanetProximity()
     {
-      
+
         float proximityDistance = 2.0f;
-    
+
         foreach (Transform planet in Targets)
         {
             float distance = Vector3.Distance(transform.position, planet.position);
-          
-            if (distance < proximityDistance && currentTarget!=planet)
+
+            if (distance < proximityDistance && currentTarget != planet)
             {
                 currentTarget = planet;
                 isMovingStraight = false;
-                
+
                 // Calculate the direction from the spaceship to the planet
                 Vector3 newDirection = planet.position - transform.position;
 
@@ -236,10 +242,24 @@ public class spacecraftTutorial : MonoBehaviour
         Debug.Log("Spaceship Collision Detected");
         Debug.Log(collision.gameObject.name);
 
-        if (collision.gameObject.name.Equals("Planet 3")) {
-            instruction1.SetActive(true);
-            instruction1Text.text = "Avoid Asteriod Ahead";
+        if (collision.gameObject.name.Equals("Planet 3") && PlayerPrefs.GetInt("Shield") == 1 && !instructionByPlanet[2]) {
+            Invoke("Instruction3Caller", 1f);
+            instructionByPlanet[2] = true;
+        } else if (collision.gameObject.name.Equals("Planet 8") && !instructionByPlanet[7])
+        {
+            Invoke("Instruction5Caller", 1f);
+            instructionByPlanet[7] = true;
+        }else if (collision.gameObject.name.Equals("Planet 9") && !instructionByPlanet[8])
+        {
+            Invoke("Instruction6Caller", 1f);
+            instructionByPlanet[8] = true;
         }
+        else if (collision.gameObject.name.Equals("Planet 2") && !instructionByPlanet[1])
+        {
+            Invoke("Instruction7Caller", 1f);
+            instructionByPlanet[1] = true;
+        }
+
 
 
         //if (collision.gameObject.name.StartsWith("Planet"))
@@ -256,6 +276,58 @@ public class spacecraftTutorial : MonoBehaviour
         //    }
 
         //}
+    }
+
+    private void Instruction1Caller() {
+
+        Debug.Log("Instruction1 Activated");
+        instruction1.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    private void Instruction3Caller()
+    {
+        Time.timeScale = 0f;
+        Debug.Log("Spaceship Collision Detected for planet three after shield" + PlayerPrefs.GetInt("Shield"));
+        instruction1.SetActive(true);
+        instruction1Text.text = "You spacecraft got a one time protection SHIELD from asteriod";
+        PlayerPrefs.SetInt("Shield", 0);
+        PlayerPrefs.SetInt("UseShield", 1);
+        instruction1Button.onClick.AddListener(Instruction4Caller);
+    }
+
+    private void Instruction4Caller() {
+        if (PlayerPrefs.GetInt("HealthInc") == 1)
+        {
+            instruction1.SetActive(true);
+            instruction1Text.text = "Your Health increased";
+            Time.timeScale = 0f;
+            PlayerPrefs.SetInt("HealthInc", 0);
+            instruction1Button.onClick.RemoveListener(Instruction4Caller);
+        }
+    }
+
+    private void Instruction5Caller()
+    {
+        Time.timeScale = 0f;
+        instruction1.SetActive(true);
+        instruction1Text.text = "Avoid Asteriod as hitting it can reduce health";
+        
+    }
+
+
+    private void Instruction6Caller()
+    {
+        Time.timeScale = 0f;
+        instruction1.SetActive(true);
+        instruction1Text.text = "Avoid Blackhole as you'll lose if you hit it";
+    }
+
+    private void Instruction7Caller()
+    {
+        Time.timeScale = 0f;
+        instruction1.SetActive(true);
+        instruction1Text.text = "Your spaceship is losing fuel as it moves forward";
     }
 
 }

@@ -8,7 +8,14 @@ public class YouWonMiniGame : MonoBehaviour
         SceneManager.LoadScene("MyGame");
     }
 
-     // Start is called before the first frame update
+    // Start is called before the first frame update
+    public void ContinueTutorialGame()
+    {
+        Debug.Log("MainTutorial Loading");
+        SceneManager.LoadScene("MainTutorial");
+    }
+
+    // Start is called before the first frame update
     public void EndOfTutorial(){
         SceneManager.LoadScene("LevelMenu");
     }
