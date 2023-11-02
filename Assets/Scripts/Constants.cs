@@ -6,4 +6,6 @@ public class Constants
     
     // Second Mini Game - Pipe Puzzle
     public const string TOTAL_MOUSE_CLICKS = "TotalMouseClicks";
+    public const string TOTAL_MINES_CLICKS = "TotalMineClicks";
+
 }
