@@ -12,12 +12,19 @@ public class SceneChange : MonoBehaviour
     {
         Debug.Log("Collision Out");
         Debug.Log(collision.gameObject.tag);
+
         if (transform.name.Contains("border")) {
+            int countInfinity = PlayerPrefs.GetInt(Constants.COUNT_INFINITY);
+            ++countInfinity;
+            PlayerPrefs.SetInt(Constants.COUNT_INFINITY, countInfinity);
             GameManager.lostCause = "Reached Infinity";
         }
 
         if (transform.name.Contains("Galaxy"))
         {
+            int countBlackhole = PlayerPrefs.GetInt(Constants.COUNT_BLACKHOLE);
+            ++countBlackhole;
+            PlayerPrefs.SetInt(Constants.COUNT_BLACKHOLE, countBlackhole);
             GameManager.lostCause = "Block Hole Collision";
         }
 
@@ -31,6 +38,11 @@ public class SceneChange : MonoBehaviour
                     Debug.Log("Collision In");
                     if (transform.name.StartsWith("Planet"))
                     {
+                        
+                        int countPlanets = PlayerPrefs.GetInt(Constants.COUNT_PLANETS);
+                        ++countPlanets;
+                        PlayerPrefs.SetInt(Constants.COUNT_PLANETS, countPlanets);
+
                         string[] parts = transform.name.Split(' ');
                         Debug.Log(transform.name);
                         foreach (bool value in GameManager.boolArray)
