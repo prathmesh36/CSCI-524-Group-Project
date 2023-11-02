@@ -362,7 +362,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 124534, guid: 9222113a52d81c642a8c6283025807ad, type: 3}
-  enemy: {fileID: 5796539092467983153, guid: 7441ca1dbb27fb94ea23ca5cc78ce54b, type: 3}
   spawnPoints:
   - {fileID: 1332609061}
   - {fileID: 1055641116}
@@ -688,7 +687,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Health: 50'
+  m_text: 'Points: 00'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1322,7 +1321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnSpeed: -160
-  health: 50
+  health: 0
   healthDisplay: {fileID: 398932232}
 --- !u!58 &754547182
 CircleCollider2D:
