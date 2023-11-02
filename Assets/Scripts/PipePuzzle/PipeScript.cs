@@ -40,6 +40,11 @@ public class PipeScript : MonoBehaviour
     {
         if (isMine == true) {
             Debug.Log("This is Mine");
+            int mineClicks = PlayerPrefs.GetInt(Constants.TOTAL_MINES_CLICKS);
+            ++mineClicks;
+            //Debug.Log(string.Format("Mines encountered!: {0}", mineClicks));  
+            PlayerPrefs.SetInt(Constants.TOTAL_MINES_CLICKS, mineClicks);
+
             pipePuzzleGameManager.destroyPipes(gameObject.name.Substring(gameObject.name.Length - 2));
             GameObject expl = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
             Destroy(expl, 3);
