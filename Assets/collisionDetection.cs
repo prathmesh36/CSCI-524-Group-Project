@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class collisionDetection : MonoBehaviour
 {
+    GameManager gameManager;
     public GameObject meteorPrefab;
 
     private int hits = 0;
@@ -23,6 +24,7 @@ public class collisionDetection : MonoBehaviour
             {
                 // Remove the shield sphere when it has taken enough hits
                 Destroy(gameObject);
+                gameManager.updateHealth(-10);
             }
         }
     }
