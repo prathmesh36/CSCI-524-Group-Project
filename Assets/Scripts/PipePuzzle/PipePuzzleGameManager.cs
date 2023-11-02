@@ -84,6 +84,7 @@ public class PipePuzzleGameManager : MonoBehaviour
                 int mineClicks = PlayerPrefs.GetInt(Constants.TOTAL_MINES_CLICKS);
                 Debug.Log(string.Format("Mine Clicks so far: {0}", mineClicks));    
 
+                recordAnalyticsForPipePuzzle(mouseClicks,mineClicks);
 
                 PlayerPrefs.SetInt("PipePuzzle", 1);
                 SceneManager.LoadScene("YouWonMiniPipeGame");
@@ -116,4 +117,14 @@ public class PipePuzzleGameManager : MonoBehaviour
         correctPipesList.Remove(index);
         Debug.Log("Wrong Move");
     }
+
+     public void recordAnalyticsForPipePuzzle(int mouseClicks, int mineClicks){
+            PipePuzzleAnalytics pipePuzzleAnalytics = new PipePuzzleAnalytics();
+            pipePuzzleAnalytics.mouseClicks = mouseClicks;
+            pipePuzzleAnalytics.mineClicks = mineClicks;
+            string json = JsonUtility.ToJson(pipePuzzleAnalytics);
+            Analytics.Instance.SaveData("pipe-puzzle-game-data.json", json);
+            Debug.Log("Analytics for Pipe Puzzle recorded!");
+    }
+ 
 }
