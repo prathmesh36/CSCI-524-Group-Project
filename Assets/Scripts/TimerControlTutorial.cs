@@ -23,6 +23,7 @@ public class TimerTutorial : MonoBehaviour
             looseText.SetActive(true);
             setTimer.SetActive(false);
             Debug.Log("WiringTutorialEnded");
+            PlayerPrefs.SetInt("WirePuzzle", -1);
             SceneManager.LoadScene("MainTutorial");
         }
         int minutes = Mathf.FloorToInt(isCountdown ? countdownTimer / 60f : timeCounter / 60f);

@@ -61,10 +61,16 @@ public class spacecraftTutorial : MonoBehaviour
         else {
             Debug.Log("Non-Initial Load");
 
-
             if (PlayerPrefs.GetInt("MagnetPuzzle") == -1)
             {
                 Debug.Log("Magnet Puzzle Lost data received in Main Game");
+                puzzleLosecanvas.SetActive(true);
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, puzzleLosecanvas));
+            }
+
+            if (PlayerPrefs.GetInt("WirePuzzle") == -1)
+            {
+                Debug.Log("Wire Puzzle Lost data received in Main Game");
                 puzzleLosecanvas.SetActive(true);
                 StartCoroutine(DeactivateCanvasAfterDelay(3f, puzzleLosecanvas));
             }
@@ -83,6 +89,9 @@ public class spacecraftTutorial : MonoBehaviour
                 shield.SetActive(true);
                 PlayerPrefs.SetInt("Shield", 1);
                 PlayerPrefs.SetInt("HealthInc", 1);
+                healthPuzzleWincanvas.SetActive(true);
+                // Deactivate the canvas after 3 seconds
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, healthPuzzleWincanvas));
 
             }
             PlayerPrefs.SetInt("WirePuzzle", 0);
@@ -91,17 +100,16 @@ public class spacecraftTutorial : MonoBehaviour
             {
                 Debug.Log("Magnet Puzzle Won data recieved in Main Game");
                 gameManager.updateFuel(-40);
+                healthPuzzleWincanvas.SetActive(true);
+                // Deactivate the canvas after 3 seconds
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, healthPuzzleWincanvas));
             }
             PlayerPrefs.SetInt("MagnetPuzzle", 0);
 
             if (PlayerPrefs.GetInt("SpaceGerms") == 1)
             {
                 Debug.Log("The Space Germs Won data recieved in Main Game");
-                healthPuzzleWincanvas.SetActive(true);
-
                 gameManager.updateHealth(-20);
-                // Deactivate the canvas after 3 seconds
-                StartCoroutine(DeactivateCanvasAfterDelay(3f, healthPuzzleWincanvas));
 
             }
             PlayerPrefs.GetInt("SpaceGerms", 0);
@@ -257,7 +265,7 @@ public class spacecraftTutorial : MonoBehaviour
         Debug.Log(collision.gameObject.name);
 
         if (collision.gameObject.name.Equals("Planet 3") && PlayerPrefs.GetInt("Shield") == 1 && !instructionByPlanet[2]) {
-            Invoke("Instruction3Caller", 1f);
+            Invoke("Instruction3Caller", 4f);
             instructionByPlanet[2] = true;
         } else if (collision.gameObject.name.Equals("Planet 8") && !instructionByPlanet[7])
         {
