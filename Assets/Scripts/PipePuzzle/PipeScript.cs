@@ -41,6 +41,7 @@ public class PipeScript : MonoBehaviour
         if (isMine == true) {
             Debug.Log("This is Mine");
             pipePuzzleGameManager.destroyPipes(gameObject.name.Substring(gameObject.name.Length - 2));
+            pipePuzzleGameManager.destroyMines(gameObject.name.Substring(gameObject.name.Length - 2));
             GameObject expl = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
             Destroy(expl, 3);
         }
