@@ -38,6 +38,7 @@ public class GameControls : MonoBehaviour
     public void QuitGame()
     {
         GameManager.lostCause = "Quit";
+        Time.timeScale = 1f;
         SceneManager.LoadScene("GameOver");
     }
 
