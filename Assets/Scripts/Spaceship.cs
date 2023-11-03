@@ -7,7 +7,7 @@ public class Spaceship : MonoBehaviour
 {
     public float turnSpeed;
     // Start is called before the first frame update
-    public int health=0;
+    public int health=50;
     public TMP_Text healthDisplay;
     void Start()
     {
@@ -22,13 +22,13 @@ public class Spaceship : MonoBehaviour
     }
     public void TakeDamage()
     {
-        health = health - 5;
+        health = health - 10;
         if (health <= 0)
         {
             // To do : Lost the mini game so something has to be shown here
             SceneManager.LoadScene("MyGame");
         }
-        healthDisplay.text = "Points: " + health;
+        healthDisplay.text = "Health: " + health;
        
     }
     public void AddHealth()
@@ -44,7 +44,7 @@ public class Spaceship : MonoBehaviour
             Debug.Log("Unnati: calling from the spaceship.cs (First game) and the playerprefs have been set to:" + PlayerPrefs.GetInt("SpaceGerms"));
             SceneManager.LoadScene("MyGame");
         }
-        healthDisplay.text = "Points: " + health;
+        healthDisplay.text = "Health: " + health;
        
     }
  
