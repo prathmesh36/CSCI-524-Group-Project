@@ -23,15 +23,8 @@ public class Spaceship : MonoBehaviour
     public void TakeDamage()
     {
         health = health - 5;
-        
-
         if (health <= 0)
         {
-            
-            // To do : Lost the mini game so something has to be shown here
-            PlayerPrefs.SetInt("SpaceGerms", -1);
-            
-
             SceneManager.LoadScene("MyGame");
         }
         healthDisplay.text = "Health: " + health;
@@ -42,12 +35,8 @@ public class Spaceship : MonoBehaviour
         health = health + 5;
         if (health >= 100)
         {
-            //To Do: Won the mini game. So health has to be increased
-
-            //Unnati: Who set the wrong key for player prefs? Wrong key was set for Playerprefs and this error took me 2 hours to understand
-            PlayerPrefs.SetInt("SpaceGerms", 1);
-            Debug.Log("Unnati: calling from the spaceship.cs (First game) and the playerprefs have been set to:" + PlayerPrefs.GetInt("SpaceGerms"));
-            SceneManager.LoadScene("MyGame");
+            SceneManager.LoadScene("YouWonMiniSpaceGermsGame");
+            PlayerPrefs.SetInt("SpaceGermsPuzzle", 1);
         }
         healthDisplay.text = "Health: " + health;
        
