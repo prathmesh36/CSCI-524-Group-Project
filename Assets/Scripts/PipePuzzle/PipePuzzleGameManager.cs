@@ -78,8 +78,21 @@ public class PipePuzzleGameManager : MonoBehaviour
             if (flag == true) {
                 Debug.Log("You Won");
                 startWater(element);
+
+                int mouseClicks = PlayerPrefs.GetInt(Constants.TOTAL_MOUSE_CLICKS);
+                Debug.Log(string.Format("Mouse Clicks so far: {0}", mouseClicks));
+
+                int mineClicks = PlayerPrefs.GetInt(Constants.TOTAL_MINES_CLICKS);
+                Debug.Log(string.Format("Mine Clicks so far: {0}", mineClicks));    
+
+                recordAnalyticsForPipePuzzle(mouseClicks,mineClicks);
+
                 PlayerPrefs.SetInt("PipePuzzle", 1);
                 SceneManager.LoadScene("YouWonMiniPipeGame");
+
+                // Reset the value for Mouse clicks
+                PlayerPrefs.SetInt(Constants.TOTAL_MOUSE_CLICKS, 0);
+                PlayerPrefs.SetInt(Constants.TOTAL_MINES_CLICKS, 0);
             }
 
         }
@@ -104,5 +117,14 @@ public class PipePuzzleGameManager : MonoBehaviour
     public void WrongMove(string index) {
         correctPipesList.Remove(index);
         Debug.Log("Wrong Move");
+    }
+
+    public void recordAnalyticsForPipePuzzle(int mouseClicks, int mineClicks){
+            PipePuzzleAnalytics pipePuzzleAnalytics = new PipePuzzleAnalytics();
+            pipePuzzleAnalytics.mouseClicks = mouseClicks;
+            pipePuzzleAnalytics.mineClicks = mineClicks;
+            string json = JsonUtility.ToJson(pipePuzzleAnalytics);
+            Analytics.Instance.SaveData("pipe-puzzle-game-data.json", json);
+            Debug.Log("Analytics for Pipe Puzzle recorded!");
     }
 }

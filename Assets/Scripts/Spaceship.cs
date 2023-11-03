@@ -42,6 +42,18 @@ public class Spaceship : MonoBehaviour
         health = health + 5;
         if (health >= 100)
         {
+            int monstersKilled = PlayerPrefs.GetInt(Constants.MONSTERS_KILLED);
+            int monstersCount = PlayerPrefs.GetInt(Constants.TOTAL_MONSTERS);
+            Debug.Log(string.Format("Monsters Consumed so far: {0}", monstersKilled));
+            Debug.Log(string.Format("Monsters Encountered so far: {0}", monstersCount));  
+            recordAnalyticsForSpaceMonster(monstersKilled,monstersCount);  
+
+            SceneManager.LoadScene("YouWonMiniSpaceGermsGame");
+            PlayerPrefs.SetInt("SpaceGermsPuzzle", 1);
+
+            // Reset the value for space monsters
+            PlayerPrefs.SetInt(Constants.MONSTERS_KILLED, 0);
+
             //To Do: Won the mini game. So health has to be increased
 
             //Unnati: Who set the wrong key for player prefs? Wrong key was set for Playerprefs and this error took me 2 hours to understand
@@ -51,6 +63,15 @@ public class Spaceship : MonoBehaviour
         }
         healthDisplay.text = "Health: " + health;
        
+    }
+
+    public void recordAnalyticsForSpaceMonster(int monstersKilled, int monstersCount){
+            SpaceMonsterAnalytics spaceMonsterAnalytics = new SpaceMonsterAnalytics();
+            spaceMonsterAnalytics.monstersKilled = monstersKilled;
+            spaceMonsterAnalytics.monstersCount = monstersCount;
+            string json = JsonUtility.ToJson(spaceMonsterAnalytics);
+            Analytics.Instance.SaveData("space-monster-game-data.json", json);
+            Debug.Log("Analytics for Space Monster recorded!");
     }
  
 }
