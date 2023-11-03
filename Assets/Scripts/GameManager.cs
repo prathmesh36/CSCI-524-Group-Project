@@ -2,6 +2,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     public static float fuel = 45;
     public static float health = 40;
+    public static int bombCount = 3;
 
     public Transform[] Target;
     public string sceneName;
@@ -17,6 +20,7 @@ public class GameManager : MonoBehaviour
     public float transitionTime = 1f;
     public GameObject bar;
     public GameObject hbar;
+    public TMP_Text bombCountObject;
     public static int currentPlanet = 0;
     public static bool initialLoad = true;
     public static bool[] boolArray = new bool[10];
@@ -26,6 +30,7 @@ public class GameManager : MonoBehaviour
     {
         float minDistance = CalculateMinimumDistance(Target);
         Debug.Log("Minimum distance to cover all targets: " + minDistance);
+        bombCountObject.text = bombCount.ToString();
     }
 
 
@@ -43,6 +48,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public int getBombCount() {
+        return bombCount;
+    }
+
+    public void incrementBombCount(int count) {
+        bombCount += count;
+        bombCountObject.text = bombCount.ToString();
+    }
+
+    public void decrementBombCount(int count)
+    {
+        bombCount -= count;
+        bombCountObject.text = bombCount.ToString();
+    }
 
     public void updateHealth(float value)
     {

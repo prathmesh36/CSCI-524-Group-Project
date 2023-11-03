@@ -16,6 +16,11 @@ public class spacecraft : MonoBehaviour
     public float moveDuration = 2.0f;
     GameManager gameManager;
 
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform firingPoint;
+    [SerializeField] private float changeRotation = 10.0f;
+    [SerializeField] private int changePosition = 10;
+
     private void Awake()
     {
         gameManager = GameObject.Find("GameManagerMain").GetComponent<GameManager>();
@@ -166,21 +171,38 @@ public class spacecraft : MonoBehaviour
         else
         {
             float rotationSpeed = 60f;
-
             transform.RotateAround(currentTarget.position, Vector3.forward, -rotationSpeed * Time.deltaTime);
         }
+
 
 
         //if (Input.GetKeyDown(KeyCode.LeftArrow)){
         //    isLeft = true;
         //    isMovingStraight = !isMovingStraight;
 
-        //}
-        //else if (Input.GetKeyDown(KeyCode.RightArrow)){
-        //    isLeft = false;
-        //    isMovingStraight = !isMovingStraight;
+            //}
+            //else if (Input.GetKeyDown(KeyCode.RightArrow)){
+            //    isLeft = false;
+            //    isMovingStraight = !isMovingStraight;
 
-        //}
+            //}
+        if (Input.GetMouseButtonDown(0))
+        {
+            if(gameManager.getBombCount() > 0)
+            {
+                gameManager.decrementBombCount(1);
+                Quaternion currentRotation = firingPoint.rotation;
+                Quaternion rotationDelta = Quaternion.Euler(0, changeRotation, 0);
+                Quaternion newRotation = currentRotation * rotationDelta;
+                Vector3 forwardDirection = firingPoint.forward;
+                Debug.Log("Shooting Logs");
+                Debug.Log(currentRotation);
+                Debug.Log(newRotation);
+                Instantiate(bulletPrefab, firingPoint.position + forwardDirection * changePosition, newRotation);
+            }
+        }
+
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
 
@@ -192,7 +214,6 @@ public class spacecraft : MonoBehaviour
             //Vector3 tipDirection = -transform.up;
             //transform.Translate(tipDirection * Time.deltaTime * movementSpeed, Space.World);
         }
-
     }
 
     void CheckPlanetProximity()
