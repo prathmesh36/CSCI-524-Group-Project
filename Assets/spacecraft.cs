@@ -92,6 +92,7 @@ public class spacecraft : MonoBehaviour
                 fuelPuzzleWincanvas.SetActive(true);
                 Debug.Log("Pipe Puzzle Won data received in Main Game");
                 gameManager.updateFuel(-40);
+                gameManager.incrementBombCount(PlayerPrefs.GetInt("MinesCollected", 0));
                 StartCoroutine(DeactivateCanvasAfterDelay(3f, fuelPuzzleWincanvas));
             }
             PlayerPrefs.SetInt("PipePuzzle", 0);
@@ -148,6 +149,8 @@ public class spacecraft : MonoBehaviour
                 StartCoroutine(DeactivateCanvasAfterDelay(3f, healthPuzzleWincanvas));
             }
             PlayerPrefs.SetInt("SpaceGerms", 0);
+
+
 
             transform.position = Targets[GameManager.currentPlanet].position + new Vector3(1.0f, 1.0f, 0);
             gameManager.updateFuel(0);

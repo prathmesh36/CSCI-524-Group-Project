@@ -9,6 +9,7 @@ public class PipePuzzleGameManager : MonoBehaviour
     public GameObject WaterPipesHolder;
     public GameObject[] Pipes;
     public GameObject[] WaterPipes;
+    public GameObject mines;
 
     [SerializeField]
     int totalPipes = 0;
@@ -16,6 +17,8 @@ public class PipePuzzleGameManager : MonoBehaviour
     List<List<string>> totalPipesList = new List<List<string>>();
 
     List<string> correctPipesList = new List<string>();
+
+    List<string> minesPipes = new List<string> {"13", "14", "23", "33"};
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +48,11 @@ public class PipePuzzleGameManager : MonoBehaviour
         }
         totalPipesList = new List<List<string>>(tempList);
         changeDestoryedPipes(value);
+    }
+
+    public void destroyMines(string value)
+    {
+        minesPipes.Remove(value);
     }
 
     public void changeDestoryedPipes(string element)
@@ -78,7 +86,9 @@ public class PipePuzzleGameManager : MonoBehaviour
             if (flag == true) {
                 Debug.Log("You Won");
                 startWater(element);
+                int count = showMines();
                 PlayerPrefs.SetInt("PipePuzzle", 1);
+                PlayerPrefs.SetInt("MinesCollected", count);
                 SceneManager.LoadScene("MyGame");
             }
 
@@ -99,6 +109,25 @@ public class PipePuzzleGameManager : MonoBehaviour
             }
            
         }
+    }
+
+    public int showMines()
+    {
+        int count = 0;
+        for (int j = 0; j < Pipes.Length; j++)
+        {
+            for (int i = 0; i < minesPipes.Count; i++)
+            {
+                if (Pipes[j].name.Substring(gameObject.name.Length - 2) == minesPipes[i])
+                {
+                    GameObject expl = Instantiate(mines, Pipes[j].transform.position, Quaternion.identity) as GameObject;
+                    SpriteRenderer spriteRenderer = expl.GetComponent<SpriteRenderer>();
+                    spriteRenderer.sortingOrder = 2;
+                    count++;
+                }
+            }
+        }
+        return count;
     }
 
     public void WrongMove(string index) {

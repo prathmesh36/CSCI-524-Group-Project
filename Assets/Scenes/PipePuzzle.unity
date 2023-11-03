@@ -893,6 +893,7 @@ MonoBehaviour:
   WaterPipesHolder: {fileID: 1417501369}
   Pipes: []
   WaterPipes: []
+  mines: {fileID: 805538028866651463, guid: ff05ecec2a06c459f8c6b7ca90e67d29, type: 3}
   totalPipes: 0
 --- !u!4 &353945878
 Transform:

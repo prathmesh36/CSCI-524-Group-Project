@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public static bool initialLoad = true;
     public static bool[] boolArray = new bool[10];
     public static string lostCause = "N/A";
-    public static int bombCount = 3;
+    public static int bombCount = 0;
     public TMP_Text bombCountObject;
 
     void Start()
