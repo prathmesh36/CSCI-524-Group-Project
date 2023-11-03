@@ -19,6 +19,11 @@ public class spacecraft : MonoBehaviour
     public GameObject fuelPuzzleWincanvas;
     public GameObject puzzleLosecanvas;
 
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform firingPoint;
+    [SerializeField] private float changeRotation = 10.0f;
+    [SerializeField] private int changePosition = 10;
+
     private void Awake()
     {
         gameManager = GameObject.Find("GameManagerMain").GetComponent<GameManager>();
@@ -76,19 +81,35 @@ public class spacecraft : MonoBehaviour
             
 
             int pipePuzzleValue = PlayerPrefs.GetInt("PipePuzzle", 0);
-            if (pipePuzzleValue == 1)
+            if (pipePuzzleValue == -1)
             {
+                Debug.Log("Pipe Puzzle Lost data received in Main Game");
+                puzzleLosecanvas.SetActive(true);
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, puzzleLosecanvas));
+            }
+            else if (pipePuzzleValue == 1)
+            {
+                fuelPuzzleWincanvas.SetActive(true);
                 Debug.Log("Pipe Puzzle Won data received in Main Game");
                 gameManager.updateFuel(-40);
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, fuelPuzzleWincanvas));
             }
             PlayerPrefs.SetInt("PipePuzzle", 0);
 
             int wirePuzzleValue = PlayerPrefs.GetInt("WirePuzzle", 0);
-            if (wirePuzzleValue == 1)
+            if (wirePuzzleValue == -1)
             {
+                Debug.Log("Wire Puzzle Lost data received in Main Game");
+                puzzleLosecanvas.SetActive(true);
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, puzzleLosecanvas));
+            }
+            else if (wirePuzzleValue == 1)
+            {
+                healthPuzzleWincanvas.SetActive(true);
                 Debug.Log("Wire Puzzle Won data received in Main Game");
                 gameManager.updateHealth(-20);
                 shield.SetActive(true);
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, healthPuzzleWincanvas));
             }
             PlayerPrefs.SetInt("WirePuzzle", 0);
 
@@ -244,6 +265,22 @@ public class spacecraft : MonoBehaviour
             //float movementSpeed = 20f; // Adjust the movement speed as needed
             //Vector3 tipDirection = -transform.up;
             //transform.Translate(tipDirection * Time.deltaTime * movementSpeed, Space.World);
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (gameManager.getBombCount() > 0)
+            {
+                gameManager.decrementBombCount(1);
+                Quaternion currentRotation = firingPoint.rotation;
+                Quaternion rotationDelta = Quaternion.Euler(0, changeRotation, 0);
+                Quaternion newRotation = currentRotation * rotationDelta;
+                Vector3 forwardDirection = firingPoint.forward;
+                Debug.Log("Shooting Logs");
+                Debug.Log(currentRotation);
+                Debug.Log(newRotation);
+                Instantiate(bulletPrefab, firingPoint.position + forwardDirection * changePosition, newRotation);
+            }
         }
 
     }
