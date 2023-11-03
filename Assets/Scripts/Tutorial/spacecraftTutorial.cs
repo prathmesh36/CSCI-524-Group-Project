@@ -22,6 +22,7 @@ public class spacecraftTutorial : MonoBehaviour
     public Button instruction1Button;
     public bool[] instructionByPlanet = new bool[10];
     public GameObject healthPuzzleWincanvas;
+    public GameObject fuelPuzzleWincanvas;
     public GameObject puzzleLosecanvas;
     public GameObject indicatorFuel;
     public GameObject indicatorHealth;
@@ -103,10 +104,10 @@ public class spacecraftTutorial : MonoBehaviour
             {
                 Debug.Log("Magnet Puzzle Won data recieved in Main Game");
                 gameManager.updateFuel(-40);
-                healthPuzzleWincanvas.SetActive(true);
+                fuelPuzzleWincanvas.SetActive(true);
                 PlayerPrefs.SetInt("FuelInc", 1);
                 // Deactivate the canvas after 3 seconds
-                StartCoroutine(DeactivateCanvasAfterDelay(3f, healthPuzzleWincanvas));
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, fuelPuzzleWincanvas));
             }
             PlayerPrefs.SetInt("MagnetPuzzle", 0);
 
