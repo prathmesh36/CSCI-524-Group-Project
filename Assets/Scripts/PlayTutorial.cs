@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayTutorial : MonoBehaviour
+public class Play : MonoBehaviour
 {
     public void PlayGame(){
-        SceneManager.LoadScene("SampleSceneTutorial");
+        SceneManager.LoadScene("SampleScene");
     }
 }

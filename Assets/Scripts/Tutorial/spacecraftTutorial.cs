@@ -21,6 +21,8 @@ public class spacecraftTutorial : MonoBehaviour
     public TMP_Text instruction1Text;
     public Button instruction1Button;
     public bool[] instructionByPlanet = new bool[10];
+    public GameObject healthPuzzleWincanvas;
+    public GameObject puzzleLosecanvas;
 
     private void Awake()
     {
@@ -59,6 +61,20 @@ public class spacecraftTutorial : MonoBehaviour
         else {
             Debug.Log("Non-Initial Load");
 
+            if (PlayerPrefs.GetInt("MagnetPuzzle") == -1)
+            {
+                Debug.Log("Magnet Puzzle Lost data received in Main Game");
+                puzzleLosecanvas.SetActive(true);
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, puzzleLosecanvas));
+            }
+
+            if (PlayerPrefs.GetInt("WirePuzzle") == -1)
+            {
+                Debug.Log("Wire Puzzle Lost data received in Main Game");
+                puzzleLosecanvas.SetActive(true);
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, puzzleLosecanvas));
+            }
+
             if (PlayerPrefs.GetInt("PipePuzzle") == 1) {
                 Debug.Log("Pipe Puzzle Won data recieved in Main Game");
                 gameManager.updateFuel(-40);
@@ -73,6 +89,9 @@ public class spacecraftTutorial : MonoBehaviour
                 shield.SetActive(true);
                 PlayerPrefs.SetInt("Shield", 1);
                 PlayerPrefs.SetInt("HealthInc", 1);
+                healthPuzzleWincanvas.SetActive(true);
+                // Deactivate the canvas after 3 seconds
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, healthPuzzleWincanvas));
 
             }
             PlayerPrefs.SetInt("WirePuzzle", 0);
@@ -81,13 +100,16 @@ public class spacecraftTutorial : MonoBehaviour
             {
                 Debug.Log("Magnet Puzzle Won data recieved in Main Game");
                 gameManager.updateFuel(-40);
+                healthPuzzleWincanvas.SetActive(true);
+                // Deactivate the canvas after 3 seconds
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, healthPuzzleWincanvas));
             }
             PlayerPrefs.SetInt("MagnetPuzzle", 0);
 
             if (PlayerPrefs.GetInt("SpaceGerms") == 1)
             {
                 Debug.Log("The Space Germs Won data recieved in Main Game");
-                gameManager.updateHealth(-25);
+                gameManager.updateHealth(-20);
 
             }
             PlayerPrefs.GetInt("SpaceGerms", 0);
@@ -243,7 +265,7 @@ public class spacecraftTutorial : MonoBehaviour
         Debug.Log(collision.gameObject.name);
 
         if (collision.gameObject.name.Equals("Planet 3") && PlayerPrefs.GetInt("Shield") == 1 && !instructionByPlanet[2]) {
-            Invoke("Instruction3Caller", 1f);
+            Invoke("Instruction3Caller", 4f);
             instructionByPlanet[2] = true;
         } else if (collision.gameObject.name.Equals("Planet 8") && !instructionByPlanet[7])
         {
@@ -328,6 +350,12 @@ public class spacecraftTutorial : MonoBehaviour
         Time.timeScale = 0f;
         instruction1.SetActive(true);
         instruction1Text.text = "Your spaceship is losing fuel as it moves forward";
+    }
+
+    IEnumerator DeactivateCanvasAfterDelay(float delay, GameObject canvas)
+    {
+        yield return new WaitForSeconds(delay);
+        canvas.SetActive(false);
     }
 
 }
