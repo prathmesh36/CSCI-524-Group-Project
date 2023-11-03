@@ -425,6 +425,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
+  blackholePenalty: -40
+  asteroidPenalty: -20
+  planetPenalty: 50
+  infiniteSpacePenalty: -80
   sceneName: GameOver
 --- !u!1 &109508879
 GameObject:
@@ -561,6 +565,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
+  blackholePenalty: -40
+  asteroidPenalty: -20
+  planetPenalty: 50
+  infiniteSpacePenalty: -80
   sceneName: Wiring
 --- !u!1 &121870589
 GameObject:
@@ -1588,6 +1596,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
+  blackholePenalty: -40
+  asteroidPenalty: -20
+  planetPenalty: 50
+  infiniteSpacePenalty: -80
   sceneName: YouWonFinalGame
 --- !u!1 &201575617
 GameObject:
@@ -3130,6 +3142,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
+  blackholePenalty: -40
+  asteroidPenalty: -20
+  planetPenalty: 50
+  infiniteSpacePenalty: -80
   sceneName: GameOver
 --- !u!1 &492594404
 GameObject:
@@ -3670,6 +3686,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
+  blackholePenalty: -40
+  asteroidPenalty: -20
+  planetPenalty: 50
+  infiniteSpacePenalty: -80
   sceneName: PipePuzzle
 --- !u!58 &549781323
 CircleCollider2D:
@@ -3894,6 +3914,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
+  blackholePenalty: -40
+  asteroidPenalty: -20
+  planetPenalty: 50
+  infiniteSpacePenalty: -80
   sceneName: Game
 --- !u!1 &574844844
 GameObject:
@@ -6326,6 +6350,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
+  blackholePenalty: -40
+  asteroidPenalty: -20
+  planetPenalty: 50
+  infiniteSpacePenalty: -80
   sceneName: GameOver
 --- !u!1 &1085376625
 GameObject:
@@ -7256,6 +7284,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
+  blackholePenalty: -40
+  asteroidPenalty: -20
+  planetPenalty: 50
+  infiniteSpacePenalty: -80
   sceneName: EndlessControls
 --- !u!58 &1278943526
 CircleCollider2D:
@@ -8245,6 +8277,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
+  blackholePenalty: -40
+  asteroidPenalty: -20
+  planetPenalty: 50
+  infiniteSpacePenalty: -80
   sceneName: GameOver
 --- !u!61 &1477885313
 BoxCollider2D:
@@ -8571,7 +8607,7 @@ Transform:
   m_GameObject: {fileID: 1495966330}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -34.32, y: -12.08, z: 0}
+  m_LocalPosition: {x: -34.32, y: -13.11, z: 0}
   m_LocalScale: {x: 0.23679571, y: 0.2438337, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10664,6 +10700,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
+  blackholePenalty: -40
+  asteroidPenalty: -20
+  planetPenalty: 50
+  infiniteSpacePenalty: -80
   sceneName: GameOver
 --- !u!1 &2036616925
 GameObject:
@@ -10691,7 +10731,7 @@ Transform:
   m_GameObject: {fileID: 2036616925}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
