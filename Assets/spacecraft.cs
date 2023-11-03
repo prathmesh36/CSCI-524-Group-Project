@@ -18,6 +18,7 @@ public class spacecraft : MonoBehaviour
     public GameObject healthPuzzleWincanvas;
     public GameObject fuelPuzzleWincanvas;
     public GameObject puzzleLosecanvas;
+    public GameObject pipePuzzleWinCanvas;
 
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firingPoint;
@@ -89,11 +90,11 @@ public class spacecraft : MonoBehaviour
             }
             else if (pipePuzzleValue == 1)
             {
-                fuelPuzzleWincanvas.SetActive(true);
+                pipePuzzleWinCanvas.SetActive(true);
                 Debug.Log("Pipe Puzzle Won data received in Main Game");
                 gameManager.updateFuel(-40);
                 gameManager.incrementBombCount(PlayerPrefs.GetInt("MinesCollected", 0));
-                StartCoroutine(DeactivateCanvasAfterDelay(3f, fuelPuzzleWincanvas));
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, pipePuzzleWinCanvas));
             }
             PlayerPrefs.SetInt("PipePuzzle", 0);
 
