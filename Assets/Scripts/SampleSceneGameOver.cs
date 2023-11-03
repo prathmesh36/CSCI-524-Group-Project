@@ -10,7 +10,7 @@ public class SampleSceneGameOver : MonoBehaviour
     void Update()
     {
         if (GameObject.FindGameObjectWithTag("Player") == null) {
-            LoadYouWonScene();
+            LoadYouLoseScene();
         }
     }
 
@@ -20,8 +20,12 @@ public class SampleSceneGameOver : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    void LoadYouWonScene()
+    void LoadYouLoseScene()
     {
-        SceneManager.LoadScene("YouWonMiniGame"); // Load the "YouWon" scene
+        //SceneManager.LoadScene("YouWonMiniGame"); // Load the "YouWon" scene
+        PlayerPrefs.SetInt("MagnetPuzzle", -1);
+
+
+        SceneManager.LoadScene("MyGame");
     }
 }
