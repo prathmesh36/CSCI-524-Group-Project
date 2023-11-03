@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Germs : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class Germs : MonoBehaviour
     {
         if (other.tag == "Hole")
         {
+            int monstersKilled = PlayerPrefs.GetInt(Constants.MONSTERS_KILLED);
+            ++monstersKilled;
+            PlayerPrefs.SetInt(Constants.MONSTERS_KILLED, monstersKilled);
+            //Debug.Log(string.Format("Monsters Consumed so far: {0}", PlayerPrefs.GetInt(Constants.MONSTERS_KILLED)));
             spaceship.AddHealth();
             Destroy(gameObject);
         }
@@ -31,5 +36,7 @@ public class Germs : MonoBehaviour
             transform.parent = spaceship.transform;
 
         }
+        
     }
+
 }

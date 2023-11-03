@@ -12,7 +12,7 @@ public class spacecraft : MonoBehaviour
     private bool space = true;
     private float straightMoveTimer = 0f;
     public Transform destinationPlanet;
-
+    public GameObject shield;
     public float moveDuration = 2.0f;
     GameManager gameManager;
 
@@ -24,7 +24,7 @@ public class spacecraft : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Inside start method of spacecraft script ");
+        //Debug.Log("Inside start method of spacecraft script ");
         currentTarget = Targets[0];
         //initialRotation = transform.rotation;
         if (GameManager.initialLoad)
@@ -47,45 +47,78 @@ public class spacecraft : MonoBehaviour
             GameManager.initialLoad = false;
             Update();
         }
-        else {
+
+        else
+        {
             Debug.Log("Non-Initial Load");
 
-            if (PlayerPrefs.GetInt("PipePuzzle")==1) {
-                Debug.Log("Pipe Puzzle Won data recieved in Main Game");
+            ////Unnati : Printing Player prefs
+            //string[] allKeys = { "PipePuzzle", "WirePuzzle", "MagnetPuzzle", "SpaceGerms" };
+
+            //// Print all PlayerPrefs values
+            //foreach (var key in allKeys)
+            //{
+            //    if (PlayerPrefs.HasKey(key))
+            //    {
+            //        if (PlayerPrefs.GetString(key) != "")
+            //        {
+            //            Debug.Log($"PlayerPrefs key: {key}, value: {PlayerPrefs.GetString(key)}");
+            //        }
+            //        else
+            //        {
+            //            Debug.Log($"PlayerPrefs key: {key}, value: {PlayerPrefs.GetInt(key)}");
+            //        }
+            //    }
+            //}
+
+            int pipePuzzleValue = PlayerPrefs.GetInt("PipePuzzle", 0);
+            if (pipePuzzleValue == 1)
+            {
+                Debug.Log("Pipe Puzzle Won data received in Main Game");
                 gameManager.updateFuel(-40);
             }
             PlayerPrefs.SetInt("PipePuzzle", 0);
 
-            if (PlayerPrefs.GetInt("WirePuzzle") == 1)
+            int wirePuzzleValue = PlayerPrefs.GetInt("WirePuzzle", 0);
+            if (wirePuzzleValue == 1)
             {
-                Debug.Log("Wire Puzzle Won data recieved in Main Game");
+                Debug.Log("Wire Puzzle Won data received in Main Game");
                 gameManager.updateHealth(-20);
+                shield.SetActive(true);
             }
             PlayerPrefs.SetInt("WirePuzzle", 0);
 
-            if (PlayerPrefs.GetInt("MagnetPuzzle") == 1)
+            int magnetPuzzleValue = PlayerPrefs.GetInt("MagnetPuzzle", 0);
+            if (magnetPuzzleValue == 1)
             {
-                Debug.Log("Magnet Puzzle Won data recieved in Main Game");
+                Debug.Log("Magnet Puzzle Won data received in Main Game");
                 gameManager.updateFuel(-40);
             }
             PlayerPrefs.SetInt("MagnetPuzzle", 0);
 
-            if (PlayerPrefs.GetInt("SpaceGerms") == 1)
+            int spaceGermsValue = PlayerPrefs.GetInt("SpaceGerms", 0);
+            if (spaceGermsValue == 1)
             {
-                Debug.Log("The Space Germs Won data recieved in Main Game");
-                gameManager.updateHealth(-20);
+                Debug.Log("The Space Germs Won data received in Main Game");
+                Debug.Log("Unnati: calling from the (Main game) and I am checking the value of playerpref " + PlayerPrefs.GetInt("SpaceGerms"));
+
+                //Unnati: To do add the canvas here for connection across games
+
+                gameManager.updateHealth(-25);
             }
-            PlayerPrefs.GetInt("SpaceGerms", 0);
+            PlayerPrefs.SetInt("SpaceGerms", 0);
+
             transform.position = Targets[GameManager.currentPlanet].position + new Vector3(1.0f, 1.0f, 0);
             gameManager.updateFuel(0);
             gameManager.updateHealth(0);
         }
+
     }
 
 
     public void MoveCamera()
     {
-        Debug.Log("Inside move camera");
+        //Debug.Log("Inside move camera");
         StartCoroutine(MoveCameraCoroutine(transform.position, moveDuration));
     }
 
@@ -97,7 +130,7 @@ public class spacecraft : MonoBehaviour
 
         while (Time.time < startTime + duration)
         {
-            Debug.Log("Inside MoveCameraCoroutine");
+            //Debug.Log("Inside MoveCameraCoroutine");
             float t = (Time.time - startTime) / duration;
             destinationPlanet.position = Vector3.Lerp(startPosition, targetPosition, t);
             yield return null; // Wait for the next frame
@@ -148,7 +181,7 @@ public class spacecraft : MonoBehaviour
                 Vector3 tipDirection = -transform.up;
                 transform.Translate(tipDirection * Time.deltaTime * movementSpeed, Space.World);
                 float distanceThisFrame = Time.deltaTime * movementSpeed;
-                Debug.Log(distanceThisFrame);
+                //Debug.Log(distanceThisFrame);
                 gameManager.updateFuel(distanceThisFrame);
 
             }
@@ -184,7 +217,7 @@ public class spacecraft : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
 
-            Debug.Log("Space Key Pressed");
+            //Debug.Log("Space Key Pressed");
             // Move the spaceship in the direction of its tip
             space = true;
             isMovingStraight = !isMovingStraight;
@@ -214,7 +247,7 @@ public class spacecraft : MonoBehaviour
 
                 // Set the rotation to point outwards from the planet
                 transform.rotation = Quaternion.LookRotation(Vector3.forward, newDirection);
-                Debug.Log("Rotation of the spaceship" + transform.rotation);
+                //Debug.Log("Rotation of the spaceship" + transform.rotation);
                 break;
             }
         }
@@ -222,8 +255,8 @@ public class spacecraft : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Spaceship Collision Detected");
-        Debug.Log(collision.gameObject.name);
+        //Debug.Log("Spaceship Collision Detected");
+        //Debug.Log(collision.gameObject.name);
         //if (collision.gameObject.name.StartsWith("Planet"))
         //{
         //    string[] parts = collision.gameObject.name.Split(' ');

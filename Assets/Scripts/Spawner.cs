@@ -9,6 +9,7 @@ public class Spawner : MonoBehaviour
     public Transform[] spawnPoints;
     public float timeBetweenSpawns;
     float nextSpawnTime;
+    public int monstersCount = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,8 @@ public class Spawner : MonoBehaviour
         {
             Instantiate(enemy, spawnPoints[Random.Range(0,spawnPoints.Length)].position,Quaternion.identity);
             nextSpawnTime = Time.time + timeBetweenSpawns;
+            ++monstersCount;
+            PlayerPrefs.SetInt(Constants.TOTAL_MONSTERS, monstersCount);
         }
     }
 }
