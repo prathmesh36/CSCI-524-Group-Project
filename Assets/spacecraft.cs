@@ -15,6 +15,8 @@ public class spacecraft : MonoBehaviour
     public GameObject shield;
     public float moveDuration = 2.0f;
     GameManager gameManager;
+    public GameObject healthPuzzleWincanvas;
+    public GameObject puzzleLosecanvas;
 
     private void Awake()
     {
@@ -70,6 +72,12 @@ public class spacecraft : MonoBehaviour
             //        }
             //    }
             //}
+            if (PlayerPrefs.GetInt("SpaceGerms") == -1)
+            {
+                Debug.Log("Space Germs Lost data received in Main Game");
+                puzzleLosecanvas.SetActive(true);
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, puzzleLosecanvas));
+            }
 
             int pipePuzzleValue = PlayerPrefs.GetInt("PipePuzzle", 0);
             if (pipePuzzleValue == 1)
@@ -102,9 +110,11 @@ public class spacecraft : MonoBehaviour
                 Debug.Log("The Space Germs Won data received in Main Game");
                 Debug.Log("Unnati: calling from the (Main game) and I am checking the value of playerpref " + PlayerPrefs.GetInt("SpaceGerms"));
 
-                //Unnati: To do add the canvas here for connection across games
+                healthPuzzleWincanvas.SetActive(true);
 
-                gameManager.updateHealth(-25);
+                gameManager.updateHealth(-20);
+                // Deactivate the canvas after 3 seconds
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, healthPuzzleWincanvas));
             }
             PlayerPrefs.SetInt("SpaceGerms", 0);
 
@@ -271,6 +281,11 @@ public class spacecraft : MonoBehaviour
         //    }
 
         //}
+    }
+    IEnumerator DeactivateCanvasAfterDelay(float delay, GameObject canvas)
+    {
+        yield return new WaitForSeconds(delay);
+        canvas.SetActive(false);
     }
 
 }
