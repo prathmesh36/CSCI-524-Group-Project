@@ -57,6 +57,7 @@ public class Wiring : MonoBehaviour
         if (connectedWires == totalWires)
         {
             // Load the scene after all wires are connected
+
             SceneManager.LoadScene("YouWonMiniGame"); // Replace "YourSceneName" with the actual scene name you want to load.
         }
     }

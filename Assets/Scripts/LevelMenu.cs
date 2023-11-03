@@ -11,6 +11,11 @@ public class LevelMenu : MonoBehaviour
         DateTime currentTime = DateTime.Now;
         long unixTimestamp = (long)(currentTime - new DateTime(1970, 1, 1)).TotalSeconds;
         GameManager.startTime = unixTimestamp;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("MyGame");
+    }
+
+     public void LoadTutorial(){
+        SceneManager.LoadScene("MainTutorial");
     }
 }

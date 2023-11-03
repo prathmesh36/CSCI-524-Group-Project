@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Main : MonoBehaviour
@@ -22,7 +20,7 @@ public class Main : MonoBehaviour
             Debug.Log("Main.cs");
             winText.SetActive(true);
             PlayerPrefs.SetInt("WirePuzzle", 1);
-            SceneManager.LoadScene("YouWonMiniGame");
+            SceneManager.LoadScene("YouWonWireMiniGame");
         }
     }
     private void Update()

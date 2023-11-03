@@ -6,6 +6,20 @@ using UnityEngine.SceneManagement;
 public class GameControls : MonoBehaviour
 {
     public GameObject pauseMenuScreen;
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!pauseMenuScreen.activeSelf)
+            {
+                PauseButton();
+            }
+            else
+            {
+                ResumeGame();
+            }
+        }
+    }
 
     public void PauseButton()
     {
@@ -26,7 +40,7 @@ public class GameControls : MonoBehaviour
         GameManager.lostCause = "Quit";
         SceneManager.LoadScene("GameOver");
     }
-    
+
 }
 
 
