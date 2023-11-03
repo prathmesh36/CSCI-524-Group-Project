@@ -26,12 +26,17 @@ public class spacecraftTutorial : MonoBehaviour
     public GameObject puzzleLosecanvas;
     public GameObject indicatorFuel;
     public GameObject indicatorHealth;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform firingPoint;
+    [SerializeField] private float changeRotation = 10.0f;
+    [SerializeField] private int changePosition = 10;
 
 
     private void Awake()
     {
         gameManager = GameObject.Find("GameManagerMain").GetComponent<GameManager>();
         LeanTween.init(1000);
+        gameManager.incrementBombCount(1);
     }
 
 
@@ -235,6 +240,22 @@ public class spacecraftTutorial : MonoBehaviour
             //float movementSpeed = 20f; // Adjust the movement speed as needed
             //Vector3 tipDirection = -transform.up;
             //transform.Translate(tipDirection * Time.deltaTime * movementSpeed, Space.World);
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            if (gameManager.getBombCount() > 0)
+            {
+                gameManager.decrementBombCount(1);
+                Quaternion currentRotation = firingPoint.rotation;
+                Quaternion rotationDelta = Quaternion.Euler(0, changeRotation, 0);
+                Quaternion newRotation = currentRotation * rotationDelta;
+                Vector3 forwardDirection = firingPoint.forward;
+                Debug.Log("Shooting Logs");
+                Debug.Log(currentRotation);
+                Debug.Log(newRotation);
+                Instantiate(bulletPrefab, firingPoint.position + forwardDirection * changePosition, newRotation);
+            }
         }
 
     }

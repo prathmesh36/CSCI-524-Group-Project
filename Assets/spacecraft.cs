@@ -271,7 +271,7 @@ public class spacecraft : MonoBehaviour
             //transform.Translate(tipDirection * Time.deltaTime * movementSpeed, Space.World);
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             if (gameManager.getBombCount() > 0)
             {
