@@ -40,17 +40,10 @@ public class AsteroidCollision : MonoBehaviour
             }
             else
             {
+
                 Debug.Log("Fuel Over");
             }
-        }
 
-        if (collision.gameObject.tag == "Mine")
-        {
-            Debug.Log("Collision In Asteriod with Mine");
-            GameObject expl = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
-            Destroy(obstacle);
-            Destroy(expl, 3);
-            Destroy(collision.gameObject);
         }
     }
 }

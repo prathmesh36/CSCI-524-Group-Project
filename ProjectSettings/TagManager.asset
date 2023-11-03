@@ -10,7 +10,6 @@ TagManager:
   - Destroy
   - Ketanu
   - Hole
-  - Mine
   layers:
   - Default
   - TransparentFX
