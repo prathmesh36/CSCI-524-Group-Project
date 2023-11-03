@@ -36,7 +36,6 @@ public class spacecraftTutorial : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManagerMain").GetComponent<GameManager>();
         LeanTween.init(1000);
-        gameManager.incrementBombCount(1);
     }
 
 
@@ -48,6 +47,7 @@ public class spacecraftTutorial : MonoBehaviour
         if (GameManager.initialLoad)
         {
             gameManager.updateFuel(-55);
+            gameManager.incrementBombCount(3);
             Debug.Log("Initial Load");
             if (destinationPlanet != null && virtualCamera != null)
             {
@@ -342,7 +342,7 @@ public class spacecraftTutorial : MonoBehaviour
     {
 
         Debug.Log("Instruction2 Activated");
-        instruction1Text.text = "Press X to shoot mines";
+        instruction1Text.text = "Press X to shoot down asteriods";
         instruction1.SetActive(true);
         Time.timeScale = 0f;
         instruction1Button.onClick.RemoveListener(Instruction2Caller);
