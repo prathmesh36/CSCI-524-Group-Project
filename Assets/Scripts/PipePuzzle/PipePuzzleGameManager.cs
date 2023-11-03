@@ -86,9 +86,9 @@ public class PipePuzzleGameManager : MonoBehaviour
             if (flag == true) {
                 Debug.Log("You Won");
                 startWater(element);
-                showMines();
+                int count = showMines();
                 PlayerPrefs.SetInt("PipePuzzle", 1);
-                PlayerPrefs.SetInt("MinesCollected", minesPipes.Count);
+                PlayerPrefs.SetInt("MinesCollected", count);
                 SceneManager.LoadScene("MyGame");
             }
 
@@ -111,8 +111,9 @@ public class PipePuzzleGameManager : MonoBehaviour
         }
     }
 
-    public void showMines()
+    public int showMines()
     {
+        int count = 0;
         for (int j = 0; j < Pipes.Length; j++)
         {
             for (int i = 0; i < minesPipes.Count; i++)
@@ -122,9 +123,11 @@ public class PipePuzzleGameManager : MonoBehaviour
                     GameObject expl = Instantiate(mines, Pipes[j].transform.position, Quaternion.identity) as GameObject;
                     SpriteRenderer spriteRenderer = expl.GetComponent<SpriteRenderer>();
                     spriteRenderer.sortingOrder = 2;
+                    count++;
                 }
             }
         }
+        return count;
     }
 
     public void WrongMove(string index) {
