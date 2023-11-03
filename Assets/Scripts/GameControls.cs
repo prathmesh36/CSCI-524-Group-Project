@@ -40,7 +40,7 @@ public class GameControls : MonoBehaviour
         GameManager.lostCause = "Quit";
         SceneManager.LoadScene("GameOver");
     }
-    
+
 }
 
 

@@ -1,12 +1,17 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class SceneChange : MonoBehaviour
+using TMPro;
+
+
+public class SceneChangeTuturial : MonoBehaviour
 {
     public Animator transition;
     public float transitionTime = 1f;
 
     public string sceneName;
+    public GameObject instruction1;
+    public TMP_Text instruction1Text;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -31,6 +36,7 @@ public class SceneChange : MonoBehaviour
                     Debug.Log("Collision In");
                     if (transform.name.StartsWith("Planet"))
                     {
+
                         string[] parts = transform.name.Split(' ');
                   
                         Debug.Log(transform.name);
@@ -51,9 +57,18 @@ public class SceneChange : MonoBehaviour
 
                                 if (!GameManager.boolArray[result - 1])
                                 {
-                                    StartCoroutine(LoadScene(sceneName));
                                     GameManager.boolArray[result - 1] = true;
+                                    if (transform.name.StartsWith("Planet 3"))
+                                    {
+                                        instruction1.SetActive(true);
+                                        instruction1Text.text = "Play the mini game to get fuel/health";
+                                        Time.timeScale = 0f;
+                                        return;
+                                    }
+                                    StartCoroutine(LoadScene(sceneName));
+
                                 }
+
                             }
                         }
                     }
@@ -80,6 +95,11 @@ public class SceneChange : MonoBehaviour
         }
     }
 
+    public void CallLoadScene() {
+        Debug.Log("Loading " + sceneName);
+        StartCoroutine(LoadScene(sceneName));
+    }
+
     IEnumerator LoadScene(string sceneName)
     {
         transition.SetTrigger("Start");
@@ -88,4 +108,6 @@ public class SceneChange : MonoBehaviour
 
         SceneManager.LoadScene(sceneName);
     }
+
+
 }
