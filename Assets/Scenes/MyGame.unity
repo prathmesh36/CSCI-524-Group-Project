@@ -10647,7 +10647,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   gravity: -10
-  Radius: 3
+  Radius: 2
   AttractedObjects: []
   attractorTransform: {fileID: 0}
   flag: 0
