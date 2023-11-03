@@ -76,19 +76,35 @@ public class spacecraft : MonoBehaviour
             
 
             int pipePuzzleValue = PlayerPrefs.GetInt("PipePuzzle", 0);
-            if (pipePuzzleValue == 1)
+            if (pipePuzzleValue == -1)
             {
+                Debug.Log("Pipe Puzzle Lost data received in Main Game");
+                puzzleLosecanvas.SetActive(true);
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, puzzleLosecanvas));
+            }
+            else if (pipePuzzleValue == 1)
+            {
+                fuelPuzzleWincanvas.SetActive(true);
                 Debug.Log("Pipe Puzzle Won data received in Main Game");
                 gameManager.updateFuel(-40);
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, fuelPuzzleWincanvas));
             }
             PlayerPrefs.SetInt("PipePuzzle", 0);
 
             int wirePuzzleValue = PlayerPrefs.GetInt("WirePuzzle", 0);
-            if (wirePuzzleValue == 1)
+            if (wirePuzzleValue == -1)
             {
+                Debug.Log("Wire Puzzle Lost data received in Main Game");
+                puzzleLosecanvas.SetActive(true);
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, puzzleLosecanvas));
+            }
+            else if (wirePuzzleValue == 1)
+            {
+                healthPuzzleWincanvas.SetActive(true);
                 Debug.Log("Wire Puzzle Won data received in Main Game");
                 gameManager.updateHealth(-20);
                 shield.SetActive(true);
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, healthPuzzleWincanvas));
             }
             PlayerPrefs.SetInt("WirePuzzle", 0);
 

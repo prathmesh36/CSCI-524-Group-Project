@@ -19,6 +19,7 @@ public class Timer : MonoBehaviour
             timeCounter += Time.deltaTime;
             looseText.SetActive(true);
             setTimer.SetActive(false);
+            PlayerPrefs.SetInt("WirePuzzle", -1);
             SceneManager.LoadScene("MyGame");
         }
         int minutes = Mathf.FloorToInt(isCountdown ? countdownTimer / 60f : timeCounter / 60f);
