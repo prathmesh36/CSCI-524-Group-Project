@@ -10,7 +10,7 @@ public class SampleSceneGameOver : MonoBehaviour
     void Update()
     {
         if (GameObject.FindGameObjectWithTag("Player") == null) {
-            gameoverPanel.SetActive(true);
+            LoadYouWonScene();
         }
     }
 
@@ -18,5 +18,10 @@ public class SampleSceneGameOver : MonoBehaviour
     void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    void LoadYouWonScene()
+    {
+        SceneManager.LoadScene("YouWonMiniGame"); // Load the "YouWon" scene
     }
 }
