@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TimerScriptMagnet : MonoBehaviour
+public class TimerScriptMagnetTutorial : MonoBehaviour
 {
 
     public GameObject bar;
@@ -26,8 +26,7 @@ public class TimerScriptMagnet : MonoBehaviour
     public void ChangeSceneMagnet() {
         PlayerPrefs.SetInt("MagnetPuzzle", 1);
         Debug.Log("Unnati: Setting the magnet Puzzle game player prefs here" + PlayerPrefs.GetInt("MagnetPuzzle"));
-        //SceneManager.LoadScene("YouWonMiniGame");
-        SceneManager.LoadScene("MyGame");
+        SceneManager.LoadScene("MainTutorial");
     }
 
 }

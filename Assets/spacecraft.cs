@@ -16,7 +16,14 @@ public class spacecraft : MonoBehaviour
     public float moveDuration = 2.0f;
     GameManager gameManager;
     public GameObject healthPuzzleWincanvas;
+    public GameObject fuelPuzzleWincanvas;
     public GameObject puzzleLosecanvas;
+    public GameObject pipePuzzleWinCanvas;
+
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform firingPoint;
+    [SerializeField] private float changeRotation = 10.0f;
+    [SerializeField] private int changePosition = 10;
 
     private void Awake()
     {
@@ -72,40 +79,66 @@ public class spacecraft : MonoBehaviour
             //        }
             //    }
             //}
-            if (PlayerPrefs.GetInt("SpaceGerms") == -1)
+            
+
+            int pipePuzzleValue = PlayerPrefs.GetInt("PipePuzzle", 0);
+            if (pipePuzzleValue == -1)
+            {
+                Debug.Log("Pipe Puzzle Lost data received in Main Game");
+                puzzleLosecanvas.SetActive(true);
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, puzzleLosecanvas));
+            }
+            else if (pipePuzzleValue == 1)
+            {
+                pipePuzzleWinCanvas.SetActive(true);
+                Debug.Log("Pipe Puzzle Won data received in Main Game");
+                gameManager.updateFuel(-40);
+                gameManager.incrementBombCount(PlayerPrefs.GetInt("MinesCollected", 0));
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, pipePuzzleWinCanvas));
+            }
+            PlayerPrefs.SetInt("PipePuzzle", 0);
+
+            int wirePuzzleValue = PlayerPrefs.GetInt("WirePuzzle", 0);
+            if (wirePuzzleValue == -1)
+            {
+                Debug.Log("Wire Puzzle Lost data received in Main Game");
+                puzzleLosecanvas.SetActive(true);
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, puzzleLosecanvas));
+            }
+            else if (wirePuzzleValue == 1)
+            {
+                healthPuzzleWincanvas.SetActive(true);
+                Debug.Log("Wire Puzzle Won data received in Main Game");
+                gameManager.updateHealth(-20);
+                shield.SetActive(true);
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, healthPuzzleWincanvas));
+            }
+            PlayerPrefs.SetInt("WirePuzzle", 0);
+
+            int magnetPuzzleValue = PlayerPrefs.GetInt("MagnetPuzzle", 0);
+            if (magnetPuzzleValue == -1)
+            {
+                Debug.Log("Magnet Puzzle Lost data received in Main Game");
+                puzzleLosecanvas.SetActive(true);
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, puzzleLosecanvas));
+            }
+            else if (magnetPuzzleValue == 1)
+            {
+                fuelPuzzleWincanvas.SetActive(true);
+                Debug.Log("Magnet Puzzle Won data received in Main Game");
+                gameManager.updateFuel(-40);
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, fuelPuzzleWincanvas));
+            }
+            PlayerPrefs.SetInt("MagnetPuzzle", 0);
+
+            int spaceGermsValue = PlayerPrefs.GetInt("SpaceGerms", 0);
+            if (spaceGermsValue == -1)
             {
                 Debug.Log("Space Germs Lost data received in Main Game");
                 puzzleLosecanvas.SetActive(true);
                 StartCoroutine(DeactivateCanvasAfterDelay(3f, puzzleLosecanvas));
             }
-
-            int pipePuzzleValue = PlayerPrefs.GetInt("PipePuzzle", 0);
-            if (pipePuzzleValue == 1)
-            {
-                Debug.Log("Pipe Puzzle Won data received in Main Game");
-                gameManager.updateFuel(-40);
-            }
-            PlayerPrefs.SetInt("PipePuzzle", 0);
-
-            int wirePuzzleValue = PlayerPrefs.GetInt("WirePuzzle", 0);
-            if (wirePuzzleValue == 1)
-            {
-                Debug.Log("Wire Puzzle Won data received in Main Game");
-                gameManager.updateHealth(-20);
-                shield.SetActive(true);
-            }
-            PlayerPrefs.SetInt("WirePuzzle", 0);
-
-            int magnetPuzzleValue = PlayerPrefs.GetInt("MagnetPuzzle", 0);
-            if (magnetPuzzleValue == 1)
-            {
-                Debug.Log("Magnet Puzzle Won data received in Main Game");
-                gameManager.updateFuel(-40);
-            }
-            PlayerPrefs.SetInt("MagnetPuzzle", 0);
-
-            int spaceGermsValue = PlayerPrefs.GetInt("SpaceGerms", 0);
-            if (spaceGermsValue == 1)
+            else if (spaceGermsValue == 1)
             {
                 Debug.Log("The Space Germs Won data received in Main Game");
                 Debug.Log("Unnati: calling from the (Main game) and I am checking the value of playerpref " + PlayerPrefs.GetInt("SpaceGerms"));
@@ -117,6 +150,8 @@ public class spacecraft : MonoBehaviour
                 StartCoroutine(DeactivateCanvasAfterDelay(3f, healthPuzzleWincanvas));
             }
             PlayerPrefs.SetInt("SpaceGerms", 0);
+
+
 
             transform.position = Targets[GameManager.currentPlanet].position + new Vector3(1.0f, 1.0f, 0);
             gameManager.updateFuel(0);
@@ -234,6 +269,22 @@ public class spacecraft : MonoBehaviour
             //float movementSpeed = 20f; // Adjust the movement speed as needed
             //Vector3 tipDirection = -transform.up;
             //transform.Translate(tipDirection * Time.deltaTime * movementSpeed, Space.World);
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            if (gameManager.getBombCount() > 0)
+            {
+                gameManager.decrementBombCount(1);
+                Quaternion currentRotation = firingPoint.rotation;
+                Quaternion rotationDelta = Quaternion.Euler(0, changeRotation, 0);
+                Quaternion newRotation = currentRotation * rotationDelta;
+                Vector3 forwardDirection = firingPoint.forward;
+                Debug.Log("Shooting Logs");
+                Debug.Log(currentRotation);
+                Debug.Log(newRotation);
+                Instantiate(bulletPrefab, firingPoint.position + forwardDirection * changePosition, newRotation);
+            }
         }
 
     }

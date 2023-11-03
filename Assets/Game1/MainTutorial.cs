@@ -20,7 +20,7 @@ public class MainTutorial : MonoBehaviour
             Debug.Log("MainTutorial.cs");
             winText.SetActive(true);
             PlayerPrefs.SetInt("WirePuzzle", 1);
-            SceneManager.LoadScene("YouWonWireMiniGameTutorial");
+            SceneManager.LoadScene("MainTutorial");
         }
     }
     private void Update()

@@ -47,6 +47,7 @@ public class PipeScript : MonoBehaviour
             PlayerPrefs.SetInt(Constants.TOTAL_MINES_CLICKS, mineClicks);
 
             pipePuzzleGameManager.destroyPipes(gameObject.name.Substring(gameObject.name.Length - 2));
+            pipePuzzleGameManager.destroyMines(gameObject.name.Substring(gameObject.name.Length - 2));
             GameObject expl = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
             Destroy(expl, 3);
         }

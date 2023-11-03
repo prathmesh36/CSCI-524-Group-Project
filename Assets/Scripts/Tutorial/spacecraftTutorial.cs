@@ -21,6 +21,16 @@ public class spacecraftTutorial : MonoBehaviour
     public TMP_Text instruction1Text;
     public Button instruction1Button;
     public bool[] instructionByPlanet = new bool[10];
+    public GameObject healthPuzzleWincanvas;
+    public GameObject fuelPuzzleWincanvas;
+    public GameObject puzzleLosecanvas;
+    public GameObject indicatorFuel;
+    public GameObject indicatorHealth;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform firingPoint;
+    [SerializeField] private float changeRotation = 10.0f;
+    [SerializeField] private int changePosition = 10;
+
 
     private void Awake()
     {
@@ -37,6 +47,7 @@ public class spacecraftTutorial : MonoBehaviour
         if (GameManager.initialLoad)
         {
             gameManager.updateFuel(-55);
+            gameManager.incrementBombCount(3);
             Debug.Log("Initial Load");
             if (destinationPlanet != null && virtualCamera != null)
             {
@@ -59,6 +70,20 @@ public class spacecraftTutorial : MonoBehaviour
         else {
             Debug.Log("Non-Initial Load");
 
+            if (PlayerPrefs.GetInt("MagnetPuzzle") == -1)
+            {
+                Debug.Log("Magnet Puzzle Lost data received in Main Game");
+                puzzleLosecanvas.SetActive(true);
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, puzzleLosecanvas));
+            }
+
+            if (PlayerPrefs.GetInt("WirePuzzle") == -1)
+            {
+                Debug.Log("Wire Puzzle Lost data received in Main Game");
+                puzzleLosecanvas.SetActive(true);
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, puzzleLosecanvas));
+            }
+
             if (PlayerPrefs.GetInt("PipePuzzle") == 1) {
                 Debug.Log("Pipe Puzzle Won data recieved in Main Game");
                 gameManager.updateFuel(-40);
@@ -73,6 +98,9 @@ public class spacecraftTutorial : MonoBehaviour
                 shield.SetActive(true);
                 PlayerPrefs.SetInt("Shield", 1);
                 PlayerPrefs.SetInt("HealthInc", 1);
+                healthPuzzleWincanvas.SetActive(true);
+                // Deactivate the canvas after 3 seconds
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, healthPuzzleWincanvas));
 
             }
             PlayerPrefs.SetInt("WirePuzzle", 0);
@@ -81,13 +109,17 @@ public class spacecraftTutorial : MonoBehaviour
             {
                 Debug.Log("Magnet Puzzle Won data recieved in Main Game");
                 gameManager.updateFuel(-40);
+                fuelPuzzleWincanvas.SetActive(true);
+                PlayerPrefs.SetInt("FuelInc", 1);
+                // Deactivate the canvas after 3 seconds
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, fuelPuzzleWincanvas));
             }
             PlayerPrefs.SetInt("MagnetPuzzle", 0);
 
             if (PlayerPrefs.GetInt("SpaceGerms") == 1)
             {
                 Debug.Log("The Space Germs Won data recieved in Main Game");
-                gameManager.updateHealth(-25);
+                gameManager.updateHealth(-20);
 
             }
             PlayerPrefs.GetInt("SpaceGerms", 0);
@@ -210,6 +242,22 @@ public class spacecraftTutorial : MonoBehaviour
             //transform.Translate(tipDirection * Time.deltaTime * movementSpeed, Space.World);
         }
 
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            if (gameManager.getBombCount() > 0)
+            {
+                gameManager.decrementBombCount(1);
+                Quaternion currentRotation = firingPoint.rotation;
+                Quaternion rotationDelta = Quaternion.Euler(0, changeRotation, 0);
+                Quaternion newRotation = currentRotation * rotationDelta;
+                Vector3 forwardDirection = firingPoint.forward;
+                Debug.Log("Shooting Logs");
+                Debug.Log(currentRotation);
+                Debug.Log(newRotation);
+                Instantiate(bulletPrefab, firingPoint.position + forwardDirection * changePosition, newRotation);
+            }
+        }
+
     }
 
     void CheckPlanetProximity()
@@ -243,7 +291,7 @@ public class spacecraftTutorial : MonoBehaviour
         Debug.Log(collision.gameObject.name);
 
         if (collision.gameObject.name.Equals("Planet 3") && PlayerPrefs.GetInt("Shield") == 1 && !instructionByPlanet[2]) {
-            Invoke("Instruction3Caller", 1f);
+            Invoke("Instruction3Caller", 3f);
             instructionByPlanet[2] = true;
         } else if (collision.gameObject.name.Equals("Planet 8") && !instructionByPlanet[7])
         {
@@ -259,7 +307,11 @@ public class spacecraftTutorial : MonoBehaviour
             Invoke("Instruction7Caller", 1f);
             instructionByPlanet[1] = true;
         }
-
+        else if (collision.gameObject.name.Equals("Planet 4") && !instructionByPlanet[3])
+        {
+            Invoke("Instruction8Caller", 3f);
+            instructionByPlanet[3] = true;
+        }
 
 
         //if (collision.gameObject.name.StartsWith("Planet"))
@@ -283,6 +335,17 @@ public class spacecraftTutorial : MonoBehaviour
         Debug.Log("Instruction1 Activated");
         instruction1.SetActive(true);
         Time.timeScale = 0f;
+        instruction1Button.onClick.AddListener(Instruction2Caller);
+    }
+
+    private void Instruction2Caller()
+    {
+
+        Debug.Log("Instruction2 Activated");
+        instruction1Text.text = "Press X to shoot down asteriods";
+        instruction1.SetActive(true);
+        Time.timeScale = 0f;
+        instruction1Button.onClick.RemoveListener(Instruction2Caller);
     }
 
     private void Instruction3Caller()
@@ -301,6 +364,7 @@ public class spacecraftTutorial : MonoBehaviour
         {
             instruction1.SetActive(true);
             instruction1Text.text = "Your Health increased";
+            indicatorHealth.SetActive(true);
             Time.timeScale = 0f;
             PlayerPrefs.SetInt("HealthInc", 0);
             instruction1Button.onClick.RemoveListener(Instruction4Caller);
@@ -327,7 +391,26 @@ public class spacecraftTutorial : MonoBehaviour
     {
         Time.timeScale = 0f;
         instruction1.SetActive(true);
+        indicatorFuel.SetActive(true);
         instruction1Text.text = "Your spaceship is losing fuel as it moves forward";
+    }
+
+    private void Instruction8Caller()
+    {
+        if (PlayerPrefs.GetInt("FuelInc") == 1)
+        {
+            instruction1.SetActive(true);
+            instruction1Text.text = "Your Fuel increased";
+            indicatorFuel.SetActive(true);
+            Time.timeScale = 0f;
+            PlayerPrefs.SetInt("FuelInc", 0);
+        }
+    }
+
+    IEnumerator DeactivateCanvasAfterDelay(float delay, GameObject canvas)
+    {
+        yield return new WaitForSeconds(delay);
+        canvas.SetActive(false);
     }
 
 }

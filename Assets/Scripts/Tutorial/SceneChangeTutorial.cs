@@ -53,6 +53,7 @@ public class SceneChangeTuturial : MonoBehaviour
                             // Attempt to parse the second part as an integer
                             if (int.TryParse(parts[1], out int result))
                             {
+                                Debug.Log("Current Planet set to " + (result - 1));
                                 GameManager.currentPlanet = result - 1;
 
                                 if (!GameManager.boolArray[result - 1])

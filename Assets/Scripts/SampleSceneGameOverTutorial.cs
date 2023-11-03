@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class SampleSceneGameOver : MonoBehaviour
+public class SampleSceneGameOverTutorial : MonoBehaviour
 {
     public GameObject gameoverPanel;
 
@@ -10,7 +10,7 @@ public class SampleSceneGameOver : MonoBehaviour
     void Update()
     {
         if (GameObject.FindGameObjectWithTag("Player") == null) {
-            LoadYouLoseScene();
+            LoadYouWonScene();
         }
     }
 
@@ -20,12 +20,9 @@ public class SampleSceneGameOver : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    void LoadYouLoseScene()
+    void LoadYouWonScene()
     {
-        //SceneManager.LoadScene("YouWonMiniGame"); // Load the "YouWon" scene
         PlayerPrefs.SetInt("MagnetPuzzle", -1);
-
-
-        SceneManager.LoadScene("MyGame");
+        SceneManager.LoadScene("MainTutorial"); // Load the "YouWon" scene
     }
 }
