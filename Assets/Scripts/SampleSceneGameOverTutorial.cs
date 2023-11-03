@@ -22,7 +22,7 @@ public class SampleSceneGameOverTutorial : MonoBehaviour
 
     void LoadYouWonScene()
     {
-        PlayerPrefs.SetInt("MagnetPuzzle", 1);
+        PlayerPrefs.SetInt("MagnetPuzzle", -1);
         SceneManager.LoadScene("MainTutorial"); // Load the "YouWon" scene
     }
 }

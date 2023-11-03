@@ -23,6 +23,9 @@ public class spacecraftTutorial : MonoBehaviour
     public bool[] instructionByPlanet = new bool[10];
     public GameObject healthPuzzleWincanvas;
     public GameObject puzzleLosecanvas;
+    public GameObject indicatorFuel;
+    public GameObject indicatorHealth;
+
 
     private void Awake()
     {
@@ -101,6 +104,7 @@ public class spacecraftTutorial : MonoBehaviour
                 Debug.Log("Magnet Puzzle Won data recieved in Main Game");
                 gameManager.updateFuel(-40);
                 healthPuzzleWincanvas.SetActive(true);
+                PlayerPrefs.SetInt("FuelInc", 1);
                 // Deactivate the canvas after 3 seconds
                 StartCoroutine(DeactivateCanvasAfterDelay(3f, healthPuzzleWincanvas));
             }
@@ -265,7 +269,7 @@ public class spacecraftTutorial : MonoBehaviour
         Debug.Log(collision.gameObject.name);
 
         if (collision.gameObject.name.Equals("Planet 3") && PlayerPrefs.GetInt("Shield") == 1 && !instructionByPlanet[2]) {
-            Invoke("Instruction3Caller", 4f);
+            Invoke("Instruction3Caller", 3f);
             instructionByPlanet[2] = true;
         } else if (collision.gameObject.name.Equals("Planet 8") && !instructionByPlanet[7])
         {
@@ -281,7 +285,11 @@ public class spacecraftTutorial : MonoBehaviour
             Invoke("Instruction7Caller", 1f);
             instructionByPlanet[1] = true;
         }
-
+        else if (collision.gameObject.name.Equals("Planet 4") && !instructionByPlanet[3])
+        {
+            Invoke("Instruction8Caller", 3f);
+            instructionByPlanet[3] = true;
+        }
 
 
         //if (collision.gameObject.name.StartsWith("Planet"))
@@ -323,6 +331,7 @@ public class spacecraftTutorial : MonoBehaviour
         {
             instruction1.SetActive(true);
             instruction1Text.text = "Your Health increased";
+            indicatorHealth.SetActive(true);
             Time.timeScale = 0f;
             PlayerPrefs.SetInt("HealthInc", 0);
             instruction1Button.onClick.RemoveListener(Instruction4Caller);
@@ -349,7 +358,20 @@ public class spacecraftTutorial : MonoBehaviour
     {
         Time.timeScale = 0f;
         instruction1.SetActive(true);
+        indicatorFuel.SetActive(true);
         instruction1Text.text = "Your spaceship is losing fuel as it moves forward";
+    }
+
+    private void Instruction8Caller()
+    {
+        if (PlayerPrefs.GetInt("FuelInc") == 1)
+        {
+            instruction1.SetActive(true);
+            instruction1Text.text = "Your Fuel increased";
+            indicatorFuel.SetActive(true);
+            Time.timeScale = 0f;
+            PlayerPrefs.SetInt("FuelInc", 0);
+        }
     }
 
     IEnumerator DeactivateCanvasAfterDelay(float delay, GameObject canvas)
