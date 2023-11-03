@@ -74,4 +74,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/YouWonWireMiniGameTutorial.unity
     guid: 1fd8ad870166a40419ba7f831360c0f9
+  - enabled: 1
+    path: Assets/Scenes/EndlessControlsTutorial.unity
+    guid: ca4d124b1bb244f368f63b7c0deedfbb
+  - enabled: 1
+    path: Assets/Scenes/SampleSceneTutorial.unity
+    guid: 8c62f4414ce364055a719bf81f8576be
   m_configObjects: {}
