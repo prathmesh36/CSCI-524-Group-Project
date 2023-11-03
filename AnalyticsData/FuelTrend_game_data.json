@@ -1,0 +1,14 @@
+{
+    "-NiJ-cPzmeUb64pvcxKJ": {
+      "asteroidImpact": 0,
+      "blackholeImpact": 0,
+      "infiniteSpaceImpact": 20,
+      "planetImpact": 70
+    },
+    "-NiJ0VxatEQWnFkAmEwL": {
+      "asteroidImpact": 0,
+      "blackholeImpact": 110,
+      "infiniteSpaceImpact": 20,
+      "planetImpact": 150
+    }
+  }
