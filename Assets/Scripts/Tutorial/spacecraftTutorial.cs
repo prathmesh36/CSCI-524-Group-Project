@@ -314,6 +314,17 @@ public class spacecraftTutorial : MonoBehaviour
         Debug.Log("Instruction1 Activated");
         instruction1.SetActive(true);
         Time.timeScale = 0f;
+        instruction1Button.onClick.AddListener(Instruction2Caller);
+    }
+
+    private void Instruction2Caller()
+    {
+
+        Debug.Log("Instruction2 Activated");
+        instruction1Text.text = "Press X to shoot mines";
+        instruction1.SetActive(true);
+        Time.timeScale = 0f;
+        instruction1Button.onClick.RemoveListener(Instruction2Caller);
     }
 
     private void Instruction3Caller()
