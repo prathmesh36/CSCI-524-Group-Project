@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class PipePuzzleGameManager : MonoBehaviour
 {
@@ -151,11 +152,17 @@ public class PipePuzzleGameManager : MonoBehaviour
     }
 
     public void recordAnalyticsForPipePuzzle(int mouseClicks, int mineClicks){
+            try{
             PipePuzzleAnalytics pipePuzzleAnalytics = new PipePuzzleAnalytics();
             pipePuzzleAnalytics.mouseClicks = mouseClicks;
             pipePuzzleAnalytics.mineClicks = mineClicks;
             string json = JsonUtility.ToJson(pipePuzzleAnalytics);
             Analytics.Instance.SaveData("pipe-puzzle-game-data.json", json);
             Debug.Log("Analytics for Pipe Puzzle recorded!");
+            }
+            catch(Exception ex){
+                Debug.Log("Pipe game Analytics catch block!");
+            }
+            
     }
 }
