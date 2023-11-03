@@ -16,6 +16,7 @@ public class spacecraft : MonoBehaviour
     public float moveDuration = 2.0f;
     GameManager gameManager;
     public GameObject healthPuzzleWincanvas;
+    public GameObject fuelPuzzleWincanvas;
     public GameObject puzzleLosecanvas;
 
     private void Awake()
@@ -72,12 +73,7 @@ public class spacecraft : MonoBehaviour
             //        }
             //    }
             //}
-            if (PlayerPrefs.GetInt("SpaceGerms") == -1)
-            {
-                Debug.Log("Space Germs Lost data received in Main Game");
-                puzzleLosecanvas.SetActive(true);
-                StartCoroutine(DeactivateCanvasAfterDelay(3f, puzzleLosecanvas));
-            }
+            
 
             int pipePuzzleValue = PlayerPrefs.GetInt("PipePuzzle", 0);
             if (pipePuzzleValue == 1)
@@ -97,15 +93,29 @@ public class spacecraft : MonoBehaviour
             PlayerPrefs.SetInt("WirePuzzle", 0);
 
             int magnetPuzzleValue = PlayerPrefs.GetInt("MagnetPuzzle", 0);
-            if (magnetPuzzleValue == 1)
+            if (magnetPuzzleValue == -1)
             {
+                Debug.Log("Magnet Puzzle Lost data received in Main Game");
+                puzzleLosecanvas.SetActive(true);
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, puzzleLosecanvas));
+            }
+            else if (magnetPuzzleValue == 1)
+            {
+                fuelPuzzleWincanvas.SetActive(true);
                 Debug.Log("Magnet Puzzle Won data received in Main Game");
                 gameManager.updateFuel(-40);
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, fuelPuzzleWincanvas));
             }
             PlayerPrefs.SetInt("MagnetPuzzle", 0);
 
             int spaceGermsValue = PlayerPrefs.GetInt("SpaceGerms", 0);
-            if (spaceGermsValue == 1)
+            if (spaceGermsValue == -1)
+            {
+                Debug.Log("Space Germs Lost data received in Main Game");
+                puzzleLosecanvas.SetActive(true);
+                StartCoroutine(DeactivateCanvasAfterDelay(3f, puzzleLosecanvas));
+            }
+            else if (spaceGermsValue == 1)
             {
                 Debug.Log("The Space Germs Won data received in Main Game");
                 Debug.Log("Unnati: calling from the (Main game) and I am checking the value of playerpref " + PlayerPrefs.GetInt("SpaceGerms"));
