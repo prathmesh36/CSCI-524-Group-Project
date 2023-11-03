@@ -2,6 +2,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,17 +23,37 @@ public class GameManager : MonoBehaviour
     public static bool initialLoad = true;
     public static bool[] boolArray = new bool[10];
     public static string lostCause = "N/A";
+    public static int bombCount = 0;
+    public TMP_Text bombCountObject;
 
     void Start()
     {
         float minDistance = CalculateMinimumDistance(Target);
         Debug.Log("Minimum distance to cover all targets: " + minDistance);
+        bombCountObject.text = bombCount.ToString();
     }
 
 
     void Update()
     {
         
+    }
+
+    public int getBombCount()
+    {
+        return bombCount;
+    }
+
+    public void incrementBombCount(int count)
+    {
+        bombCount += count;
+        bombCountObject.text = bombCount.ToString();
+    }
+
+    public void decrementBombCount(int count)
+    {
+        bombCount -= count;
+        bombCountObject.text = bombCount.ToString();
     }
 
     public void updateFuel(float value) {
@@ -48,6 +70,7 @@ public class GameManager : MonoBehaviour
     {
         health -= value;
 
+        Debug.Log("Unnati: Health before updation:" + health);
         LeanTween.scaleX(hbar, Math.Max(Math.Min(health / 100, 1), 0), 1);
         Debug.Log("Unnati: Health after updation:" + health);
 
