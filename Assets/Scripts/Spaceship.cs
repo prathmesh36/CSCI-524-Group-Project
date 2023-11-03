@@ -36,6 +36,17 @@ public class Spaceship : MonoBehaviour
         health = health + 10;
         if (health >= 100)
         {
+            int monstersKilled = PlayerPrefs.GetInt(Constants.MONSTERS_KILLED);
+            int monstersCount = PlayerPrefs.GetInt(Constants.TOTAL_MONSTERS);
+            Debug.Log(string.Format("Monsters Consumed so far: {0}", monstersKilled));
+            Debug.Log(string.Format("Monsters Encountered so far: {0}", monstersCount));  
+            recordAnalyticsForSpaceMonster(monstersKilled,monstersCount);  
+
+            SceneManager.LoadScene("YouWonMiniSpaceGermsGame");
+            PlayerPrefs.SetInt("SpaceGermsPuzzle", 1);
+
+            // Reset the value for space monsters
+            PlayerPrefs.SetInt(Constants.MONSTERS_KILLED, 0);
             //To Do: Won the mini game. So health has to be increased
             //SceneManager.LoadScene("YouWonMiniSpaceGermsGame");
 
@@ -46,6 +57,15 @@ public class Spaceship : MonoBehaviour
         }
         healthDisplay.text = "Points: " + health;
        
+    }
+
+    public void recordAnalyticsForSpaceMonster(int monstersKilled, int monstersCount){
+            SpaceMonsterAnalytics spaceMonsterAnalytics = new SpaceMonsterAnalytics();
+            spaceMonsterAnalytics.monstersKilled = monstersKilled;
+            spaceMonsterAnalytics.monstersCount = monstersCount;
+            string json = JsonUtility.ToJson(spaceMonsterAnalytics);
+            Analytics.Instance.SaveData("space-monster-game-data.json", json);
+            Debug.Log("Analytics for Space Monster recorded!");
     }
  
 }

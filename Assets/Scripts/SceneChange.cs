@@ -5,6 +5,10 @@ public class SceneChange : MonoBehaviour
 {
     public Animator transition;
     public float transitionTime = 1f;
+    public int blackholePenalty = -40;
+    public int asteroidPenalty = -20;
+    public int planetPenalty = 50;
+    public int infiniteSpacePenalty = -80;
 
     public string sceneName;
 
@@ -12,12 +16,32 @@ public class SceneChange : MonoBehaviour
     {
         Debug.Log("Collision Out");
         Debug.Log(collision.gameObject.tag);
+        
+
         if (transform.name.Contains("border")) {
+            int countInfinity = PlayerPrefs.GetInt(Constants.COUNT_INFINITY);
+            ++countInfinity;
+            PlayerPrefs.SetInt(Constants.COUNT_INFINITY, countInfinity);
+
+            // Analytics - Update Fuel level since spaceship reached infinity
+            int currentFuel = PlayerPrefs.GetInt(Constants.TOTAL_FUEL);
+            currentFuel = currentFuel + infiniteSpacePenalty;
+            PlayerPrefs.SetInt(Constants.INFINITE_SPACE_IMPACT, currentFuel < 0 ? 0 : currentFuel);
+
             GameManager.lostCause = "Reached Infinity";
         }
 
         if (transform.name.Contains("Galaxy"))
         {
+            int countBlackhole = PlayerPrefs.GetInt(Constants.COUNT_BLACKHOLE);
+            ++countBlackhole;
+            PlayerPrefs.SetInt(Constants.COUNT_BLACKHOLE, countBlackhole);
+
+            // Analytics - Update Fuel level since spaceship hit blackhole
+            int currentFuel = PlayerPrefs.GetInt(Constants.TOTAL_FUEL);
+            currentFuel = currentFuel + blackholePenalty;
+            PlayerPrefs.SetInt(Constants.BLACKHOLE_IMPACT, currentFuel < 0 ? 0 : currentFuel );
+
             GameManager.lostCause = "Block Hole Collision";
         }
 
@@ -31,6 +55,16 @@ public class SceneChange : MonoBehaviour
                     Debug.Log("Collision In");
                     if (transform.name.StartsWith("Planet"))
                     {
+                        
+                        int countPlanets = PlayerPrefs.GetInt(Constants.COUNT_PLANETS);
+                        ++countPlanets;
+                        PlayerPrefs.SetInt(Constants.COUNT_PLANETS, countPlanets);
+
+                        // Analytics - Update Fuel level since spaceship hit blackhole
+                        int currentFuel = PlayerPrefs.GetInt(Constants.TOTAL_FUEL);
+                        currentFuel = currentFuel + planetPenalty;
+                        PlayerPrefs.SetInt(Constants.PLANET_IMPACT, currentFuel < 0 ? 0 : currentFuel );
+
                         string[] parts = transform.name.Split(' ');
                   
                         Debug.Log(transform.name);
