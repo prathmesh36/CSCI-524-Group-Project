@@ -8,8 +8,9 @@ public class YouWonFinalGame : MonoBehaviour
         DateTime currentTime = DateTime.Now;
         long unixTimestamp = (long)(currentTime - new DateTime(1970, 1, 1)).TotalSeconds;
         GameManager.endTime = unixTimestamp;
-        GameManager.fuel = 40;
-        GameManager.health = 100;
+        Debug.Log("YouWonFinalGame Start Script called and Game Scores Initialized");
+        GameManager.fuel = 45;
+        GameManager.health = 40;
         GameManager.boolArray = new bool[10];
         GameManager.currentPlanet = 0;
         GameManager.initialLoad = true;

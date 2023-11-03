@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
     {
         health -= value;
 
+        Debug.Log("Unnati: Health before updation:" + health);
         LeanTween.scaleX(hbar, Math.Max(Math.Min(health / 100, 1), 0), 1);
         Debug.Log("Unnati: Health after updation:" + health);
 
