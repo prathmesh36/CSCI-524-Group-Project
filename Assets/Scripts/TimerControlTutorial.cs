@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
-public class Timer : MonoBehaviour
+public class TimerTutorial : MonoBehaviour
 {
     [SerializeField] private float timeCounter;
     [SerializeField] private float countdownTimer = 5f;
@@ -19,7 +19,8 @@ public class Timer : MonoBehaviour
             timeCounter += Time.deltaTime;
             looseText.SetActive(true);
             setTimer.SetActive(false);
-            SceneManager.LoadScene("MyGame");
+            Debug.Log("WiringTutorialEnded");
+            SceneManager.LoadScene("MainTutorial");
         }
         int minutes = Mathf.FloorToInt(isCountdown ? countdownTimer / 60f : timeCounter / 60f);
         int seconds = Mathf.FloorToInt(isCountdown ? countdownTimer - minutes * 60:timeCounter-minutes*60);

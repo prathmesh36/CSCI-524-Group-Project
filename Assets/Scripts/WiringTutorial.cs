@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Wiring : MonoBehaviour
+public class WiringTutorial : MonoBehaviour
 {
     // Start is called before the first frame update
     public SpriteRenderer wireEnd;
@@ -37,9 +37,9 @@ public class Wiring : MonoBehaviour
                 if (transform.parent.name.Equals(collider.transform.parent.name))
                 {
                     //count connection
-                    Main.Instance.SwitchChange(1);
+                    MainTutorial.Instance.SwitchChange(1);
                     //finish step
-                    collider.GetComponent<Wiring>()?.Done();
+                    collider.GetComponent<WiringTutorial>()?.Done();
                     Done();
                 }
                 return;

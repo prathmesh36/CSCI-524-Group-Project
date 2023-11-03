@@ -2,35 +2,41 @@ using System;
 using System.Collections;
 using Cinemachine;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
-public class spacecraft : MonoBehaviour
+public class spacecraftTutorial : MonoBehaviour
 {
-    public Transform[] Targets; 
+    public Transform[] Targets;
     private Transform currentTarget;
     public CinemachineVirtualCamera virtualCamera;
-    private bool isMovingStraight = false; 
+    private bool isMovingStraight = false;
     private bool space = true;
     private float straightMoveTimer = 0f;
     public Transform destinationPlanet;
     public GameObject shield;
     public float moveDuration = 2.0f;
     GameManager gameManager;
-    public GameObject healthPuzzleWincanvas;
-    public GameObject puzzleLosecanvas;
+    public GameObject instruction1;
+    public TMP_Text instruction1Text;
+    public Button instruction1Button;
+    public bool[] instructionByPlanet = new bool[10];
 
     private void Awake()
     {
         gameManager = GameObject.Find("GameManagerMain").GetComponent<GameManager>();
+        LeanTween.init(1000);
     }
 
 
     void Start()
     {
-        //Debug.Log("Inside start method of spacecraft script ");
+        Debug.Log("Inside start method of spacecraft script ");
         currentTarget = Targets[0];
         //initialRotation = transform.rotation;
         if (GameManager.initialLoad)
         {
+            gameManager.updateFuel(-55);
             Debug.Log("Initial Load");
             if (destinationPlanet != null && virtualCamera != null)
             {
@@ -48,87 +54,53 @@ public class spacecraft : MonoBehaviour
             }
             GameManager.initialLoad = false;
             Update();
-        }
 
-        else
-        {
+        }
+        else {
             Debug.Log("Non-Initial Load");
 
-            ////Unnati : Printing Player prefs
-            //string[] allKeys = { "PipePuzzle", "WirePuzzle", "MagnetPuzzle", "SpaceGerms" };
-
-            //// Print all PlayerPrefs values
-            //foreach (var key in allKeys)
-            //{
-            //    if (PlayerPrefs.HasKey(key))
-            //    {
-            //        if (PlayerPrefs.GetString(key) != "")
-            //        {
-            //            Debug.Log($"PlayerPrefs key: {key}, value: {PlayerPrefs.GetString(key)}");
-            //        }
-            //        else
-            //        {
-            //            Debug.Log($"PlayerPrefs key: {key}, value: {PlayerPrefs.GetInt(key)}");
-            //        }
-            //    }
-            //}
-            if (PlayerPrefs.GetInt("SpaceGerms") == -1)
-            {
-                Debug.Log("Space Germs Lost data received in Main Game");
-                puzzleLosecanvas.SetActive(true);
-                StartCoroutine(DeactivateCanvasAfterDelay(3f, puzzleLosecanvas));
-            }
-
-            int pipePuzzleValue = PlayerPrefs.GetInt("PipePuzzle", 0);
-            if (pipePuzzleValue == 1)
-            {
-                Debug.Log("Pipe Puzzle Won data received in Main Game");
+            if (PlayerPrefs.GetInt("PipePuzzle") == 1) {
+                Debug.Log("Pipe Puzzle Won data recieved in Main Game");
                 gameManager.updateFuel(-40);
             }
             PlayerPrefs.SetInt("PipePuzzle", 0);
 
-            int wirePuzzleValue = PlayerPrefs.GetInt("WirePuzzle", 0);
-            if (wirePuzzleValue == 1)
+            if (PlayerPrefs.GetInt("WirePuzzle") == 1)
             {
-                Debug.Log("Wire Puzzle Won data received in Main Game");
+
+                Debug.Log("Wire Puzzle Won data recieved in Main Game");
                 gameManager.updateHealth(-20);
                 shield.SetActive(true);
+                PlayerPrefs.SetInt("Shield", 1);
+                PlayerPrefs.SetInt("HealthInc", 1);
+
             }
             PlayerPrefs.SetInt("WirePuzzle", 0);
 
-            int magnetPuzzleValue = PlayerPrefs.GetInt("MagnetPuzzle", 0);
-            if (magnetPuzzleValue == 1)
+            if (PlayerPrefs.GetInt("MagnetPuzzle") == 1)
             {
-                Debug.Log("Magnet Puzzle Won data received in Main Game");
+                Debug.Log("Magnet Puzzle Won data recieved in Main Game");
                 gameManager.updateFuel(-40);
             }
             PlayerPrefs.SetInt("MagnetPuzzle", 0);
 
-            int spaceGermsValue = PlayerPrefs.GetInt("SpaceGerms", 0);
-            if (spaceGermsValue == 1)
+            if (PlayerPrefs.GetInt("SpaceGerms") == 1)
             {
-                Debug.Log("The Space Germs Won data received in Main Game");
-                Debug.Log("Unnati: calling from the (Main game) and I am checking the value of playerpref " + PlayerPrefs.GetInt("SpaceGerms"));
+                Debug.Log("The Space Germs Won data recieved in Main Game");
+                gameManager.updateHealth(-25);
 
-                healthPuzzleWincanvas.SetActive(true);
-
-                gameManager.updateHealth(-20);
-                // Deactivate the canvas after 3 seconds
-                StartCoroutine(DeactivateCanvasAfterDelay(3f, healthPuzzleWincanvas));
             }
-            PlayerPrefs.SetInt("SpaceGerms", 0);
-
+            PlayerPrefs.GetInt("SpaceGerms", 0);
             transform.position = Targets[GameManager.currentPlanet].position + new Vector3(1.0f, 1.0f, 0);
             gameManager.updateFuel(0);
             gameManager.updateHealth(0);
         }
-
     }
 
 
     public void MoveCamera()
     {
-        //Debug.Log("Inside move camera");
+        Debug.Log("Inside move camera");
         StartCoroutine(MoveCameraCoroutine(transform.position, moveDuration));
     }
 
@@ -140,7 +112,7 @@ public class spacecraft : MonoBehaviour
 
         while (Time.time < startTime + duration)
         {
-            //Debug.Log("Inside MoveCameraCoroutine");
+            Debug.Log("Inside MoveCameraCoroutine");
             float t = (Time.time - startTime) / duration;
             destinationPlanet.position = Vector3.Lerp(startPosition, targetPosition, t);
             yield return null; // Wait for the next frame
@@ -149,6 +121,8 @@ public class spacecraft : MonoBehaviour
         // Ensure the camera reaches the exact target position at the end.
         destinationPlanet.position = targetPosition;
         virtualCamera.Follow = transform;
+        Invoke("Instruction1Caller", 1f);
+        instructionByPlanet[0] = true;
     }
 
     void TransitionToFollowSpaceship()
@@ -174,7 +148,7 @@ public class spacecraft : MonoBehaviour
     void Update()
     {
         //Debug.Log("Inside update method of spacecraft script");
-        
+
 
         CheckPlanetProximity();
 
@@ -191,11 +165,11 @@ public class spacecraft : MonoBehaviour
                 Vector3 tipDirection = -transform.up;
                 transform.Translate(tipDirection * Time.deltaTime * movementSpeed, Space.World);
                 float distanceThisFrame = Time.deltaTime * movementSpeed;
-                //Debug.Log(distanceThisFrame);
+                Debug.Log(distanceThisFrame);
                 gameManager.updateFuel(distanceThisFrame);
 
             }
-            
+
             if (straightMoveTimer >= 1f)
             {
                 // Implement your pause logic here (e.g., show a pause menu)
@@ -203,7 +177,7 @@ public class spacecraft : MonoBehaviour
                 //Debug.Log("Game Over scene. I am here");
 
             }
-            
+
 
         }
         else
@@ -227,7 +201,7 @@ public class spacecraft : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
 
-            //Debug.Log("Space Key Pressed");
+            Debug.Log("Space Key Pressed");
             // Move the spaceship in the direction of its tip
             space = true;
             isMovingStraight = !isMovingStraight;
@@ -240,24 +214,24 @@ public class spacecraft : MonoBehaviour
 
     void CheckPlanetProximity()
     {
-      
+
         float proximityDistance = 2.0f;
-    
+
         foreach (Transform planet in Targets)
         {
             float distance = Vector3.Distance(transform.position, planet.position);
-          
-            if (distance < proximityDistance && currentTarget!=planet)
+
+            if (distance < proximityDistance && currentTarget != planet)
             {
                 currentTarget = planet;
                 isMovingStraight = false;
-                
+
                 // Calculate the direction from the spaceship to the planet
                 Vector3 newDirection = planet.position - transform.position;
 
                 // Set the rotation to point outwards from the planet
                 transform.rotation = Quaternion.LookRotation(Vector3.forward, newDirection);
-                //Debug.Log("Rotation of the spaceship" + transform.rotation);
+                Debug.Log("Rotation of the spaceship" + transform.rotation);
                 break;
             }
         }
@@ -265,8 +239,29 @@ public class spacecraft : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log("Spaceship Collision Detected");
-        //Debug.Log(collision.gameObject.name);
+        Debug.Log("Spaceship Collision Detected");
+        Debug.Log(collision.gameObject.name);
+
+        if (collision.gameObject.name.Equals("Planet 3") && PlayerPrefs.GetInt("Shield") == 1 && !instructionByPlanet[2]) {
+            Invoke("Instruction3Caller", 1f);
+            instructionByPlanet[2] = true;
+        } else if (collision.gameObject.name.Equals("Planet 8") && !instructionByPlanet[7])
+        {
+            Invoke("Instruction5Caller", 1f);
+            instructionByPlanet[7] = true;
+        }else if (collision.gameObject.name.Equals("Planet 9") && !instructionByPlanet[8])
+        {
+            Invoke("Instruction6Caller", 1f);
+            instructionByPlanet[8] = true;
+        }
+        else if (collision.gameObject.name.Equals("Planet 2") && !instructionByPlanet[1])
+        {
+            Invoke("Instruction7Caller", 1f);
+            instructionByPlanet[1] = true;
+        }
+
+
+
         //if (collision.gameObject.name.StartsWith("Planet"))
         //{
         //    string[] parts = collision.gameObject.name.Split(' ');
@@ -282,10 +277,57 @@ public class spacecraft : MonoBehaviour
 
         //}
     }
-    IEnumerator DeactivateCanvasAfterDelay(float delay, GameObject canvas)
+
+    private void Instruction1Caller() {
+
+        Debug.Log("Instruction1 Activated");
+        instruction1.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    private void Instruction3Caller()
     {
-        yield return new WaitForSeconds(delay);
-        canvas.SetActive(false);
+        Time.timeScale = 0f;
+        Debug.Log("Spaceship Collision Detected for planet three after shield" + PlayerPrefs.GetInt("Shield"));
+        instruction1.SetActive(true);
+        instruction1Text.text = "You spacecraft got a one time protection SHIELD from asteriod";
+        PlayerPrefs.SetInt("Shield", 0);
+        PlayerPrefs.SetInt("UseShield", 1);
+        instruction1Button.onClick.AddListener(Instruction4Caller);
+    }
+
+    private void Instruction4Caller() {
+        if (PlayerPrefs.GetInt("HealthInc") == 1)
+        {
+            instruction1.SetActive(true);
+            instruction1Text.text = "Your Health increased";
+            Time.timeScale = 0f;
+            PlayerPrefs.SetInt("HealthInc", 0);
+            instruction1Button.onClick.RemoveListener(Instruction4Caller);
+        }
+    }
+
+    private void Instruction5Caller()
+    {
+        Time.timeScale = 0f;
+        instruction1.SetActive(true);
+        instruction1Text.text = "Avoid Asteriod as hitting it can reduce health";
+        
+    }
+
+
+    private void Instruction6Caller()
+    {
+        Time.timeScale = 0f;
+        instruction1.SetActive(true);
+        instruction1Text.text = "Avoid Blackhole as you'll lose if you hit it";
+    }
+
+    private void Instruction7Caller()
+    {
+        Time.timeScale = 0f;
+        instruction1.SetActive(true);
+        instruction1Text.text = "Your spaceship is losing fuel as it moves forward";
     }
 
 }
