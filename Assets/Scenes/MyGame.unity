@@ -425,6 +425,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
+  blackholePenalty: -40
+  asteroidPenalty: -20
+  planetPenalty: 50
+  infiniteSpacePenalty: -80
+  transitionObj: {fileID: 0}
   sceneName: GameOver
 --- !u!1 &109508879
 GameObject:
@@ -561,6 +566,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
+  blackholePenalty: -40
+  asteroidPenalty: -20
+  planetPenalty: 50
+  infiniteSpacePenalty: -80
+  transitionObj: {fileID: 0}
   sceneName: Wiring
 --- !u!1 &121870589
 GameObject:
@@ -1588,6 +1598,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
+  blackholePenalty: -40
+  asteroidPenalty: -20
+  planetPenalty: 50
+  infiniteSpacePenalty: -80
+  transitionObj: {fileID: 0}
   sceneName: YouWonFinalGame
 --- !u!1 &201575617
 GameObject:
@@ -3130,6 +3145,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
+  blackholePenalty: -40
+  asteroidPenalty: -20
+  planetPenalty: 50
+  infiniteSpacePenalty: -80
+  transitionObj: {fileID: 0}
   sceneName: GameOver
 --- !u!1 &492594404
 GameObject:
@@ -3670,6 +3690,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
+  blackholePenalty: -40
+  asteroidPenalty: -20
+  planetPenalty: 50
+  infiniteSpacePenalty: -80
+  transitionObj: {fileID: 0}
   sceneName: PipePuzzle
 --- !u!58 &549781323
 CircleCollider2D:
@@ -3892,8 +3917,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6fc7c26a6e84a8f74e4fb8f0e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: {fileID: 260550997}
+  transition: {fileID: 704435826}
   transitionTime: 1
+  blackholePenalty: -40
+  asteroidPenalty: -20
+  planetPenalty: 50
+  infiniteSpacePenalty: -80
+  transitionObj: {fileID: 704435821}
   sceneName: Game
 --- !u!1 &574844844
 GameObject:
@@ -4288,6 +4318,16 @@ Transform:
   - {fileID: 1008407235}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &704435821 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4441421688432974224, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+  m_PrefabInstance: {fileID: 7613693813005410961}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &704435826 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5304669590711788690, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+  m_PrefabInstance: {fileID: 7613693813005410961}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &719377146
 GameObject:
   m_ObjectHideFlags: 0
@@ -6326,6 +6366,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
+  blackholePenalty: -40
+  asteroidPenalty: -20
+  planetPenalty: 50
+  infiniteSpacePenalty: -80
+  transitionObj: {fileID: 0}
   sceneName: GameOver
 --- !u!1 &1085376625
 GameObject:
@@ -7256,6 +7301,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
+  blackholePenalty: -40
+  asteroidPenalty: -20
+  planetPenalty: 50
+  infiniteSpacePenalty: -80
+  transitionObj: {fileID: 0}
   sceneName: EndlessControls
 --- !u!58 &1278943526
 CircleCollider2D:
@@ -8245,6 +8295,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
+  blackholePenalty: -40
+  asteroidPenalty: -20
+  planetPenalty: 50
+  infiniteSpacePenalty: -80
+  transitionObj: {fileID: 0}
   sceneName: GameOver
 --- !u!61 &1477885313
 BoxCollider2D:
@@ -10664,6 +10719,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 260550997}
   transitionTime: 1
+  blackholePenalty: -40
+  asteroidPenalty: -20
+  planetPenalty: 50
+  infiniteSpacePenalty: -80
+  transitionObj: {fileID: 0}
   sceneName: GameOver
 --- !u!1 &2036616925
 GameObject:
@@ -11765,6 +11825,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4441421688432974224, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4967983795399634013, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
       propertyPath: m_Controller
       value: 
@@ -11773,6 +11837,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 3238834902120763243, guid: 72e1e2584982ed047aea57c42a053ef8, type: 3}
+    - target: {fileID: 5304669590711788690, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 735e7feaa7a5340f88ea0691e666ff64, type: 2}
+    - target: {fileID: 6693519992014567765, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7104801873633011457, guid: b07d4d7aac54445bba10e8a52db9cf0f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
