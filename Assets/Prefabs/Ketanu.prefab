@@ -98,7 +98,7 @@ Animator:
   m_GameObject: {fileID: 124534}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2ee4c1b0f62dfba47b8ac50b6acf5640, type: 2}
+  m_Controller: {fileID: 9100000, guid: 15e758bb18aad9c438161ec381f54da8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef31d7e749d8d44f971ca676ba745e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 139366, guid: 83a9fbac9e760854f9997076ba885d9a, type: 3}
   speed: 4
 --- !u!58 &-7084275291574477226
 CircleCollider2D:
