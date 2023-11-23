@@ -19,6 +19,7 @@ public class spacecraft : MonoBehaviour
     public GameObject fuelPuzzleWincanvas;
     public GameObject puzzleLosecanvas;
     public GameObject pipePuzzleWinCanvas;
+    private bool canPressSpace = false;
 
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firingPoint;
@@ -54,6 +55,7 @@ public class spacecraft : MonoBehaviour
                 Debug.LogError("Destination planet or camera not found.");
             }
             GameManager.initialLoad = false;
+            Invoke("EnableSpaceKeyPress", 5f);
             Update();
         }
 
@@ -160,6 +162,10 @@ public class spacecraft : MonoBehaviour
 
     }
 
+    void EnableSpaceKeyPress()
+    {
+        canPressSpace = true;
+    }
 
     public void MoveCamera()
     {
@@ -259,7 +265,7 @@ public class spacecraft : MonoBehaviour
         //    isMovingStraight = !isMovingStraight;
 
         //}
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (canPressSpace && Input.GetKeyDown(KeyCode.Space))
         {
 
             //Debug.Log("Space Key Pressed");
