@@ -47,7 +47,7 @@ public class spacecraft : MonoBehaviour
                 virtualCamera.m_Lens.OrthographicSize = 5;
 
                 // Invoke the method to transition to follow the spaceship after 5 seconds
-                Invoke("TransitionToFollowSpaceship", 5f);
+                Invoke("TransitionToFollowSpaceship", 2f);
             }
             else
             {
