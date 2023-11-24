@@ -60,8 +60,7 @@ public class GameOver : MonoBehaviour
         PlayerPrefs.SetInt(Constants.ASTEROID_IMPACT , 0); 
         PlayerPrefs.SetInt(Constants.PLANET_IMPACT , 0); 
         PlayerPrefs.SetInt(Constants.INFINITE_SPACE_IMPACT , 0); 
-
-
+        
     }
 
     public void StartOver(){

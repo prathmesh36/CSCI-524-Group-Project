@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public GameObject bar;
     public GameObject hbar;
     public static int currentPlanet = 0;
+    public static int currentPlanetRespawn = 0;
+    public static float lastFuel = 45;
     public static bool initialLoad = true;
     public static bool[] boolArray = new bool[10];
     public static string lostCause = "N/A";
