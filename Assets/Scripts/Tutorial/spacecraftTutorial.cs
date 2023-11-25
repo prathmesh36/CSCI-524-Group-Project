@@ -18,14 +18,25 @@ public class spacecraftTutorial : MonoBehaviour
     public float moveDuration = 2.0f;
     GameManager gameManager;
     public GameObject instruction1;
+    public Image instruction1Image;
     public TMP_Text instruction1Text;
     public Button instruction1Button;
+    public GameObject instruction2;
+    public TMP_Text instruction2Text;
+    public Button instruction2Button;
+    public Button instruction3Button;
     public bool[] instructionByPlanet = new bool[10];
     public GameObject healthPuzzleWincanvas;
     public GameObject fuelPuzzleWincanvas;
     public GameObject puzzleLosecanvas;
     public GameObject indicatorFuel;
     public GameObject indicatorHealth;
+    public GameObject instruction3;
+    public GameObject instruction4;
+    public GameObject instruction5;
+    public GameObject instruction6;
+    public GameObject instruction7;
+    public GameObject instruction8;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firingPoint;
     [SerializeField] private float changeRotation = 10.0f;
@@ -291,7 +302,7 @@ public class spacecraftTutorial : MonoBehaviour
         Debug.Log(collision.gameObject.name);
 
         if (collision.gameObject.name.Equals("Planet 3") && PlayerPrefs.GetInt("Shield") == 1 && !instructionByPlanet[2]) {
-            Invoke("Instruction3Caller", 3f);
+            Invoke("Instruction3Caller", 4f);
             instructionByPlanet[2] = true;
         } else if (collision.gameObject.name.Equals("Planet 8") && !instructionByPlanet[7])
         {
@@ -309,25 +320,10 @@ public class spacecraftTutorial : MonoBehaviour
         }
         else if (collision.gameObject.name.Equals("Planet 4") && !instructionByPlanet[3])
         {
-            Invoke("Instruction8Caller", 3f);
+            Invoke("Instruction8Caller", 4f);
             instructionByPlanet[3] = true;
         }
 
-
-        //if (collision.gameObject.name.StartsWith("Planet"))
-        //{
-        //    string[] parts = collision.gameObject.name.Split(' ');
-        //    if (parts.Length == 2)
-        //    {
-        //        // Attempt to parse the second part as an integer
-        //        if (int.TryParse(parts[1], out int result))
-        //        {
-        //            GameManager.currentPlanet = result - 1;
-        //            GameManager.boolArray[result - 1] = true;
-        //        }
-        //    }
-
-        //}
     }
 
     private void Instruction1Caller() {
@@ -342,8 +338,8 @@ public class spacecraftTutorial : MonoBehaviour
     {
 
         Debug.Log("Instruction2 Activated");
-        instruction1Text.text = "Press X to shoot down asteriods";
-        instruction1.SetActive(true);
+        //instruction1Text.text = "Press X to shoot down asteriods";
+        instruction2.SetActive(true);
         Time.timeScale = 0f;
         instruction1Button.onClick.RemoveListener(Instruction2Caller);
     }
@@ -352,30 +348,32 @@ public class spacecraftTutorial : MonoBehaviour
     {
         Time.timeScale = 0f;
         Debug.Log("Spaceship Collision Detected for planet three after shield" + PlayerPrefs.GetInt("Shield"));
-        instruction1.SetActive(true);
-        instruction1Text.text = "You spacecraft got a one time protection SHIELD from asteriod";
+        //instruction1.SetActive(true);
+        //instruction1Text.text = "You got a one time SHIELD from";
+        instruction3.SetActive(true);
         PlayerPrefs.SetInt("Shield", 0);
         PlayerPrefs.SetInt("UseShield", 1);
-        instruction1Button.onClick.AddListener(Instruction4Caller);
+        instruction3Button.onClick.AddListener(Instruction4Caller);
     }
 
     private void Instruction4Caller() {
         if (PlayerPrefs.GetInt("HealthInc") == 1)
         {
-            instruction1.SetActive(true);
-            instruction1Text.text = "Your Health increased";
+            //instruction1.SetActive(true);
+            //instruction1Text.text = "Your Health increased";
+            instruction4.SetActive(true);
             indicatorHealth.SetActive(true);
             Time.timeScale = 0f;
             PlayerPrefs.SetInt("HealthInc", 0);
-            instruction1Button.onClick.RemoveListener(Instruction4Caller);
+            instruction3Button.onClick.RemoveListener(Instruction4Caller);
         }
     }
 
     private void Instruction5Caller()
     {
         Time.timeScale = 0f;
-        instruction1.SetActive(true);
-        instruction1Text.text = "Avoid Asteriod as hitting it can reduce health";
+        instruction5.SetActive(true);
+        //instruction1Text.text = "Avoid Asteriod as hitting it can reduce health";
         
     }
 
@@ -383,24 +381,24 @@ public class spacecraftTutorial : MonoBehaviour
     private void Instruction6Caller()
     {
         Time.timeScale = 0f;
-        instruction1.SetActive(true);
-        instruction1Text.text = "Avoid Blackhole as you'll lose if you hit it";
+        instruction6.SetActive(true);
+        //instruction1Text.text = "Avoid Blackhole as you'll lose if you hit it";
     }
 
     private void Instruction7Caller()
     {
         Time.timeScale = 0f;
-        instruction1.SetActive(true);
+        instruction7.SetActive(true);
         indicatorFuel.SetActive(true);
-        instruction1Text.text = "Your spaceship is losing fuel as it moves forward";
+        //instruction1Text.text = "Your spaceship is losing fuel as it moves forward";
     }
 
     private void Instruction8Caller()
     {
         if (PlayerPrefs.GetInt("FuelInc") == 1)
         {
-            instruction1.SetActive(true);
-            instruction1Text.text = "Your Fuel increased";
+            instruction8.SetActive(true);
+            //instruction1Text.text = "Your Fuel increased";
             indicatorFuel.SetActive(true);
             Time.timeScale = 0f;
             PlayerPrefs.SetInt("FuelInc", 0);
