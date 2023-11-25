@@ -389,7 +389,7 @@ public class spacecraftTutorial : MonoBehaviour
     {
         Time.timeScale = 0f;
         instruction7.SetActive(true);
-        //indicatorFuel.SetActive(true);
+        indicatorFuel.SetActive(true);
         //instruction1Text.text = "Your spaceship is losing fuel as it moves forward";
     }
 
@@ -399,7 +399,7 @@ public class spacecraftTutorial : MonoBehaviour
         {
             instruction8.SetActive(true);
             //instruction1Text.text = "Your Fuel increased";
-            //indicatorFuel.SetActive(true);
+            indicatorFuel.SetActive(true);
             Time.timeScale = 0f;
             PlayerPrefs.SetInt("FuelInc", 0);
         }
