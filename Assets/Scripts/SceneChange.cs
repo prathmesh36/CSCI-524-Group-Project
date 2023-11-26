@@ -49,7 +49,6 @@ public class SceneChange : MonoBehaviour
             {
                 if (GameManager.health > 0)
                 {
-
                     Debug.Log("Collision In");
                     if (transform.name.StartsWith("Planet"))
                     {
@@ -75,23 +74,14 @@ public class SceneChange : MonoBehaviour
                         PlayerPrefs.SetInt(Constants.PLANET_IMPACT, currentFuel < 0 ? 0 : currentFuel );
                         
                         string[] parts = transform.name.Split(' ');
-                  
-                        Debug.Log(transform.name);
-                        foreach (bool value in GameManager.boolArray)
-                        {
-                            Debug.Log(value);
-                            
-                        }
-                        
+                
                         if (parts.Length == 2)
                         {
-                          
-
                             // Attempt to parse the second part as an integer
                             if (int.TryParse(parts[1], out int result))
                             {
                                 GameManager.currentPlanet = result - 1;
-
+                                GameManager.lastFuel=GameManager.fuel;
                                 if (!GameManager.boolArray[result - 1])
                                 {
                                     StartCoroutine(LoadScene(sceneName));
@@ -102,6 +92,9 @@ public class SceneChange : MonoBehaviour
                     }
                     else
                     {
+                        if(sceneName=="RestartRespawn"){
+                            GameManager.currentPlanet=GameManager.currentPlanetRespawn;
+                        }
                         StartCoroutine(LoadScene(sceneName));
                     }
                 }
@@ -110,16 +103,12 @@ public class SceneChange : MonoBehaviour
                     GameManager.lostCause = "Health Over";
                     StartCoroutine(LoadScene("HealthOver"));
                 }
-
-                  
             }
             else {
-
                 Debug.Log("Fuel Over");
                 GameManager.lostCause = "Fuel Over";
                 StartCoroutine(LoadScene("FuelOver"));
             }
-            
         }
     }
 
@@ -128,7 +117,6 @@ public class SceneChange : MonoBehaviour
         transition.SetTrigger("Start");
 
         yield return new WaitForSeconds(transitionTime);
-
         SceneManager.LoadScene(sceneName);
     }
 }
