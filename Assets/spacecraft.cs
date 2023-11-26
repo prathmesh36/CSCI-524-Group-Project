@@ -19,6 +19,7 @@ public class spacecraft : MonoBehaviour
     public GameObject fuelPuzzleWincanvas;
     public GameObject puzzleLosecanvas;
     public GameObject pipePuzzleWinCanvas;
+    private bool canPressSpace = false;
 
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firingPoint;
@@ -50,19 +51,21 @@ public class spacecraft : MonoBehaviour
                 virtualCamera.m_Lens.OrthographicSize = 5;
 
                 // Invoke the method to transition to follow the spaceship after 5 seconds
-                Invoke("TransitionToFollowSpaceship", 5f);
+                Invoke("TransitionToFollowSpaceship", 2f);
             }
             else
             {
                 Debug.LogError("Destination planet or camera not found.");
             }
             GameManager.initialLoad = false;
+            Invoke("EnableSpaceKeyPress", 5f);
             Update();
         }
 
         else
         {
             Debug.Log("Non-Initial Load");
+            canPressSpace=true;
 
             ////Unnati : Printing Player prefs
             //string[] allKeys = { "PipePuzzle", "WirePuzzle", "MagnetPuzzle", "SpaceGerms" };
@@ -164,6 +167,11 @@ public class spacecraft : MonoBehaviour
 
     }
 
+    
+    void EnableSpaceKeyPress()
+    {
+       canPressSpace = true;
+    }
 
     public void MoveCamera()
     {
@@ -263,7 +271,7 @@ public class spacecraft : MonoBehaviour
         //    isMovingStraight = !isMovingStraight;
 
         //}
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (canPressSpace && Input.GetKeyDown(KeyCode.Space))
         {
 
             //Debug.Log("Space Key Pressed");
