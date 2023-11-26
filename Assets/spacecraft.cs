@@ -25,6 +25,9 @@ public class spacecraft : MonoBehaviour
     [SerializeField] private float changeRotation = 10.0f;
     [SerializeField] private int changePosition = 10;
 
+    public GameObject instruction9;
+    public bool[] instructionByPlanet = new bool[10];
+
     private void Awake()
     {
         gameManager = GameObject.Find("GameManagerMain").GetComponent<GameManager>();
@@ -90,6 +93,7 @@ public class spacecraft : MonoBehaviour
             }
             else if (pipePuzzleValue == 1)
             {
+                PlayerPrefs.SetInt("Mines", 1);
                 pipePuzzleWinCanvas.SetActive(true);
                 Debug.Log("Pipe Puzzle Won data received in Main Game");
                 gameManager.updateFuel(-40);
@@ -316,23 +320,25 @@ public class spacecraft : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log("Spaceship Collision Detected");
-        //Debug.Log(collision.gameObject.name);
-        //if (collision.gameObject.name.StartsWith("Planet"))
-        //{
-        //    string[] parts = collision.gameObject.name.Split(' ');
-        //    if (parts.Length == 2)
-        //    {
-        //        // Attempt to parse the second part as an integer
-        //        if (int.TryParse(parts[1], out int result))
-        //        {
-        //            GameManager.currentPlanet = result - 1;
-        //            GameManager.boolArray[result - 1] = true;
-        //        }
-        //    }
-
-        //}
+        if (collision.gameObject.name.Equals("Planet 9") && !instructionByPlanet[8] && PlayerPrefs.GetInt("Mines") == 1)
+        {
+            Invoke("Instruction9Caller", 4f);
+            instructionByPlanet[8] = true;
+        }
     }
+
+
+    private void Instruction9Caller()
+    {
+        if (PlayerPrefs.GetInt("Mines") == 1)
+        {
+            Time.timeScale = 0f;
+            instruction9.SetActive(true);
+            //instruction1Text.text = "Avoid Asteriod as hitting it can reduce health";
+        }
+
+    }
+
     IEnumerator DeactivateCanvasAfterDelay(float delay, GameObject canvas)
     {
         yield return new WaitForSeconds(delay);

@@ -318,7 +318,7 @@ public class spacecraftTutorial : MonoBehaviour
             Invoke("Instruction7Caller", 1f);
             instructionByPlanet[1] = true;
         }
-        else if (collision.gameObject.name.Equals("Planet 4") && !instructionByPlanet[3])
+        else if (collision.gameObject.name.Equals("Planet 4") && !instructionByPlanet[3] && PlayerPrefs.GetInt("FuelInc") == 1)
         {
             Invoke("Instruction8Caller", 4f);
             instructionByPlanet[3] = true;
