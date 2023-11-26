@@ -19,6 +19,7 @@ public class spacecraft : MonoBehaviour
     public GameObject fuelPuzzleWincanvas;
     public GameObject puzzleLosecanvas;
     public GameObject pipePuzzleWinCanvas;
+    VisibilityController visController;
 
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firingPoint;
@@ -28,6 +29,7 @@ public class spacecraft : MonoBehaviour
     private void Awake()
     {
         gameManager = GameObject.Find("GameManagerMain").GetComponent<GameManager>();
+        visController = GetComponentInChildren<VisibilityController>();
     }
 
 
@@ -215,6 +217,16 @@ public class spacecraft : MonoBehaviour
 
         if (isMovingStraight)
         {
+
+            // When moving straight, we hide the ShootingArrow asset
+            try{
+                //Debug.Log("Asset is currently visible; Disabling it.");
+                visController.DisappearAsset();
+            }
+            catch(Exception ex){        
+                Console.WriteLine("Unexpected Error Disappearing it: " + ex.Message);
+            }
+
             //To do check if the spaceship moves out of bounds then make it stick to a nearby planet
             //float translationSpeed = 20f;
             straightMoveTimer += Time.deltaTime;
@@ -243,6 +255,17 @@ public class spacecraft : MonoBehaviour
         }
         else
         {
+            // Make the ShootingArrow re-appear
+            // When moving straight, we hide the ShootingArrow asset
+            try{
+                //Debug.Log("Asset is currently not visible; Enabling it.");
+                visController.AppearAsset();
+            }
+            catch(Exception ex){        
+                Console.WriteLine("Unexpected Error enabling it: " + ex.Message);
+            }
+
+
             float rotationSpeed = 60f;
 
             transform.RotateAround(currentTarget.position, Vector3.forward, -rotationSpeed * Time.deltaTime);

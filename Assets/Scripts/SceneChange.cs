@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
+
 public class SceneChange : MonoBehaviour
 {
     public Animator transition;
@@ -51,6 +53,18 @@ public class SceneChange : MonoBehaviour
                     Debug.Log("Collision In");
                     if (transform.name.StartsWith("Planet"))
                     {
+
+                        // Make the ShootingArrow re-appear
+                        // When moving straight, we hide the ShootingArrow asset
+                        try{
+                            //Debug.Log("Asset is currently not visible; Enabling it.");
+                            VisibilityController visController = GetComponentInChildren<VisibilityController>();
+                            visController.AppearAsset();
+                        }
+                        catch(Exception ex){        
+                            Console.WriteLine("Unexpected Error enabling it: " + ex.Message);
+                        } 
+
                         int countPlanets = PlayerPrefs.GetInt(Constants.COUNT_PLANETS);
                         ++countPlanets;
                         PlayerPrefs.SetInt(Constants.COUNT_PLANETS, countPlanets);
