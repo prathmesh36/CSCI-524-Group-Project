@@ -96,7 +96,6 @@ public class spacecraft : MonoBehaviour
             }
             else if (pipePuzzleValue == 1)
             {
-                PlayerPrefs.SetInt("Mines", 1);
                 pipePuzzleWinCanvas.SetActive(true);
                 Debug.Log("Pipe Puzzle Won data received in Main Game");
                 gameManager.updateFuel(-40);
@@ -328,17 +327,17 @@ public class spacecraft : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name.Equals("Planet 9") && !instructionByPlanet[8] && PlayerPrefs.GetInt("Mines") == 1)
+        if (collision.gameObject.name.Equals("Planet 7") && !instructionByPlanet[6] && gameManager.getBombCount() > 0)
         {
-            Invoke("Instruction9Caller", 4f);
-            instructionByPlanet[8] = true;
+            Invoke("Instruction9Caller", 1f);
+            instructionByPlanet[6] = true;
         }
     }
 
 
     private void Instruction9Caller()
     {
-        if (PlayerPrefs.GetInt("Mines") == 1)
+        if (gameManager.getBombCount() > 0)
         {
             Time.timeScale = 0f;
             instruction9.SetActive(true);
