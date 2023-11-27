@@ -69,24 +69,7 @@ public class spacecraft : MonoBehaviour
             Debug.Log("Non-Initial Load");
             canPressSpace=true;
 
-            ////Unnati : Printing Player prefs
-            //string[] allKeys = { "PipePuzzle", "WirePuzzle", "MagnetPuzzle", "SpaceGerms" };
-
-            //// Print all PlayerPrefs values
-            //foreach (var key in allKeys)
-            //{
-            //    if (PlayerPrefs.HasKey(key))
-            //    {
-            //        if (PlayerPrefs.GetString(key) != "")
-            //        {
-            //            Debug.Log($"PlayerPrefs key: {key}, value: {PlayerPrefs.GetString(key)}");
-            //        }
-            //        else
-            //        {
-            //            Debug.Log($"PlayerPrefs key: {key}, value: {PlayerPrefs.GetInt(key)}");
-            //        }
-            //    }
-            //}
+           
             
 
             int pipePuzzleValue = PlayerPrefs.GetInt("PipePuzzle", 0);
