@@ -19,15 +19,21 @@ public class spacecraft : MonoBehaviour
     public GameObject fuelPuzzleWincanvas;
     public GameObject puzzleLosecanvas;
     public GameObject pipePuzzleWinCanvas;
+    VisibilityController visController;
+    private bool canPressSpace = false;
 
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firingPoint;
     [SerializeField] private float changeRotation = 10.0f;
     [SerializeField] private int changePosition = 10;
 
+    public GameObject instruction9;
+    public bool[] instructionByPlanet = new bool[10];
+
     private void Awake()
     {
         gameManager = GameObject.Find("GameManagerMain").GetComponent<GameManager>();
+        visController = GetComponentInChildren<VisibilityController>();
     }
 
 
@@ -47,38 +53,23 @@ public class spacecraft : MonoBehaviour
                 virtualCamera.m_Lens.OrthographicSize = 5;
 
                 // Invoke the method to transition to follow the spaceship after 5 seconds
-                Invoke("TransitionToFollowSpaceship", 5f);
+                Invoke("TransitionToFollowSpaceship", 2f);
             }
             else
             {
                 Debug.LogError("Destination planet or camera not found.");
             }
             GameManager.initialLoad = false;
+            Invoke("EnableSpaceKeyPress", 5f);
             Update();
         }
 
         else
         {
             Debug.Log("Non-Initial Load");
+            canPressSpace=true;
 
-            ////Unnati : Printing Player prefs
-            //string[] allKeys = { "PipePuzzle", "WirePuzzle", "MagnetPuzzle", "SpaceGerms" };
-
-            //// Print all PlayerPrefs values
-            //foreach (var key in allKeys)
-            //{
-            //    if (PlayerPrefs.HasKey(key))
-            //    {
-            //        if (PlayerPrefs.GetString(key) != "")
-            //        {
-            //            Debug.Log($"PlayerPrefs key: {key}, value: {PlayerPrefs.GetString(key)}");
-            //        }
-            //        else
-            //        {
-            //            Debug.Log($"PlayerPrefs key: {key}, value: {PlayerPrefs.GetInt(key)}");
-            //        }
-            //    }
-            //}
+           
             
 
             int pipePuzzleValue = PlayerPrefs.GetInt("PipePuzzle", 0);
@@ -160,6 +151,11 @@ public class spacecraft : MonoBehaviour
 
     }
 
+    
+    void EnableSpaceKeyPress()
+    {
+       canPressSpace = true;
+    }
 
     public void MoveCamera()
     {
@@ -215,6 +211,16 @@ public class spacecraft : MonoBehaviour
 
         if (isMovingStraight)
         {
+
+            // When moving straight, we hide the ShootingArrow asset
+            try{
+                //Debug.Log("Asset is currently visible; Disabling it.");
+                visController.DisappearAsset();
+            }
+            catch(Exception ex){        
+                Console.WriteLine("Unexpected Error Disappearing it: " + ex.Message);
+            }
+
             //To do check if the spaceship moves out of bounds then make it stick to a nearby planet
             //float translationSpeed = 20f;
             straightMoveTimer += Time.deltaTime;
@@ -243,6 +249,17 @@ public class spacecraft : MonoBehaviour
         }
         else
         {
+            // Make the ShootingArrow re-appear
+            // When moving straight, we hide the ShootingArrow asset
+            try{
+                //Debug.Log("Asset is currently not visible; Enabling it.");
+                visController.AppearAsset();
+            }
+            catch(Exception ex){        
+                Console.WriteLine("Unexpected Error enabling it: " + ex.Message);
+            }
+
+
             float rotationSpeed = 60f;
 
             transform.RotateAround(currentTarget.position, Vector3.forward, -rotationSpeed * Time.deltaTime);
@@ -259,7 +276,7 @@ public class spacecraft : MonoBehaviour
         //    isMovingStraight = !isMovingStraight;
 
         //}
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (canPressSpace && Input.GetKeyDown(KeyCode.Space))
         {
 
             //Debug.Log("Space Key Pressed");
@@ -316,23 +333,25 @@ public class spacecraft : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log("Spaceship Collision Detected");
-        //Debug.Log(collision.gameObject.name);
-        //if (collision.gameObject.name.StartsWith("Planet"))
-        //{
-        //    string[] parts = collision.gameObject.name.Split(' ');
-        //    if (parts.Length == 2)
-        //    {
-        //        // Attempt to parse the second part as an integer
-        //        if (int.TryParse(parts[1], out int result))
-        //        {
-        //            GameManager.currentPlanet = result - 1;
-        //            GameManager.boolArray[result - 1] = true;
-        //        }
-        //    }
-
-        //}
+        if (collision.gameObject.name.Equals("Planet 7") && !instructionByPlanet[6] && gameManager.getBombCount() > 0)
+        {
+            Invoke("Instruction9Caller", 1f);
+            instructionByPlanet[6] = true;
+        }
     }
+
+
+    private void Instruction9Caller()
+    {
+        if (gameManager.getBombCount() > 0)
+        {
+            Time.timeScale = 0f;
+            instruction9.SetActive(true);
+            //instruction1Text.text = "Avoid Asteriod as hitting it can reduce health";
+        }
+
+    }
+
     IEnumerator DeactivateCanvasAfterDelay(float delay, GameObject canvas)
     {
         yield return new WaitForSeconds(delay);

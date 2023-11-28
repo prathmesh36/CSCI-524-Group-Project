@@ -80,4 +80,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleSceneTutorial.unity
     guid: 8c62f4414ce364055a719bf81f8576be
+  - enabled: 1
+    path: Assets/Scenes/RestartRespawn.unity
+    guid: 52c9b1d62d0c265429b27c524446c961
   m_configObjects: {}

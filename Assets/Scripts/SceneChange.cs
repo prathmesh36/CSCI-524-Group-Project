@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
+
 public class SceneChange : MonoBehaviour
 {
     public Animator transition;
@@ -47,10 +49,21 @@ public class SceneChange : MonoBehaviour
             {
                 if (GameManager.health > 0)
                 {
-
                     Debug.Log("Collision In");
                     if (transform.name.StartsWith("Planet"))
                     {
+
+                        // Make the ShootingArrow re-appear
+                        // When moving straight, we hide the ShootingArrow asset
+                        try{
+                            //Debug.Log("Asset is currently not visible; Enabling it.");
+                            VisibilityController visController = GetComponentInChildren<VisibilityController>();
+                            visController.AppearAsset();
+                        }
+                        catch(Exception ex){        
+                            Console.WriteLine("Unexpected Error enabling it: " + ex.Message);
+                        } 
+
                         int countPlanets = PlayerPrefs.GetInt(Constants.COUNT_PLANETS);
                         ++countPlanets;
                         PlayerPrefs.SetInt(Constants.COUNT_PLANETS, countPlanets);
@@ -61,23 +74,14 @@ public class SceneChange : MonoBehaviour
                         PlayerPrefs.SetInt(Constants.PLANET_IMPACT, currentFuel < 0 ? 0 : currentFuel );
                         
                         string[] parts = transform.name.Split(' ');
-                  
-                        Debug.Log(transform.name);
-                        foreach (bool value in GameManager.boolArray)
-                        {
-                            Debug.Log(value);
-                            
-                        }
-                        
+                
                         if (parts.Length == 2)
                         {
-                          
-
                             // Attempt to parse the second part as an integer
                             if (int.TryParse(parts[1], out int result))
                             {
                                 GameManager.currentPlanet = result - 1;
-
+                                GameManager.lastFuel=GameManager.fuel;
                                 if (!GameManager.boolArray[result - 1])
                                 {
                                     StartCoroutine(LoadScene(sceneName));
@@ -88,6 +92,9 @@ public class SceneChange : MonoBehaviour
                     }
                     else
                     {
+                        if(sceneName=="RestartRespawn"){
+                            GameManager.currentPlanet=GameManager.currentPlanetRespawn;
+                        }
                         StartCoroutine(LoadScene(sceneName));
                     }
                 }
@@ -96,16 +103,12 @@ public class SceneChange : MonoBehaviour
                     GameManager.lostCause = "Health Over";
                     StartCoroutine(LoadScene("HealthOver"));
                 }
-
-                  
             }
             else {
-
                 Debug.Log("Fuel Over");
                 GameManager.lostCause = "Fuel Over";
                 StartCoroutine(LoadScene("FuelOver"));
             }
-            
         }
     }
 
@@ -114,7 +117,6 @@ public class SceneChange : MonoBehaviour
         transition.SetTrigger("Start");
 
         yield return new WaitForSeconds(transitionTime);
-
         SceneManager.LoadScene(sceneName);
     }
 }

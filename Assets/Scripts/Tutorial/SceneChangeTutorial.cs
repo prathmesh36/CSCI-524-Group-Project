@@ -62,7 +62,6 @@ public class SceneChangeTuturial : MonoBehaviour
                                     if (transform.name.StartsWith("Planet 3"))
                                     {
                                         instruction1.SetActive(true);
-                                        instruction1Text.text = "Play the mini game to get fuel/health";
                                         Time.timeScale = 0f;
                                         return;
                                     }
