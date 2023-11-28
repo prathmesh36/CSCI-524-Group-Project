@@ -22,7 +22,7 @@ public class Spaceship : MonoBehaviour
     }
     public void TakeDamage()
     {
-        health = health - 5;
+        health = health - 10;
         
 
         if (health <= 0)
@@ -34,12 +34,12 @@ public class Spaceship : MonoBehaviour
 
             SceneManager.LoadScene("MyGame");
         }
-        healthDisplay.text = "Health: " + health;
-       
+        healthDisplay.text = "Health: " + health + "/100";
+        healthDisplay.color = new Color(1f, 0f, 0f);
     }
     public void AddHealth()
     {
-        health = health + 5;
+        health = health + 10;
         if (health >= 100)
         {
             int monstersKilled = PlayerPrefs.GetInt(Constants.MONSTERS_KILLED);
@@ -61,8 +61,9 @@ public class Spaceship : MonoBehaviour
             Debug.Log("Unnati: calling from the spaceship.cs (First game) and the playerprefs have been set to:" + PlayerPrefs.GetInt("SpaceGerms"));
             SceneManager.LoadScene("MyGame");
         }
-        healthDisplay.text = "Health: " + health;
-       
+        healthDisplay.text = "Health: " + health + "/100";
+        healthDisplay.color = new Color(0f, 1f, 0.282f);
+
     }
 
     public void recordAnalyticsForSpaceMonster(int monstersKilled, int monstersCount){
