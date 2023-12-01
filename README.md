@@ -7,6 +7,6 @@ Team Member:
 Unnati Babruwad
 Prathamesh Mhapsekar
 Mandar Mhapsekar
-Sucheth Govindaraju
 Purva Dharmadhikari
+Sucheth Govindaraju
 Twinkle Dhanak
