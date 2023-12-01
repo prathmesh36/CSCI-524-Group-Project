@@ -9046,6 +9046,7 @@ GameObject:
   - component: {fileID: 1380225877}
   - component: {fileID: 1380225876}
   - component: {fileID: 1380225879}
+  - component: {fileID: 1380225881}
   m_Layer: 0
   m_Name: Planet 2
   m_TagString: Untagged
@@ -9185,6 +9186,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1380225881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380225874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cafaf4869f791d47b920e9b635538da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1389627240
 GameObject:
   m_ObjectHideFlags: 0
@@ -9680,6 +9693,7 @@ GameObject:
   - component: {fileID: 1495966332}
   - component: {fileID: 1495966331}
   - component: {fileID: 1495966334}
+  - component: {fileID: 1495966336}
   m_Layer: 0
   m_Name: Planet 4
   m_TagString: Untagged
@@ -9799,6 +9813,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1495966336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495966330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cafaf4869f791d47b920e9b635538da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1501055602
